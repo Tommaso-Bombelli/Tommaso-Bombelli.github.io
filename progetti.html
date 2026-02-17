@@ -3,286 +3,242 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Progetti – Mario Rossi</title>
+  <title>Progetti – Tommaso Bombelli</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">MR<span>.</span></a>
+  <a href="index.html" class="nav-logo">TB<span>.</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="progetti.html" class="active">Progetti</a></li>
     <li><a href="competenze.html">Competenze</a></li>
-    <li><a href="esperienza.html">Esperienza</a></li>
-    <li><a href="azienda.html">Azienda</a></li>
+    <li><a href="esperienza.html">Chi Sono</a></li>
+    <li><a href="azienda.html">EasyDomotica</a></li>
     <li><a href="contatti.html" class="nav-cta">Contatti</a></li>
   </ul>
   <div class="nav-toggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- PAGE HEADER -->
 <header class="page-header">
   <div class="container">
     <span class="section-label fade-up fade-up-1">// progetti</span>
-    <h1 class="fade-up fade-up-2">Lavori & Progetti</h1>
+    <h1 class="fade-up fade-up-2">Lavori & Realizzazioni</h1>
     <p class="fade-up fade-up-3" style="max-width:520px; margin-top:1rem; font-size:1.05rem;">
-      Una selezione di ciò che ho costruito — prodotti commerciali, tool open source e sperimentazioni personali.
+      Una selezione di progetti — dal sistema domotico alle soluzioni cloud, passando per hardware custom e portali clienti.
     </p>
   </div>
 </header>
 
-<!-- FILTER BAR -->
-<div class="filter-bar">
-  <div class="container">
-    <div class="filter-tabs">
-      <button class="filter-btn active" onclick="filterProjects('all', this)">Tutti</button>
-      <button class="filter-btn" onclick="filterProjects('saas', this)">SaaS</button>
-      <button class="filter-btn" onclick="filterProjects('mobile', this)">Mobile</button>
-      <button class="filter-btn" onclick="filterProjects('open-source', this)">Open Source</button>
-      <button class="filter-btn" onclick="filterProjects('client', this)">Client Work</button>
-    </div>
-  </div>
-</div>
-
-<!-- PROJECTS GRID -->
 <section class="section" style="padding-top:3rem;">
   <div class="container">
     <div class="projects-grid" id="projectsGrid">
 
       <!-- ──────────── PROGETTO 1 ──────────── -->
-      <article class="project-card fade-up fade-up-1" data-cat="saas" id="progetto-1">
+      <article class="project-card fade-up fade-up-1" id="progetto-1">
         <div class="pc-header">
           <div class="pc-meta">
-            <span class="tag tag-accent">SaaS</span>
-            <span class="tag">2024</span>
-          </div>
-          <div class="pc-links">
-            <a href="#" class="pc-link" title="Demo">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="#" class="pc-link" title="GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-            </a>
+            <span class="tag tag-accent">Core Product</span>
+            <span class="tag">2020-Presente</span>
           </div>
         </div>
 
-        <div class="pc-icon">◈</div>
-        <h3 class="pc-title">NomeProgetto Alpha</h3>
+        <div class="pc-icon">⌂</div>
+        <h3 class="pc-title">Sistema Domotico EasyDomotica</h3>
         <p class="pc-desc">
-          Piattaforma SaaS per la gestione automatizzata di workflow aziendali. Il sistema processa oltre 10.000 task/giorno con latenza media < 50ms. Architettura event-driven, multi-tenant, con dashboard analytics in real-time.
+          Sviluppo completo della piattaforma domotica aziendale basata su Home Assistant. Include automazioni personalizzate per luci, climatizzazione, tapparelle, sicurezza, scenari e controllo vocale. Ogni installazione è configurata su misura per le esigenze del cliente con integrazioni custom.
         </p>
 
         <div class="pc-stats">
           <div class="pc-stat">
-            <span class="pc-stat-val">500+</span>
-            <span class="pc-stat-label">Aziende attive</span>
+            <span class="pc-stat-val">50+</span>
+            <span class="pc-stat-label">Installazioni</span>
           </div>
           <div class="pc-stat">
-            <span class="pc-stat-val">€XX K</span>
-            <span class="pc-stat-label">ARR</span>
+            <span class="pc-stat-val">100%</span>
+            <span class="pc-stat-label">Uptime medio</span>
           </div>
           <div class="pc-stat">
-            <span class="pc-stat-val">99.9%</span>
-            <span class="pc-stat-label">Uptime</span>
+            <span class="pc-stat-val">24/7</span>
+            <span class="pc-stat-label">Monitoraggio</span>
           </div>
         </div>
 
         <div class="pc-stack">
-          <span class="tag">React</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Redis</span>
-          <span class="tag">AWS</span>
+          <span class="tag">Home Assistant</span>
+          <span class="tag">Python</span>
+          <span class="tag">YAML</span>
+          <span class="tag">MQTT</span>
+          <span class="tag">Zigbee</span>
         </div>
       </article>
 
       <!-- ──────────── PROGETTO 2 ──────────── -->
-      <article class="project-card fade-up fade-up-2" data-cat="mobile" id="progetto-2">
+      <article class="project-card fade-up fade-up-2" id="progetto-2">
         <div class="pc-header">
           <div class="pc-meta">
-            <span class="tag tag-accent">Mobile</span>
+            <span class="tag tag-accent">Hardware</span>
             <span class="tag">2023</span>
-          </div>
-          <div class="pc-links">
-            <a href="#" class="pc-link" title="App Store"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           </div>
         </div>
 
-        <div class="pc-icon">◯</div>
-        <h3 class="pc-title">NomeProgetto Beta</h3>
+        <div class="pc-icon">◈</div>
+        <h3 class="pc-title">Touch Screen 14" Proprietario</h3>
         <p class="pc-desc">
-          App mobile consumer con meccaniche di gamification per la formazione continua. Architettura offline-first con sync real-time. Onboarding A/B testato, retention a 30 giorni del 68%.
+          Progettazione end-to-end di un pannello touch screen da 14 pollici per controllo domotico centralizzato. Modellazione 3D del case, scelta componenti hardware, assemblaggio e sviluppo del software di interfaccia ottimizzato per performance e affidabilità.
         </p>
 
         <div class="pc-stats">
           <div class="pc-stat">
-            <span class="pc-stat-val">10k+</span>
-            <span class="pc-stat-label">Utenti attivi</span>
+            <span class="pc-stat-val">14"</span>
+            <span class="pc-stat-label">Display IPS</span>
           </div>
           <div class="pc-stat">
-            <span class="pc-stat-val">4.8★</span>
-            <span class="pc-stat-label">App Store</span>
-          </div>
-          <div class="pc-stat">
-            <span class="pc-stat-val">68%</span>
-            <span class="pc-stat-label">Retention 30gg</span>
+            <span class="pc-stat-val">100%</span>
+            <span class="pc-stat-label">Made by us</span>
           </div>
         </div>
 
         <div class="pc-stack">
-          <span class="tag">Flutter</span>
-          <span class="tag">Firebase</span>
-          <span class="tag">Dart</span>
-          <span class="tag">Figma</span>
+          <span class="tag">Hardware Design</span>
+          <span class="tag">3D Modeling</span>
+          <span class="tag">Embedded</span>
+          <span class="tag">Linux</span>
         </div>
       </article>
 
       <!-- ──────────── PROGETTO 3 ──────────── -->
-      <article class="project-card fade-up fade-up-3" data-cat="open-source" id="progetto-3">
+      <article class="project-card fade-up fade-up-3" id="progetto-3">
         <div class="pc-header">
           <div class="pc-meta">
-            <span class="tag tag-green">Open Source</span>
-            <span class="tag">2023</span>
-          </div>
-          <div class="pc-links">
-            <a href="#" class="pc-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
+            <span class="tag tag-accent">ERP</span>
+            <span class="tag">2022-Presente</span>
           </div>
         </div>
 
-        <div class="pc-icon" style="color:var(--green);">⬡</div>
-        <h3 class="pc-title">NomeProgetto CLI</h3>
+        <div class="pc-icon">☁</div>
+        <h3 class="pc-title">Gestionale EasyDomotica</h3>
         <p class="pc-desc">
-          Tool open source per automatizzare pipeline CI/CD su ambienti multi-cloud. Plugin system estensibile, zero dipendenze esterne, configurazione YAML-first. Pubblicato su npm e PyPI.
+          Piattaforma ERP proprietaria per la gestione aziendale completa. Include monitoraggio real-time di tutti i sistemi Home Assistant dei clienti, sistema di ticketing, gestione magazzino e fatturazione, anagrafica clienti, automazione backup e sincronizzazione cloud.
         </p>
 
         <div class="pc-stats">
           <div class="pc-stat">
-            <span class="pc-stat-val" style="color:var(--green);">1.2k</span>
-            <span class="pc-stat-label">GitHub Stars</span>
+            <span class="pc-stat-val">50+</span>
+            <span class="pc-stat-label">Sistemi monitorati</span>
           </div>
           <div class="pc-stat">
-            <span class="pc-stat-val" style="color:var(--green);">30+</span>
-            <span class="pc-stat-label">Paesi</span>
-          </div>
-          <div class="pc-stat">
-            <span class="pc-stat-val" style="color:var(--green);">48</span>
-            <span class="pc-stat-label">Contributors</span>
+            <span class="pc-stat-val">Real-time</span>
+            <span class="pc-stat-label">Status</span>
           </div>
         </div>
 
         <div class="pc-stack">
-          <span class="tag">Python</span>
-          <span class="tag">CLI</span>
-          <span class="tag">Docker</span>
-          <span class="tag">Terraform</span>
+          <span class="tag">Full-Stack</span>
+          <span class="tag">API REST</span>
+          <span class="tag">Database</span>
+          <span class="tag">Cloud</span>
         </div>
       </article>
 
       <!-- ──────────── PROGETTO 4 ──────────── -->
-      <article class="project-card fade-up fade-up-1" data-cat="client" id="progetto-4">
+      <article class="project-card fade-up fade-up-1" id="progetto-4">
         <div class="pc-header">
           <div class="pc-meta">
-            <span class="tag">Client Work</span>
+            <span class="tag tag-accent">Portale Web</span>
             <span class="tag">2023</span>
-          </div>
-          <div class="pc-links">
-            <a href="#" class="pc-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           </div>
         </div>
 
-        <div class="pc-icon">◧</div>
-        <h3 class="pc-title">NomeProgetto Delta</h3>
+        <div class="pc-icon">◐</div>
+        <h3 class="pc-title">Portale Clienti</h3>
         <p class="pc-desc">
-          Redesign completo del sistema di prenotazioni per un cliente nel settore hospitality. Riduzione del tasso di abbandono del 40%, tempo medio di checkout dimezzato.
+          Area riservata per i clienti EasyDomotica dove possono visualizzare lo stato dei loro servizi, abbonamenti attivi, storico ticket, documentazione tecnica e aprire nuove richieste di assistenza. Integrato con il gestionale principale.
         </p>
 
         <div class="pc-stats">
           <div class="pc-stat">
-            <span class="pc-stat-val">-40%</span>
-            <span class="pc-stat-label">Abbandono</span>
+            <span class="pc-stat-val">100%</span>
+            <span class="pc-stat-label">Self-service</span>
           </div>
           <div class="pc-stat">
-            <span class="pc-stat-val">2×</span>
-            <span class="pc-stat-label">Conversioni</span>
+            <span class="pc-stat-val">-60%</span>
+            <span class="pc-stat-label">Richieste supporto</span>
           </div>
         </div>
 
         <div class="pc-stack">
-          <span class="tag">Next.js</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Stripe</span>
-          <span class="tag">Vercel</span>
+          <span class="tag">Web App</span>
+          <span class="tag">Auth</span>
+          <span class="tag">Dashboard</span>
         </div>
       </article>
 
       <!-- ──────────── PROGETTO 5 ──────────── -->
-      <article class="project-card fade-up fade-up-2" data-cat="saas" id="progetto-5">
+      <article class="project-card fade-up fade-up-2" id="progetto-5">
         <div class="pc-header">
           <div class="pc-meta">
-            <span class="tag tag-accent">SaaS</span>
+            <span class="tag">Automazione</span>
             <span class="tag">2022</span>
           </div>
         </div>
 
-        <div class="pc-icon">⬥</div>
-        <h3 class="pc-title">NomeProgetto Gamma</h3>
+        <div class="pc-icon">⚡</div>
+        <h3 class="pc-title">Sistema di Backup Automatico</h3>
         <p class="pc-desc">
-          Dashboard analytics per e-commerce con AI integrata per previsione della domanda. Integrazione nativa con Shopify, WooCommerce e Amazon Seller Central.
+          Infrastruttura per il backup automatico e incrementale di tutti i sistemi Home Assistant installati presso i clienti. Include verifica integrità, rotazione snapshot, storage cloud ridondante e notifiche in caso di anomalie.
         </p>
 
         <div class="pc-stats">
           <div class="pc-stat">
-            <span class="pc-stat-val">150+</span>
-            <span class="pc-stat-label">Shop integrati</span>
+            <span class="pc-stat-val">Giornaliero</span>
+            <span class="pc-stat-label">Frequenza</span>
           </div>
           <div class="pc-stat">
-            <span class="pc-stat-val">92%</span>
-            <span class="pc-stat-label">Accuratezza AI</span>
+            <span class="pc-stat-val">0</span>
+            <span class="pc-stat-label">Perdite dati</span>
           </div>
         </div>
 
         <div class="pc-stack">
-          <span class="tag">Python</span>
-          <span class="tag">FastAPI</span>
-          <span class="tag">Vue.js</span>
-          <span class="tag">ML</span>
+          <span class="tag">Automation</span>
+          <span class="tag">Cloud Storage</span>
+          <span class="tag">Monitoring</span>
         </div>
       </article>
 
       <!-- ──────────── PROGETTO 6 ──────────── -->
-      <article class="project-card fade-up fade-up-3" data-cat="open-source" id="progetto-6">
+      <article class="project-card fade-up fade-up-3" id="progetto-6">
         <div class="pc-header">
           <div class="pc-meta">
-            <span class="tag tag-green">Open Source</span>
-            <span class="tag">2022</span>
-          </div>
-          <div class="pc-links">
-            <a href="#" class="pc-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
+            <span class="tag">Network</span>
+            <span class="tag">Consulting</span>
           </div>
         </div>
 
-        <div class="pc-icon" style="color:var(--green);">△</div>
-        <h3 class="pc-title">NomeLib OSS</h3>
+        <div class="pc-icon">🔒</div>
+        <h3 class="pc-title">Infrastrutture di Rete Sicure</h3>
         <p class="pc-desc">
-          Libreria JavaScript per validazione di form complesse con supporto a schemi JSON-Schema e messaggi di errore localizzati. Usata in 200+ progetti.
+          Progettazione e configurazione di reti LAN/WiFi segmentate per abitazioni e piccole aziende. Firewall, VPN, VLAN, QoS e analisi vulnerabilità. Focus su sicurezza perimetrale e isolamento dei dispositivi IoT dal resto della rete.
         </p>
 
         <div class="pc-stats">
           <div class="pc-stat">
-            <span class="pc-stat-val" style="color:var(--green);">800+</span>
-            <span class="pc-stat-label">Stars</span>
+            <span class="pc-stat-val">Multi-VLAN</span>
+            <span class="pc-stat-label">Segmentazione</span>
           </div>
           <div class="pc-stat">
-            <span class="pc-stat-val" style="color:var(--green);">50k</span>
-            <span class="pc-stat-label">npm/mese</span>
+            <span class="pc-stat-val">IDS/IPS</span>
+            <span class="pc-stat-label">Protezione</span>
           </div>
         </div>
 
         <div class="pc-stack">
-          <span class="tag">TypeScript</span>
-          <span class="tag">JSON Schema</span>
-          <span class="tag">npm</span>
+          <span class="tag">Networking</span>
+          <span class="tag">Firewall</span>
+          <span class="tag">VPN</span>
+          <span class="tag">Security</span>
         </div>
       </article>
 
@@ -292,47 +248,15 @@
 
 <footer>
   <div class="container footer-inner">
-    <span class="footer-copy">© 2025 Mario Rossi. Tutti i diritti riservati.</span>
+    <span class="footer-copy">© 2025 Tommaso Bombelli. Tutti i diritti riservati.</span>
     <div class="footer-links">
-      <a href="https://github.com/tuoaccount" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/tuoaccount" target="_blank">LinkedIn</a>
+      <a href="https://github.com/tommasobombelli" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/tommaso-bombelli" target="_blank">LinkedIn</a>
     </div>
   </div>
 </footer>
 
 <style>
-.filter-bar {
-  background: var(--bg2);
-  border-bottom: 1px solid var(--border);
-  padding: 0.8rem 0;
-  position: sticky;
-  top: 64px;
-  z-index: 100;
-}
-
-.filter-tabs {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  padding: 0.4rem 1rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.filter-btn:hover   { border-color: var(--border2); color: var(--text); }
-.filter-btn.active  { border-color: var(--accent); color: var(--accent); background: var(--accent-glow2); }
-
-/* PROJECT CARDS */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -356,8 +280,6 @@
   transform: translateY(-4px);
 }
 
-.project-card.hidden { display: none; }
-
 .pc-header {
   display: flex;
   justify-content: space-between;
@@ -365,16 +287,6 @@
 }
 
 .pc-meta { display: flex; gap: 0.4rem; }
-
-.pc-links { display: flex; gap: 0.7rem; }
-
-.pc-link {
-  color: var(--text-dim);
-  transition: color var(--transition);
-  display: flex;
-  align-items: center;
-}
-.pc-link:hover { color: var(--accent); }
 
 .pc-icon {
   font-size: 1.8rem;
@@ -420,18 +332,6 @@
 <script>
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
-}
-
-function filterProjects(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.project-card').forEach(card => {
-    if (cat === 'all' || card.dataset.cat === cat) {
-      card.classList.remove('hidden');
-    } else {
-      card.classList.add('hidden');
-    }
-  });
 }
 </script>
 </body>

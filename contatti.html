@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contatti – Mario Rossi</title>
+  <title>Contatti – Tommaso Bombelli</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">MR<span>.</span></a>
+  <a href="index.html" class="nav-logo">TB<span>.</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="progetti.html">Progetti</a></li>
     <li><a href="competenze.html">Competenze</a></li>
-    <li><a href="esperienza.html">Esperienza</a></li>
-    <li><a href="azienda.html">Azienda</a></li>
+    <li><a href="esperienza.html">Chi Sono</a></li>
+    <li><a href="azienda.html">EasyDomotica</a></li>
     <li><a href="contatti.html" class="nav-cta active">Contatti</a></li>
   </ul>
   <div class="nav-toggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
@@ -53,10 +53,10 @@
           <label class="form-label" for="subject">Argomento</label>
           <select class="form-input form-select" id="subject">
             <option value="">Seleziona...</option>
-            <option>Progetto freelance</option>
-            <option>Collaborazione aziendale</option>
+            <option>Installazione domotica</option>
             <option>Consulenza tecnica</option>
-            <option>Partnership</option>
+            <option>Assistenza / Supporto</option>
+            <option>Collaborazione</option>
             <option>Altro</option>
           </select>
         </div>
@@ -94,7 +94,7 @@
           </div>
           <div class="ci-content">
             <span class="ci-label mono">Email</span>
-            <a href="mailto:ciao@mariorossi.it" class="ci-value">ciao@mariorossi.it</a>
+            <a href="mailto:tommasobombelli103@gmail.com" class="ci-value">tommasobombelli103@gmail.com</a>
           </div>
         </div>
 
@@ -104,7 +104,7 @@
           </div>
           <div class="ci-content">
             <span class="ci-label mono">GitHub</span>
-            <a href="https://github.com/tuoaccount" target="_blank" class="ci-value">@tuoaccount</a>
+            <a href="https://github.com/tommasobombelli" target="_blank" class="ci-value">@tommasobombelli</a>
           </div>
         </div>
 
@@ -114,17 +114,7 @@
           </div>
           <div class="ci-content">
             <span class="ci-label mono">LinkedIn</span>
-            <a href="https://linkedin.com/in/tuoaccount" target="_blank" class="ci-value">Mario Rossi</a>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="ci-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
-          </div>
-          <div class="ci-content">
-            <span class="ci-label mono">Twitter / X</span>
-            <a href="https://twitter.com/tuoaccount" target="_blank" class="ci-value">@tuoaccount</a>
+            <a href="https://linkedin.com/in/tommaso-bombelli" target="_blank" class="ci-value">Tommaso Bombelli</a>
           </div>
         </div>
 
@@ -134,7 +124,7 @@
           </div>
           <div class="ci-content">
             <span class="ci-label mono">Posizione</span>
-            <span class="ci-value" style="cursor:default;">Milano, Italia 🇮🇹</span>
+            <span class="ci-value" style="cursor:default;">Angera (VA), Italia 🇮🇹</span>
           </div>
         </div>
       </div>
@@ -148,7 +138,7 @@
         <div class="avail-items">
           <div class="avail-item">
             <span class="avail-check" style="color:var(--green);">✓</span>
-            <span>Progetti freelance</span>
+            <span>Installazioni domotica</span>
           </div>
           <div class="avail-item">
             <span class="avail-check" style="color:var(--green);">✓</span>
@@ -156,11 +146,11 @@
           </div>
           <div class="avail-item">
             <span class="avail-check" style="color:var(--green);">✓</span>
-            <span>Advisory / Mentoring</span>
+            <span>Assistenza / Support</span>
           </div>
           <div class="avail-item">
-            <span class="avail-check" style="color:var(--red);">✗</span>
-            <span>Posizioni full-time</span>
+            <span class="avail-check" style="color:var(--green);">✓</span>
+            <span>Progetti custom</span>
           </div>
         </div>
       </div>
@@ -178,11 +168,10 @@
 
 <footer>
   <div class="container footer-inner">
-    <span class="footer-copy">© 2025 Mario Rossi. Tutti i diritti riservati.</span>
+    <span class="footer-copy">© 2025 Tommaso Bombelli. Tutti i diritti riservati.</span>
     <div class="footer-links">
-      <a href="https://github.com/tuoaccount" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/tuoaccount" target="_blank">LinkedIn</a>
-      <a href="https://twitter.com/tuoaccount" target="_blank">Twitter</a>
+      <a href="https://github.com/tommasobombelli" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/tommaso-bombelli" target="_blank">LinkedIn</a>
     </div>
   </div>
 </footer>
@@ -315,6 +304,7 @@
   font-size: 0.875rem;
   color: var(--text);
   transition: color var(--transition);
+  word-break: break-word;
 }
 
 a.ci-value:hover { color: var(--accent); }
