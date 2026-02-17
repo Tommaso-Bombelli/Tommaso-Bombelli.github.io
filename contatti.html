@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contatti – Mario Rossi</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">MR<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="competenze.html">Competenze</a></li>
+    <li><a href="esperienza.html">Esperienza</a></li>
+    <li><a href="azienda.html">Azienda</a></li>
+    <li><a href="contatti.html" class="nav-cta active">Contatti</a></li>
+  </ul>
+  <div class="nav-toggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <span class="section-label fade-up fade-up-1">// contatti</span>
+    <h1 class="fade-up fade-up-2">Parliamo.</h1>
+    <p class="fade-up fade-up-3" style="max-width:480px; margin-top:1rem; font-size:1.05rem;">
+      Hai un progetto, una proposta o vuoi semplicemente dire ciao? Scrivi — rispondo entro 24h.
+    </p>
+  </div>
+</header>
+
+<section class="section" style="padding-top:3rem;">
+  <div class="container contact-layout">
+
+    <!-- ─── FORM ─── -->
+    <div class="contact-form-wrap fade-up fade-up-2">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">Nome</label>
+            <input class="form-input" type="text" id="name" placeholder="Mario Rossi" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" placeholder="mario@esempio.it" required/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="subject">Argomento</label>
+          <select class="form-input form-select" id="subject">
+            <option value="">Seleziona...</option>
+            <option>Progetto freelance</option>
+            <option>Collaborazione aziendale</option>
+            <option>Consulenza tecnica</option>
+            <option>Partnership</option>
+            <option>Altro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Messaggio</label>
+          <textarea class="form-input form-textarea" id="message" placeholder="Raccontami del tuo progetto..." required></textarea>
+        </div>
+
+        <div class="form-footer">
+          <p class="form-note mono">I tuoi dati non verranno condivisi con terze parti.</p>
+          <button type="submit" class="btn btn-primary btn-submit">
+            <span id="btnText">Invia messaggio</span>
+            <svg id="btnArrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <div id="successMsg" class="success-msg" style="display:none;">
+          <span style="color:var(--green); font-size:1.2rem;">✓</span>
+          <span>Messaggio inviato! Ti rispondo entro 24 ore.</span>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- ─── SIDEBAR CONTATTI ─── -->
+    <div class="contact-sidebar">
+
+      <div class="contact-info-card fade-up fade-up-1">
+        <span class="section-label" style="display:block; margin-bottom:1.5rem;">// canali diretti</span>
+
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="ci-content">
+            <span class="ci-label mono">Email</span>
+            <a href="mailto:ciao@mariorossi.it" class="ci-value">ciao@mariorossi.it</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          </div>
+          <div class="ci-content">
+            <span class="ci-label mono">GitHub</span>
+            <a href="https://github.com/tuoaccount" target="_blank" class="ci-value">@tuoaccount</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div class="ci-content">
+            <span class="ci-label mono">LinkedIn</span>
+            <a href="https://linkedin.com/in/tuoaccount" target="_blank" class="ci-value">Mario Rossi</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </div>
+          <div class="ci-content">
+            <span class="ci-label mono">Twitter / X</span>
+            <a href="https://twitter.com/tuoaccount" target="_blank" class="ci-value">@tuoaccount</a>
+          </div>
+        </div>
+
+        <div class="contact-item" style="border-bottom:none;">
+          <div class="ci-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="ci-content">
+            <span class="ci-label mono">Posizione</span>
+            <span class="ci-value" style="cursor:default;">Milano, Italia 🇮🇹</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AVAILABILITY -->
+      <div class="avail-card fade-up fade-up-2">
+        <div class="avail-header">
+          <span class="dot"></span>
+          <span class="avail-title">Disponibilità attuale</span>
+        </div>
+        <div class="avail-items">
+          <div class="avail-item">
+            <span class="avail-check" style="color:var(--green);">✓</span>
+            <span>Progetti freelance</span>
+          </div>
+          <div class="avail-item">
+            <span class="avail-check" style="color:var(--green);">✓</span>
+            <span>Consulenza tecnica</span>
+          </div>
+          <div class="avail-item">
+            <span class="avail-check" style="color:var(--green);">✓</span>
+            <span>Advisory / Mentoring</span>
+          </div>
+          <div class="avail-item">
+            <span class="avail-check" style="color:var(--red);">✗</span>
+            <span>Posizioni full-time</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESPONSE TIME -->
+      <div class="response-card fade-up fade-up-3">
+        <span class="mono" style="font-size:0.68rem; color:var(--text-dim); letter-spacing:0.1em; text-transform:uppercase;">Tempo medio di risposta</span>
+        <span class="response-time">< 24 ore</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2025 Mario Rossi. Tutti i diritti riservati.</span>
+    <div class="footer-links">
+      <a href="https://github.com/tuoaccount" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/tuoaccount" target="_blank">LinkedIn</a>
+      <a href="https://twitter.com/tuoaccount" target="_blank">Twitter</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* FORM */
+.contact-form-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 2.5rem;
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.form-input {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  width: 100%;
+}
+
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow2);
+}
+
+.form-input::placeholder { color: var(--text-dim); }
+
+.form-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7A92' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 140px;
+  font-family: var(--font-body);
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.form-note { font-size: 0.68rem; color: var(--text-dim); letter-spacing: 0.04em; }
+
+.btn-submit { min-width: 180px; justify-content: center; }
+
+.success-msg {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem;
+  background: var(--green-dim);
+  border: 1px solid rgba(0,255,136,0.2);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* CONTACT SIDEBAR */
+.contact-sidebar { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 90px; }
+
+.contact-info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.ci-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.ci-content { display: flex; flex-direction: column; gap: 0.15rem; }
+
+.ci-label { font-size: 0.62rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+
+.ci-value {
+  font-size: 0.875rem;
+  color: var(--text);
+  transition: color var(--transition);
+}
+
+a.ci-value:hover { color: var(--accent); }
+
+/* AVAILABILITY */
+.avail-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 1.5rem;
+}
+
+.avail-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.avail-title { font-size: 0.85rem; font-weight: 500; }
+
+.avail-items { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.avail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.avail-check { font-size: 0.8rem; }
+
+/* RESPONSE */
+.response-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.response-time {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr; }
+  .contact-sidebar { position: static; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  btn.disabled = true;
+  btn.style.opacity = '0.6';
+  document.getElementById('btnText').textContent = 'Invio...';
+  document.getElementById('btnArrow').style.display = 'none';
+
+  // Simula invio (sostituisci con la tua logica: FormSubmit, Netlify Forms, ecc.)
+  setTimeout(() => {
+    e.target.style.display = 'none';
+    document.getElementById('successMsg').style.display = 'flex';
+  }, 1200);
+}
+</script>
+</body>
+</html>

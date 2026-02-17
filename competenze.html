@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Competenze – Mario Rossi</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">MR<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="competenze.html" class="active">Competenze</a></li>
+    <li><a href="esperienza.html">Esperienza</a></li>
+    <li><a href="azienda.html">Azienda</a></li>
+    <li><a href="contatti.html" class="nav-cta">Contatti</a></li>
+  </ul>
+  <div class="nav-toggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <span class="section-label fade-up fade-up-1">// competenze</span>
+    <h1 class="fade-up fade-up-2">Stack & Skillset</h1>
+    <p class="fade-up fade-up-3" style="max-width:500px; margin-top:1rem; font-size:1.05rem;">
+      Tecnologie con cui lavoro quotidianamente e aree in cui ho sviluppato competenza solida nel tempo.
+    </p>
+  </div>
+</header>
+
+<section class="section" style="padding-top:3rem;">
+  <div class="container">
+
+    <!-- ─── SKILL CATEGORIES ─── -->
+    <div class="skills-layout">
+
+      <!-- LEFT COLUMN -->
+      <div class="skills-col">
+
+        <div class="skill-group fade-up fade-up-1">
+          <div class="sg-header">
+            <span class="sg-icon" style="color:var(--accent);">{ }</span>
+            <h3>Frontend</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>React / Next.js</span><span class="mono">Expert</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:95%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>TypeScript</span><span class="mono">Expert</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:92%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Vue.js</span><span class="mono">Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:80%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>CSS / Tailwind</span><span class="mono">Expert</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:90%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Flutter / Dart</span><span class="mono">Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:75%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-group fade-up fade-up-2">
+          <div class="sg-header">
+            <span class="sg-icon" style="color:#A78BFA;">⚙</span>
+            <h3>Backend</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Node.js / Express</span><span class="mono">Expert</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:93%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Python / FastAPI</span><span class="mono">Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:85%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>PostgreSQL</span><span class="mono">Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:82%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Redis</span><span class="mono">Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:78%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>GraphQL</span><span class="mono">Intermediate</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:65%"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /left -->
+
+      <!-- RIGHT COLUMN -->
+      <div class="skills-col">
+
+        <div class="skill-group fade-up fade-up-3">
+          <div class="sg-header">
+            <span class="sg-icon" style="color:#34D399;">☁</span>
+            <h3>Cloud & DevOps</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>AWS (EC2, S3, Lambda)</span><span class="mono">Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:88%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Docker / Kubernetes</span><span class="mono">Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:82%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Terraform</span><span class="mono">Intermediate</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:70%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>CI/CD (GitHub Actions)</span><span class="mono">Expert</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:91%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-group fade-up fade-up-4">
+          <div class="sg-header">
+            <span class="sg-icon" style="color:#FB923C;">◎</span>
+            <h3>Business & Leadership</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Product Management</span><span class="mono">Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:85%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Tech Leadership</span><span class="mono">Expert</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:90%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Startup / GTM</span><span class="mono">Advanced</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:80%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="sbi-top"><span>Agile / Scrum</span><span class="mono">Expert</span></div>
+              <div class="bar-track"><div class="bar-fill" style="--pct:92%"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /right -->
+
+    </div><!-- /skills-layout -->
+
+    <!-- ─── TOOLS GRID ─── -->
+    <div class="divider" style="margin:4rem 0;"></div>
+
+    <span class="section-label">// tools & stack</span>
+    <h2 class="section-title" style="margin-bottom:2rem;">Tecnologie quotidiane</h2>
+
+    <div class="tools-grid">
+      <div class="tool-chip"><span class="tool-dot" style="background:#61DAFB;"></span>React</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#3178C6;"></span>TypeScript</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#339933;"></span>Node.js</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#3776AB;"></span>Python</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#02569B;"></span>Flutter</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#336791;"></span>PostgreSQL</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#DC382D;"></span>Redis</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#2496ED;"></span>Docker</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#FF9900;"></span>AWS</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#F05032;"></span>Git</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#000000;"></span>Vercel</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#4EAA25;"></span>Linux</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#7952B3;"></span>Figma</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#E10098;"></span>GraphQL</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#7B42BC;"></span>Terraform</div>
+      <div class="tool-chip"><span class="tool-dot" style="background:#2088FF;"></span>GitHub Actions</div>
+    </div>
+
+    <!-- ─── LINGUE ─── -->
+    <div class="divider" style="margin:4rem 0;"></div>
+
+    <span class="section-label">// lingue</span>
+    <div class="lang-grid">
+      <div class="lang-item">
+        <span class="lang-name">Italiano</span>
+        <span class="lang-level tag tag-accent">Madrelingua</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">Inglese</span>
+        <span class="lang-level tag tag-accent">C1 – Professionale</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">Spagnolo</span>
+        <span class="lang-level tag">B1 – Intermedio</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2025 Mario Rossi. Tutti i diritti riservati.</span>
+    <div class="footer-links">
+      <a href="https://github.com/tuoaccount" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/tuoaccount" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+.skills-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.skill-group {
+  margin-bottom: 2.5rem;
+}
+
+.sg-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sg-icon { font-size: 1.2rem; }
+
+.sg-header h3 { font-size: 1rem; letter-spacing: 0.02em; }
+
+.skill-bars { display: flex; flex-direction: column; gap: 1rem; }
+
+.skill-bar-item { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.sbi-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.sbi-top .mono { font-size: 0.7rem; color: var(--text-dim); }
+
+.bar-track {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: var(--pct);
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  border-radius: 2px;
+  animation: barGrow 1s ease forwards;
+  transform-origin: left;
+}
+
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* TOOLS */
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+  transition: all var(--transition);
+}
+
+.tool-chip:hover {
+  border-color: var(--border2);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.tool-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* LINGUE */
+.lang-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.lang-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.lang-name { font-size: 0.95rem; color: var(--text); }
+
+@media (max-width: 768px) {
+  .skills-layout { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+</script>
+</body>
+</html>

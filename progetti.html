@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Progetti – Mario Rossi</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">MR<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="progetti.html" class="active">Progetti</a></li>
+    <li><a href="competenze.html">Competenze</a></li>
+    <li><a href="esperienza.html">Esperienza</a></li>
+    <li><a href="azienda.html">Azienda</a></li>
+    <li><a href="contatti.html" class="nav-cta">Contatti</a></li>
+  </ul>
+  <div class="nav-toggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="container">
+    <span class="section-label fade-up fade-up-1">// progetti</span>
+    <h1 class="fade-up fade-up-2">Lavori & Progetti</h1>
+    <p class="fade-up fade-up-3" style="max-width:520px; margin-top:1rem; font-size:1.05rem;">
+      Una selezione di ciò che ho costruito — prodotti commerciali, tool open source e sperimentazioni personali.
+    </p>
+  </div>
+</header>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterProjects('all', this)">Tutti</button>
+      <button class="filter-btn" onclick="filterProjects('saas', this)">SaaS</button>
+      <button class="filter-btn" onclick="filterProjects('mobile', this)">Mobile</button>
+      <button class="filter-btn" onclick="filterProjects('open-source', this)">Open Source</button>
+      <button class="filter-btn" onclick="filterProjects('client', this)">Client Work</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS GRID -->
+<section class="section" style="padding-top:3rem;">
+  <div class="container">
+    <div class="projects-grid" id="projectsGrid">
+
+      <!-- ──────────── PROGETTO 1 ──────────── -->
+      <article class="project-card fade-up fade-up-1" data-cat="saas" id="progetto-1">
+        <div class="pc-header">
+          <div class="pc-meta">
+            <span class="tag tag-accent">SaaS</span>
+            <span class="tag">2024</span>
+          </div>
+          <div class="pc-links">
+            <a href="#" class="pc-link" title="Demo">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="#" class="pc-link" title="GitHub">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="pc-icon">◈</div>
+        <h3 class="pc-title">NomeProgetto Alpha</h3>
+        <p class="pc-desc">
+          Piattaforma SaaS per la gestione automatizzata di workflow aziendali. Il sistema processa oltre 10.000 task/giorno con latenza media < 50ms. Architettura event-driven, multi-tenant, con dashboard analytics in real-time.
+        </p>
+
+        <div class="pc-stats">
+          <div class="pc-stat">
+            <span class="pc-stat-val">500+</span>
+            <span class="pc-stat-label">Aziende attive</span>
+          </div>
+          <div class="pc-stat">
+            <span class="pc-stat-val">€XX K</span>
+            <span class="pc-stat-label">ARR</span>
+          </div>
+          <div class="pc-stat">
+            <span class="pc-stat-val">99.9%</span>
+            <span class="pc-stat-label">Uptime</span>
+          </div>
+        </div>
+
+        <div class="pc-stack">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis</span>
+          <span class="tag">AWS</span>
+        </div>
+      </article>
+
+      <!-- ──────────── PROGETTO 2 ──────────── -->
+      <article class="project-card fade-up fade-up-2" data-cat="mobile" id="progetto-2">
+        <div class="pc-header">
+          <div class="pc-meta">
+            <span class="tag tag-accent">Mobile</span>
+            <span class="tag">2023</span>
+          </div>
+          <div class="pc-links">
+            <a href="#" class="pc-link" title="App Store"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+        </div>
+
+        <div class="pc-icon">◯</div>
+        <h3 class="pc-title">NomeProgetto Beta</h3>
+        <p class="pc-desc">
+          App mobile consumer con meccaniche di gamification per la formazione continua. Architettura offline-first con sync real-time. Onboarding A/B testato, retention a 30 giorni del 68%.
+        </p>
+
+        <div class="pc-stats">
+          <div class="pc-stat">
+            <span class="pc-stat-val">10k+</span>
+            <span class="pc-stat-label">Utenti attivi</span>
+          </div>
+          <div class="pc-stat">
+            <span class="pc-stat-val">4.8★</span>
+            <span class="pc-stat-label">App Store</span>
+          </div>
+          <div class="pc-stat">
+            <span class="pc-stat-val">68%</span>
+            <span class="pc-stat-label">Retention 30gg</span>
+          </div>
+        </div>
+
+        <div class="pc-stack">
+          <span class="tag">Flutter</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">Dart</span>
+          <span class="tag">Figma</span>
+        </div>
+      </article>
+
+      <!-- ──────────── PROGETTO 3 ──────────── -->
+      <article class="project-card fade-up fade-up-3" data-cat="open-source" id="progetto-3">
+        <div class="pc-header">
+          <div class="pc-meta">
+            <span class="tag tag-green">Open Source</span>
+            <span class="tag">2023</span>
+          </div>
+          <div class="pc-links">
+            <a href="#" class="pc-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
+          </div>
+        </div>
+
+        <div class="pc-icon" style="color:var(--green);">⬡</div>
+        <h3 class="pc-title">NomeProgetto CLI</h3>
+        <p class="pc-desc">
+          Tool open source per automatizzare pipeline CI/CD su ambienti multi-cloud. Plugin system estensibile, zero dipendenze esterne, configurazione YAML-first. Pubblicato su npm e PyPI.
+        </p>
+
+        <div class="pc-stats">
+          <div class="pc-stat">
+            <span class="pc-stat-val" style="color:var(--green);">1.2k</span>
+            <span class="pc-stat-label">GitHub Stars</span>
+          </div>
+          <div class="pc-stat">
+            <span class="pc-stat-val" style="color:var(--green);">30+</span>
+            <span class="pc-stat-label">Paesi</span>
+          </div>
+          <div class="pc-stat">
+            <span class="pc-stat-val" style="color:var(--green);">48</span>
+            <span class="pc-stat-label">Contributors</span>
+          </div>
+        </div>
+
+        <div class="pc-stack">
+          <span class="tag">Python</span>
+          <span class="tag">CLI</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Terraform</span>
+        </div>
+      </article>
+
+      <!-- ──────────── PROGETTO 4 ──────────── -->
+      <article class="project-card fade-up fade-up-1" data-cat="client" id="progetto-4">
+        <div class="pc-header">
+          <div class="pc-meta">
+            <span class="tag">Client Work</span>
+            <span class="tag">2023</span>
+          </div>
+          <div class="pc-links">
+            <a href="#" class="pc-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+        </div>
+
+        <div class="pc-icon">◧</div>
+        <h3 class="pc-title">NomeProgetto Delta</h3>
+        <p class="pc-desc">
+          Redesign completo del sistema di prenotazioni per un cliente nel settore hospitality. Riduzione del tasso di abbandono del 40%, tempo medio di checkout dimezzato.
+        </p>
+
+        <div class="pc-stats">
+          <div class="pc-stat">
+            <span class="pc-stat-val">-40%</span>
+            <span class="pc-stat-label">Abbandono</span>
+          </div>
+          <div class="pc-stat">
+            <span class="pc-stat-val">2×</span>
+            <span class="pc-stat-label">Conversioni</span>
+          </div>
+        </div>
+
+        <div class="pc-stack">
+          <span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Stripe</span>
+          <span class="tag">Vercel</span>
+        </div>
+      </article>
+
+      <!-- ──────────── PROGETTO 5 ──────────── -->
+      <article class="project-card fade-up fade-up-2" data-cat="saas" id="progetto-5">
+        <div class="pc-header">
+          <div class="pc-meta">
+            <span class="tag tag-accent">SaaS</span>
+            <span class="tag">2022</span>
+          </div>
+        </div>
+
+        <div class="pc-icon">⬥</div>
+        <h3 class="pc-title">NomeProgetto Gamma</h3>
+        <p class="pc-desc">
+          Dashboard analytics per e-commerce con AI integrata per previsione della domanda. Integrazione nativa con Shopify, WooCommerce e Amazon Seller Central.
+        </p>
+
+        <div class="pc-stats">
+          <div class="pc-stat">
+            <span class="pc-stat-val">150+</span>
+            <span class="pc-stat-label">Shop integrati</span>
+          </div>
+          <div class="pc-stat">
+            <span class="pc-stat-val">92%</span>
+            <span class="pc-stat-label">Accuratezza AI</span>
+          </div>
+        </div>
+
+        <div class="pc-stack">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Vue.js</span>
+          <span class="tag">ML</span>
+        </div>
+      </article>
+
+      <!-- ──────────── PROGETTO 6 ──────────── -->
+      <article class="project-card fade-up fade-up-3" data-cat="open-source" id="progetto-6">
+        <div class="pc-header">
+          <div class="pc-meta">
+            <span class="tag tag-green">Open Source</span>
+            <span class="tag">2022</span>
+          </div>
+          <div class="pc-links">
+            <a href="#" class="pc-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
+          </div>
+        </div>
+
+        <div class="pc-icon" style="color:var(--green);">△</div>
+        <h3 class="pc-title">NomeLib OSS</h3>
+        <p class="pc-desc">
+          Libreria JavaScript per validazione di form complesse con supporto a schemi JSON-Schema e messaggi di errore localizzati. Usata in 200+ progetti.
+        </p>
+
+        <div class="pc-stats">
+          <div class="pc-stat">
+            <span class="pc-stat-val" style="color:var(--green);">800+</span>
+            <span class="pc-stat-label">Stars</span>
+          </div>
+          <div class="pc-stat">
+            <span class="pc-stat-val" style="color:var(--green);">50k</span>
+            <span class="pc-stat-label">npm/mese</span>
+          </div>
+        </div>
+
+        <div class="pc-stack">
+          <span class="tag">TypeScript</span>
+          <span class="tag">JSON Schema</span>
+          <span class="tag">npm</span>
+        </div>
+      </article>
+
+    </div><!-- /projects-grid -->
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2025 Mario Rossi. Tutti i diritti riservati.</span>
+    <div class="footer-links">
+      <a href="https://github.com/tuoaccount" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/tuoaccount" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+.filter-bar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 0;
+  position: sticky;
+  top: 64px;
+  z-index: 100;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-btn:hover   { border-color: var(--border2); color: var(--text); }
+.filter-btn.active  { border-color: var(--accent); color: var(--accent); background: var(--accent-glow2); }
+
+/* PROJECT CARDS */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all var(--transition);
+}
+
+.project-card:hover {
+  border-color: var(--border2);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
+}
+
+.project-card.hidden { display: none; }
+
+.pc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pc-meta { display: flex; gap: 0.4rem; }
+
+.pc-links { display: flex; gap: 0.7rem; }
+
+.pc-link {
+  color: var(--text-dim);
+  transition: color var(--transition);
+  display: flex;
+  align-items: center;
+}
+.pc-link:hover { color: var(--accent); }
+
+.pc-icon {
+  font-size: 1.8rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.pc-title { font-size: 1.1rem; }
+
+.pc-desc { font-size: 0.875rem; line-height: 1.7; flex: 1; }
+
+.pc-stats {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.pc-stat { display: flex; flex-direction: column; gap: 0.2rem; }
+
+.pc-stat-val {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.pc-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pc-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+@media (max-width: 960px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function filterProjects(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.project-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+</script>
+</body>
+</html>
