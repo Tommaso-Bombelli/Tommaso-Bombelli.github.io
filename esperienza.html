@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Esperienza – Mario Rossi</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">MR<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="competenze.html">Competenze</a></li>
+    <li><a href="esperienza.html" class="active">Esperienza</a></li>
+    <li><a href="azienda.html">Azienda</a></li>
+    <li><a href="contatti.html" class="nav-cta">Contatti</a></li>
+  </ul>
+  <div class="nav-toggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <span class="section-label fade-up fade-up-1">// esperienza</span>
+    <h1 class="fade-up fade-up-2">Percorso Professionale</h1>
+    <p class="fade-up fade-up-3" style="max-width:480px; margin-top:1rem; font-size:1.05rem;">
+      8+ anni di esperienza tra startup, scale-up e freelance. Ogni tappa mi ha dato qualcosa di specifico.
+    </p>
+  </div>
+</header>
+
+<section class="section" style="padding-top:3rem;">
+  <div class="container exp-layout">
+
+    <!-- ─── TIMELINE ─── -->
+    <div class="timeline">
+
+      <!-- ENTRY 1 — Attuale -->
+      <div class="tl-entry fade-up fade-up-1">
+        <div class="tl-marker">
+          <div class="tl-dot active"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <span class="tag tag-green" style="margin-bottom:0.6rem; display:inline-block;">In corso</span>
+              <h3 class="tl-role">Founder & CTO</h3>
+              <div class="tl-company">
+                <span class="tl-co-name">NomeAzienda Srl</span>
+                <span class="tl-dot-sep">·</span>
+                <span class="tl-location mono">Milano, IT</span>
+              </div>
+            </div>
+            <div class="tl-period">
+              <span class="mono">2022</span>
+              <span class="mono tl-dash">→</span>
+              <span class="mono" style="color:var(--green);">Oggi</span>
+            </div>
+          </div>
+
+          <p class="tl-desc">
+            Ho co-fondato NomeAzienda con la missione di [descrivi brevemente la mission]. Gestisco il team tecnico di X persone, definisco l'architettura del prodotto e supervisiono le operations. In 2 anni abbiamo raggiunto X clienti paganti e chiuso un round pre-seed da €X.
+          </p>
+
+          <div class="tl-achievements">
+            <div class="tl-achievement">
+              <span class="ta-bullet" style="color:var(--accent);">▸</span>
+              <span>Costruito il team da 0 a 8 persone in 18 mesi</span>
+            </div>
+            <div class="tl-achievement">
+              <span class="ta-bullet" style="color:var(--accent);">▸</span>
+              <span>Architettura scalabile da 0 a 50k utenti senza downtime</span>
+            </div>
+            <div class="tl-achievement">
+              <span class="ta-bullet" style="color:var(--accent);">▸</span>
+              <span>Chiuso round pre-seed da €300k con 3 investitori angel</span>
+            </div>
+          </div>
+
+          <div class="tl-tags">
+            <span class="tag">SaaS</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">React</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Fundraising</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENTRY 2 -->
+      <div class="tl-entry fade-up fade-up-2">
+        <div class="tl-marker">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <h3 class="tl-role">Senior Full-Stack Developer</h3>
+              <div class="tl-company">
+                <span class="tl-co-name">TechStartup SpA</span>
+                <span class="tl-dot-sep">·</span>
+                <span class="tl-location mono">Milano, IT – Hybrid</span>
+              </div>
+            </div>
+            <div class="tl-period">
+              <span class="mono">2020</span>
+              <span class="mono tl-dash">→</span>
+              <span class="mono">2022</span>
+            </div>
+          </div>
+
+          <p class="tl-desc">
+            Sviluppo del core del prodotto B2B SaaS dell'azienda. Responsabile dell'architettura backend e del sistema di integrazioni con API di terze parti. Lead tecnico per un team di 4 sviluppatori.
+          </p>
+
+          <div class="tl-achievements">
+            <div class="tl-achievement">
+              <span class="ta-bullet" style="color:var(--accent);">▸</span>
+              <span>Ridotto i tempi di build del 60% riscrivendo la pipeline CI/CD</span>
+            </div>
+            <div class="tl-achievement">
+              <span class="ta-bullet" style="color:var(--accent);">▸</span>
+              <span>Introdotto TypeScript e ridotto i bug in produzione del 45%</span>
+            </div>
+            <div class="tl-achievement">
+              <span class="ta-bullet" style="color:var(--accent);">▸</span>
+              <span>Mentoring di 2 junior developer, entrambi promossi in 12 mesi</span>
+            </div>
+          </div>
+
+          <div class="tl-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENTRY 3 -->
+      <div class="tl-entry fade-up fade-up-3">
+        <div class="tl-marker">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <h3 class="tl-role">Freelance Developer</h3>
+              <div class="tl-company">
+                <span class="tl-co-name">Indipendente</span>
+                <span class="tl-dot-sep">·</span>
+                <span class="tl-location mono">Remote</span>
+              </div>
+            </div>
+            <div class="tl-period">
+              <span class="mono">2018</span>
+              <span class="mono tl-dash">→</span>
+              <span class="mono">2020</span>
+            </div>
+          </div>
+
+          <p class="tl-desc">
+            Sviluppo web e mobile per clienti italiani ed europei. Specializzato in MVP e prodotti digitali per startup early-stage. Oltre 15 progetti consegnati con soddisfazione comprovata.
+          </p>
+
+          <div class="tl-achievements">
+            <div class="tl-achievement">
+              <span class="ta-bullet" style="color:var(--accent);">▸</span>
+              <span>15+ clienti tra Italia, UK e Germania</span>
+            </div>
+            <div class="tl-achievement">
+              <span class="ta-bullet" style="color:var(--accent);">▸</span>
+              <span>Specializzazione in MVP rapidi (time-to-launch medio 6 settimane)</span>
+            </div>
+          </div>
+
+          <div class="tl-tags">
+            <span class="tag">Full-Stack</span>
+            <span class="tag">MVP</span>
+            <span class="tag">Vue.js</span>
+            <span class="tag">Laravel</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENTRY 4 -->
+      <div class="tl-entry fade-up fade-up-4">
+        <div class="tl-marker">
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <h3 class="tl-role">Junior Developer</h3>
+              <div class="tl-company">
+                <span class="tl-co-name">Web Agency XYZ</span>
+                <span class="tl-dot-sep">·</span>
+                <span class="tl-location mono">Roma, IT</span>
+              </div>
+            </div>
+            <div class="tl-period">
+              <span class="mono">2016</span>
+              <span class="mono tl-dash">→</span>
+              <span class="mono">2018</span>
+            </div>
+          </div>
+
+          <p class="tl-desc">
+            Primo ruolo professionale in un'agenzia web di medie dimensioni. Sviluppo di siti istituzionali, e-commerce e campagne digitali per clienti retail e hospitality.
+          </p>
+
+          <div class="tl-tags">
+            <span class="tag">PHP</span>
+            <span class="tag">WordPress</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">MySQL</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+
+    <!-- ─── SIDEBAR ─── -->
+    <div class="exp-sidebar">
+
+      <!-- EDUCATION -->
+      <div class="sidebar-block fade-up fade-up-1">
+        <span class="section-label" style="margin-bottom:1.2rem; display:block;">// formazione</span>
+
+        <div class="edu-item">
+          <div class="edu-year mono">2016</div>
+          <div class="edu-detail">
+            <h4>Laurea Triennale in Informatica</h4>
+            <p>Università degli Studi di Milano</p>
+            <span class="tag" style="margin-top:0.4rem;">110/110</span>
+          </div>
+        </div>
+
+        <div class="divider" style="margin:1.2rem 0;"></div>
+
+        <div class="edu-item">
+          <div class="edu-year mono">2014</div>
+          <div class="edu-detail">
+            <h4>Diploma Scientifico</h4>
+            <p>Liceo Scientifico [Nome]</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CERTIFICATIONS -->
+      <div class="sidebar-block fade-up fade-up-2">
+        <span class="section-label" style="margin-bottom:1.2rem; display:block;">// certificazioni</span>
+
+        <div class="cert-item">
+          <div class="cert-icon" style="color:#FF9900;">☁</div>
+          <div>
+            <h4 style="font-size:0.85rem;">AWS Certified Solutions Architect</h4>
+            <p style="font-size:0.78rem; margin-top:0.2rem;">Amazon Web Services · 2023</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon" style="color:#0078D4;">◈</div>
+          <div>
+            <h4 style="font-size:0.85rem;">Azure Fundamentals AZ-900</h4>
+            <p style="font-size:0.78rem; margin-top:0.2rem;">Microsoft · 2022</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon" style="color:#A78BFA;">⬡</div>
+          <div>
+            <h4 style="font-size:0.85rem;">Professional Scrum Master I</h4>
+            <p style="font-size:0.78rem; margin-top:0.2rem;">Scrum.org · 2021</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOWNLOAD CV -->
+      <div class="sidebar-block cv-download fade-up fade-up-3">
+        <span class="section-label" style="margin-bottom:1rem; display:block;">// curriculum</span>
+        <p style="font-size:0.85rem; margin-bottom:1.2rem;">Scarica il CV completo in PDF (aggiornato Feb 2025).</p>
+        <a href="#" class="btn btn-primary" style="width:100%; justify-content:center;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Scarica CV
+        </a>
+      </div>
+
+    </div><!-- /sidebar -->
+
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2025 Mario Rossi. Tutti i diritti riservati.</span>
+    <div class="footer-links">
+      <a href="https://github.com/tuoaccount" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/tuoaccount" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+.exp-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; }
+
+.tl-entry {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tl-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.3rem;
+}
+
+.tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--border2);
+  background: var(--bg);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.tl-dot.active {
+  border-color: var(--green);
+  background: var(--green);
+  box-shadow: 0 0 10px rgba(0,255,136,0.5);
+}
+
+.tl-line {
+  width: 1px;
+  flex: 1;
+  background: var(--border);
+  margin-top: 4px;
+  min-height: 50px;
+}
+
+.tl-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: border-color var(--transition);
+}
+
+.tl-card:hover { border-color: var(--border2); }
+
+.tl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.tl-role { font-size: 1.05rem; margin-bottom: 0.3rem; }
+
+.tl-company {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tl-co-name { font-size: 0.85rem; color: var(--accent); font-family: var(--font-mono); }
+.tl-dot-sep { color: var(--text-dim); }
+.tl-location { font-size: 0.75rem; color: var(--text-muted); }
+
+.tl-period {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.tl-dash { color: var(--text-dim); }
+
+.tl-desc { font-size: 0.875rem; line-height: 1.75; margin-bottom: 1.2rem; }
+
+.tl-achievements { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.2rem; }
+
+.tl-achievement {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.ta-bullet { font-size: 0.7rem; flex-shrink: 0; }
+
+.tl-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+/* SIDEBAR */
+.exp-sidebar { position: sticky; top: 90px; }
+
+.sidebar-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.edu-item { display: flex; gap: 1rem; align-items: flex-start; }
+.edu-year { font-size: 0.75rem; color: var(--text-dim); min-width: 36px; padding-top: 2px; }
+.edu-detail h4 { font-size: 0.88rem; margin-bottom: 0.2rem; }
+.edu-detail p  { font-size: 0.78rem; }
+
+.cert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cert-item:last-child { border-bottom: none; }
+.cert-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+.cv-download { text-align: center; }
+
+@media (max-width: 900px) {
+  .exp-layout {
+    grid-template-columns: 1fr;
+  }
+  .exp-sidebar { position: static; }
+}
+</style>
+
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+</script>
+</body>
+</html>

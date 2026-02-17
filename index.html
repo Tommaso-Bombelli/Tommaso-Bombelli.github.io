@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mario Rossi – Developer & Founder</title>
+  <meta name="description" content="Portfolio professionale di Mario Rossi – Developer, Designer e Founder."/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+<nav>
+  <a href="index.html" class="nav-logo">MR<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="competenze.html">Competenze</a></li>
+    <li><a href="esperienza.html">Esperienza</a></li>
+    <li><a href="azienda.html">Azienda</a></li>
+    <li><a href="contatti.html" class="nav-cta">Contatti</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero">
+  <!-- Ambient glow -->
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <div class="hero-status fade-up fade-up-1">
+        <span class="dot"></span>
+        <span class="mono" style="font-size:0.78rem; color:var(--text-muted); margin-left:0.5rem;">Disponibile per nuovi progetti</span>
+      </div>
+
+      <h1 class="fade-up fade-up-2">
+        Mario<br/>
+        <span class="hero-name-accent">Rossi</span>
+      </h1>
+
+      <p class="hero-role fade-up fade-up-3">
+        <span class="mono" style="color:var(--accent)">_</span>
+        Developer · Founder · Problem Solver
+      </p>
+
+      <p class="hero-desc fade-up fade-up-3">
+        Costruisco prodotti digitali che funzionano davvero.<br/>
+        Con attenzione ai dettagli, velocità di esecuzione e visione a lungo termine.
+      </p>
+
+      <div class="hero-actions fade-up fade-up-4">
+        <a href="progetti.html" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Vedi Progetti
+        </a>
+        <a href="contatti.html" class="btn btn-outline">Contattami</a>
+      </div>
+    </div>
+
+    <div class="hero-meta fade-up fade-up-4">
+      <div class="meta-card">
+        <span class="mono" style="font-size:0.65rem; color:var(--text-dim); letter-spacing:0.15em;">BASATO A</span>
+        <span class="meta-val">Milano, IT</span>
+      </div>
+      <div class="meta-card">
+        <span class="mono" style="font-size:0.65rem; color:var(--text-dim); letter-spacing:0.15em;">ANNI DI ESPERIENZA</span>
+        <span class="meta-val">8+</span>
+      </div>
+      <div class="meta-card">
+        <span class="mono" style="font-size:0.65rem; color:var(--text-dim); letter-spacing:0.15em;">PROGETTI COMPLETATI</span>
+        <span class="meta-val">40+</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ WHAT I DO ═══════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="divider" style="margin-bottom:80px;"></div>
+
+    <span class="section-label">// cosa faccio</span>
+    <h2 class="section-title">Dall'idea al prodotto</h2>
+    <p class="section-sub">Copro l'intero ciclo — dall'architettura tecnica al lancio — con un focus su qualità e scalabilità.</p>
+
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon">⬡</div>
+        <h4>Sviluppo Full-Stack</h4>
+        <p>Applicazioni web e mobile robuste, dall'API al frontend, con stack moderni.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">◈</div>
+        <h4>Architettura Cloud</h4>
+        <p>Infrastrutture scalabili su AWS / GCP con focus su performance e costi.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">◎</div>
+        <h4>Product Strategy</h4>
+        <p>Trasformo idee complesse in roadmap chiare e MVP che validano il mercato.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">⬢</div>
+        <h4>Tech Leadership</h4>
+        <p>Guido team tecnici, definisco processi e culture dell'ingegneria del software.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ PROGETTI FEATURED ═══════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="divider" style="margin-bottom:80px;"></div>
+
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3rem; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <span class="section-label">// progetti selezionati</span>
+        <h2 class="section-title" style="margin-bottom:0;">Lavori recenti</h2>
+      </div>
+      <a href="progetti.html" class="btn btn-outline" style="font-size:0.72rem;">Tutti i progetti →</a>
+    </div>
+
+    <div class="featured-projects">
+      <!-- Progetto 1 -->
+      <a href="progetti.html#progetto-1" class="project-featured-card">
+        <div class="pfcard-number mono">01</div>
+        <div class="pfcard-content">
+          <div class="pfcard-tags">
+            <span class="tag tag-accent">SaaS</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+          </div>
+          <h3 class="pfcard-title">NomeProgetto Alpha</h3>
+          <p class="pfcard-desc">Piattaforma SaaS per la gestione automatizzata di workflow aziendali. Oltre 500 aziende attive, €X ARR raggiunto in 12 mesi.</p>
+        </div>
+        <div class="pfcard-arrow">→</div>
+      </a>
+
+      <!-- Progetto 2 -->
+      <a href="progetti.html#progetto-2" class="project-featured-card">
+        <div class="pfcard-number mono">02</div>
+        <div class="pfcard-content">
+          <div class="pfcard-tags">
+            <span class="tag tag-accent">App Mobile</span>
+            <span class="tag">Flutter</span>
+            <span class="tag">Firebase</span>
+          </div>
+          <h3 class="pfcard-title">NomeProgetto Beta</h3>
+          <p class="pfcard-desc">App mobile B2C con 10k+ utenti attivi. Gamification, real-time sync e architettura offline-first.</p>
+        </div>
+        <div class="pfcard-arrow">→</div>
+      </a>
+
+      <!-- Progetto 3 -->
+      <a href="progetti.html#progetto-3" class="project-featured-card">
+        <div class="pfcard-number mono">03</div>
+        <div class="pfcard-content">
+          <div class="pfcard-tags">
+            <span class="tag tag-accent">Open Source</span>
+            <span class="tag">Python</span>
+            <span class="tag">CLI</span>
+          </div>
+          <h3 class="pfcard-title">NomeProgetto CLI</h3>
+          <p class="pfcard-desc">Tool open source per automatizzare pipeline CI/CD. 1.2k+ star su GitHub, usato in 30+ paesi.</p>
+        </div>
+        <div class="pfcard-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CTA STRIP ═══════════════════════════ -->
+<section class="cta-strip">
+  <div class="container cta-inner">
+    <div>
+      <span class="section-label">// parliamo</span>
+      <h2>Hai un progetto in mente?</h2>
+    </div>
+    <a href="contatti.html" class="btn btn-primary" style="font-size:0.85rem; padding:0.85rem 2rem;">
+      Iniziamo →
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+  <div class="container footer-inner">
+    <span class="footer-copy">© 2025 Mario Rossi. Tutti i diritti riservati.</span>
+    <div class="footer-links">
+      <a href="https://github.com/tuoaccount" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/tuoaccount" target="_blank">LinkedIn</a>
+      <a href="https://twitter.com/tuoaccount" target="_blank">Twitter</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(30,39,54,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,39,54,0.3) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 3rem;
+  padding-top: 64px;
+  padding-bottom: 80px;
+  flex-wrap: wrap;
+}
+
+.hero-content { flex: 1; min-width: 280px; }
+
+.hero-status { display: flex; align-items: center; margin-bottom: 2rem; }
+
+.hero-name-accent {
+  -webkit-text-stroke: 1.5px var(--accent);
+  color: transparent;
+  display: block;
+}
+
+.hero-role {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 1.2rem 0;
+  letter-spacing: 0.05em;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 460px;
+  margin-bottom: 2.5rem;
+  color: var(--text-muted);
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 200px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  overflow: hidden;
+  align-self: flex-end;
+}
+
+.meta-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.meta-card:last-child { border-bottom: none; }
+
+.meta-val {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+/* ── SERVICES ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.service-item {
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.service-item:hover {
+  border-color: var(--border2);
+  background: var(--surface);
+}
+
+.service-icon {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.service-item h4 { margin-bottom: 0.5rem; font-size: 0.95rem; }
+.service-item p  { font-size: 0.88rem; }
+
+/* ── FEATURED PROJECTS ── */
+.featured-projects { display: flex; flex-direction: column; gap: 1px; }
+
+.project-featured-card {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  margin-bottom: 1rem;
+  background: var(--surface);
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.project-featured-card:hover {
+  border-color: var(--accent2);
+  background: var(--bg3);
+  transform: translateX(6px);
+}
+
+.project-featured-card:hover .pfcard-arrow { color: var(--accent); transform: translateX(4px); }
+
+.pfcard-number {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1;
+}
+
+.pfcard-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+
+.pfcard-title { margin-bottom: 0.4rem; }
+
+.pfcard-desc { font-size: 0.88rem; max-width: 520px; }
+
+.pfcard-arrow {
+  font-size: 1.3rem;
+  color: var(--border2);
+  transition: all var(--transition);
+}
+
+/* ── CTA STRIP ── */
+.cta-strip {
+  background: var(--bg3);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 3.5rem 0;
+}
+
+.cta-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .project-featured-card { grid-template-columns: 40px 1fr auto; }
+}
+
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .hero-meta { display: none; }
+  .project-featured-card { grid-template-columns: 1fr; }
+  .pfcard-number { display: none; }
+  .pfcard-arrow { display: none; }
+}
+</style>
+
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+</script>
+</body>
+</html>
