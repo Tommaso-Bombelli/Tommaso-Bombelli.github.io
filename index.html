@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tommaso Bombelli — IT Technician & Developer</title>
+<meta name="description" content="Portfolio di Tommaso Bombelli: tecnico IT, programmatore e co-fondatore di Easydomotica.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230B0E14'/%3E%3Ctext x='50' y='66' font-family='monospace' font-size='44' font-weight='700' fill='%2356E3D6' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#hero" class="nav__logo">TB<span class="nav__logo-dot">.</span></a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about">Chi sono</a>
+      <a href="#experience">Esperienza</a>
+      <a href="#skills">Competenze</a>
+      <a href="#projects">Progetti</a>
+      <a href="#easydomotica">Easydomotica</a>
+      <a href="#contact" class="nav__cta">Contatti</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__grid">
+      <div class="hero__content">
+        <p class="eyebrow"><span class="eyebrow__dot"></span>Castelletto Sopra Ticino, IT</p>
+        <h1 class="hero__title">Tommaso<br>Bombelli</h1>
+        <p class="hero__role">IT Technician &amp; Developer</p>
+        <p class="hero__tagline">Dai cavi al codice — assistenza IT, reti e cybersecurity di giorno, sviluppo software e domotica nel resto del tempo.</p>
+        <div class="hero__actions">
+          <a href="#projects" class="btn btn--primary">Vedi i progetti</a>
+          <a href="#contact" class="btn btn--ghost">Contattami</a>
+        </div>
+      </div>
+      <div class="hero__circuit" aria-hidden="true">
+        <svg viewBox="0 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="trace trace--copper" d="M40 40 H180 V120 H320" />
+          <path class="trace trace--cyan" d="M40 200 H140 V280 H320" />
+          <path class="trace trace--copper" d="M40 360 H100 V120" />
+          <path class="trace trace--cyan" d="M320 40 V200" />
+          <circle class="node node--copper" cx="40" cy="40" r="6" />
+          <circle class="node node--cyan" cx="320" cy="120" r="6" />
+          <circle class="node node--cyan" cx="40" cy="200" r="6" />
+          <circle class="node node--copper" cx="320" cy="280" r="6" />
+          <circle class="node node--copper" cx="40" cy="360" r="6" />
+          <circle class="node node--cyan" cx="320" cy="40" r="6" />
+          <circle class="pulse" r="4" fill="#56E3D6">
+            <animateMotion dur="6s" repeatCount="indefinite" path="M40 200 H140 V280 H320" />
+          </circle>
+        </svg>
+      </div>
+    </div>
+    <a href="#about" class="scroll-cue" aria-hidden="true"><span></span></a>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="section-head">
+      <p class="eyebrow">Chi sono</p>
+      <h2>Un percorso che parte dalle mani<br>e arriva al codice.</h2>
+    </div>
+    <div class="about__grid">
+      <p class="about__text">
+        Sono Tommaso, tecnico informatico e programmatore. Il mio percorso è partito dall'elettrotecnica:
+        due anni come elettricista mi hanno insegnato a ragionare per impianti, sicurezza e affidabilità —
+        cose che oggi porto nel mio lavoro con reti e infrastrutture IT. Attualmente lavoro come tecnico IT
+        in <strong>MAST</strong>, dove mi occupo di assistenza, installazioni di reti, networking e
+        cybersecurity. In parallelo sono co-fondatore e direttore tecnico di
+        <strong>Easydomotica</strong>, l'azienda di domotica che sto costruendo insieme a un socio.
+        Nel (poco) tempo libero programmo per passione e sto sviluppando un videogioco in
+        <strong>Unreal Engine 5</strong>.
+      </p>
+      <div class="about__facts">
+        <div class="fact">
+          <span class="fact__num">2+</span>
+          <span class="fact__label">anni come elettricista</span>
+        </div>
+        <div class="fact">
+          <span class="fact__num">IT</span>
+          <span class="fact__label">reti &amp; cybersecurity in MAST</span>
+        </div>
+        <div class="fact">
+          <span class="fact__num">CO</span>
+          <span class="fact__label">founder &amp; technical director @ Easydomotica</span>
+        </div>
+        <div class="fact">
+          <span class="fact__num">UE5</span>
+          <span class="fact__label">game dev nel tempo libero</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="experience" id="experience">
+    <div class="section-head">
+      <p class="eyebrow">Esperienza</p>
+      <h2>Il percorso, un nodo alla volta.</h2>
+    </div>
+
+    <div class="timeline">
+      <svg class="timeline__trace" viewBox="0 0 40 600" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M20 0 V600" />
+      </svg>
+
+      <article class="timeline__item">
+        <div class="timeline__node timeline__node--active"></div>
+        <div class="timeline__card">
+          <p class="timeline__period">In corso · <!-- PLACEHOLDER: anno di inizio -->oggi</p>
+          <h3>Co-Founder &amp; Technical Director</h3>
+          <p class="timeline__org">Easydomotica</p>
+          <p class="timeline__desc">
+            Progettazione e installazione di impianti domotici, videosorveglianza, antifurti e automazioni.
+            Mi occupo della parte tecnica e dello sviluppo del progetto insieme al mio socio.
+          </p>
+          <span class="badge">Pagina dedicata in arrivo →</span>
+        </div>
+      </article>
+
+      <article class="timeline__item">
+        <div class="timeline__node"></div>
+        <div class="timeline__card">
+          <p class="timeline__period"><!-- PLACEHOLDER: anno inizio -->· In corso</p>
+          <h3>Tecnico IT</h3>
+          <p class="timeline__org">MAST Srl — Soluzioni Informatiche</p>
+          <p class="timeline__desc">
+            Assistenza IT, installazione e gestione di reti, networking, cybersecurity e firewall.
+            Un po' di tutto: dall'hardware alla sicurezza delle infrastrutture dei clienti.
+          </p>
+        </div>
+      </article>
+
+      <article class="timeline__item">
+        <div class="timeline__node"></div>
+        <div class="timeline__card">
+          <p class="timeline__period">2 anni · <!-- PLACEHOLDER: periodo esatto --></p>
+          <h3>Elettricista</h3>
+          <p class="timeline__org">Massimo Parnisari — Angera (VA)</p>
+          <p class="timeline__desc">
+            Impianti elettrici civili e industriali: installazione, manutenzione e messa a norma.
+            Le basi pratiche da cui è partito tutto il resto.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="skills" id="skills">
+    <div class="section-head">
+      <p class="eyebrow">Competenze</p>
+      <h2>Stack &amp; strumenti.</h2>
+      <p class="section-note"><!-- PLACEHOLDER: elenco generico, dimmi i tuoi linguaggi/tool esatti e lo aggiorno --></p>
+    </div>
+    <div class="skills__grid">
+      <div class="skill-group">
+        <h3>Linguaggi</h3>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">C#</span>
+          <span class="tag">C++</span>
+          <span class="tag">Java</span>
+          <span class="tag">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Networking &amp; Sicurezza</h3>
+        <div class="tags">
+          <span class="tag">Reti LAN/WAN</span>
+          <span class="tag">Firewall</span>
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">VPN</span>
+          <span class="tag">Assistenza IT</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Strumenti</h3>
+        <div class="tags">
+          <span class="tag">Git / GitHub</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Docker</span>
+          <span class="tag">VS Code</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Game Dev</h3>
+        <div class="tags">
+          <span class="tag">Unreal Engine 5</span>
+          <span class="tag">Blueprints</span>
+          <span class="tag">C++</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Lingue</h3>
+        <div class="tags">
+          <span class="tag">Italiano — madrelingua</span>
+          <span class="tag">Inglese — ottimo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="projects" id="projects">
+    <div class="section-head">
+      <p class="eyebrow">Progetti</p>
+      <h2>Cose che ho costruito.</h2>
+      <p class="section-note"><!-- PLACEHOLDER: sostituisci queste card con i tuoi progetti reali (titolo, descrizione, link repo/demo) --></p>
+    </div>
+    <div class="projects__grid">
+
+      <article class="project-card project-card--featured">
+        <div class="project-card__top">
+          <span class="badge badge--wip">Work in progress</span>
+        </div>
+        <h3>Progetto Unreal Engine 5</h3>
+        <p>Videogioco in sviluppo nel tempo libero. Dettagli in arrivo non appena il progetto sarà più avanti.</p>
+        <div class="project-card__links">
+          <a href="#" class="project-link">Repo →</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h3>Questo portfolio</h3>
+        <p>Sito personale costruito da zero, ospitato su GitHub Pages con dominio personalizzato.</p>
+        <div class="project-card__links">
+          <a href="#" class="project-link">Codice sorgente →</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h3>Progetto placeholder</h3>
+        <p>Spazio riservato a un tuo progetto reale: un tool, uno script, un'app. Dimmi cosa mostrare qui.</p>
+        <div class="project-card__links">
+          <a href="#" class="project-link">Repo →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== EASYDOMOTICA TEASER ===== -->
+  <section class="easydomotica" id="easydomotica">
+    <div class="easydomotica__inner">
+      <p class="eyebrow eyebrow--inverse">Il mio progetto imprenditoriale</p>
+      <h2>Easydomotica</h2>
+      <p class="easydomotica__desc">
+        Insieme al mio socio sto costruendo Easydomotica: progettazione e installazione di impianti
+        domotici, videosorveglianza, antifurti e automazioni. Una pagina interamente dedicata al
+        progetto arriverà presto — per ora questo è un assaggio.
+      </p>
+      <a href="easydomotica.html" class="btn btn--inverse">Scopri di più →</a>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+    <div class="section-head">
+      <p class="eyebrow">Contatti</p>
+      <h2>Parliamone.</h2>
+    </div>
+    <div class="contact__grid">
+      <a href="mailto:tommaso@example.com" class="contact-card">
+        <span class="contact-card__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 6.5L12 13l9-6.5M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="contact-card__label">Email</span>
+        <span class="contact-card__value"><!-- PLACEHOLDER -->tommaso@example.com</span>
+      </a>
+      <a href="https://github.com/tuousername" target="_blank" rel="noopener" class="contact-card">
+        <span class="contact-card__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.64-1.33-2.22-.25-4.55-1.11-4.55-4.95 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.4 9.4 0 015 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="contact-card__label">GitHub</span>
+        <span class="contact-card__value">@tuousername</span>
+      </a>
+      <a href="https://linkedin.com/in/tuoprofilo" target="_blank" rel="noopener" class="contact-card">
+        <span class="contact-card__icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 10.5v6M7.5 7.7v.01M11.5 16.5v-3.5c0-1.4 1-2.2 2.2-2.2 1.2 0 1.8.8 1.8 2.2v3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="contact-card__label">LinkedIn</span>
+        <span class="contact-card__value">/in/tuoprofilo</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Tommaso Bombelli.</p>
+  <p class="footer__built">Costruito a mano, ospitato su GitHub Pages.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

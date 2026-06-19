@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easydomotica — Tommaso Bombelli</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230B0E14'/%3E%3Ctext x='50' y='66' font-family='monospace' font-size='44' font-weight='700' fill='%2356E3D6' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .placeholder-page {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 140px;
+  }
+  .placeholder-page h1 { font-size: clamp(36px, 6vw, 56px); margin-bottom: 18px; }
+  .placeholder-page p { color: var(--text-muted); max-width: 540px; font-size: 17px; margin-bottom: 32px; }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">TB<span class="nav__logo-dot">.</span></a>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html#about">Chi sono</a>
+      <a href="index.html#experience">Esperienza</a>
+      <a href="index.html#projects">Progetti</a>
+      <a href="index.html#contact" class="nav__cta">Contatti</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="placeholder-page">
+    <p class="eyebrow"><span class="eyebrow__dot"></span>In costruzione</p>
+    <h1>Easydomotica</h1>
+    <p>
+      Questa pagina sarà interamente dedicata a Easydomotica: la storia del progetto, i servizi
+      (impianti domotici, videosorveglianza, antifurti, automazioni), il lavoro fatto insieme al mio
+      socio e alcuni casi reali. Per ora torna alla home per il resto del portfolio.
+    </p>
+    <a href="index.html" class="btn btn--ghost">← Torna alla home</a>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Tommaso Bombelli.</p>
+  <p class="footer__built">Costruito a mano, ospitato su GitHub Pages.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
