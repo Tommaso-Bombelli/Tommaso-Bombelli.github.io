@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photography — Tommaso Bombelli</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230B0E14'/%3E%3Ctext x='50' y='66' font-family='monospace' font-size='44' font-weight='700' fill='%2356E3D6' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Photography page specific styles */
+.photo-page { padding-top: 140px; }
+.photo-page__header { margin-bottom: 56px; }
+.photo-page__header h1 { font-size: clamp(36px, 5vw, 56px); margin-bottom: 16px; }
+.photo-page__header p { color: var(--text-muted); max-width: 520px; font-size: 17px; }
+
+/* Masonry-style grid */
+.gallery {
+  columns: 3;
+  column-gap: 16px;
+}
+.gallery__item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  position: relative;
+  cursor: pointer;
+}
+.gallery__item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.gallery__item:hover img { transform: scale(1.03); }
+
+/* Empty state */
+.gallery-empty {
+  columns: 1;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--text-faint);
+}
+.gallery-empty svg { width: 56px; height: 56px; opacity: 0.4; }
+.gallery-empty p { font-family: var(--font-mono); font-size: 13px; }
+.gallery-empty .gallery-empty__hint {
+  font-size: 12px;
+  color: var(--text-faint);
+  max-width: 320px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+.lightbox.is-open { display: flex; }
+.lightbox__img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: var(--radius);
+  object-fit: contain;
+}
+.lightbox__close {
+  position: fixed;
+  top: 24px; right: 28px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Upload hint */
+.upload-hint {
+  margin-top: 48px;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--copper);
+}
+.upload-hint strong { color: var(--text); }
+
+@media (max-width: 880px) { .gallery { columns: 2; } }
+@media (max-width: 560px) { .gallery { columns: 1; } }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">TB<span class="nav__logo-dot">.</span></a>
+    <nav class="nav__links" id="navLinks">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#easydomotica">Easydomotica</a>
+      <a href="index.html#contact" class="nav__cta">Contact</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="photo-page">
+
+    <div class="photo-page__header">
+      <p class="eyebrow"><span class="eyebrow__dot"></span>Photography</p>
+      <h1>Through the lens.</h1>
+      <p>Landscapes, details, light. Photography is one of my passions alongside code — shots uploaded as I take them.</p>
+    </div>
+
+    <!-- GALLERY — add your photos inside this div as <img> tags -->
+    <div class="gallery" id="gallery">
+
+      <!-- EMPTY STATE — remove this block once you add real photos -->
+      <div class="gallery-empty">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="24" cy="25" r="7" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M18 10l2-4h8l2 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p>Photos coming soon</p>
+        <p class="gallery-empty__hint">Upload your images to the <code>img/</code> folder and add them below as shown in the hint.</p>
+      </div>
+
+      <!--
+        HOW TO ADD PHOTOS:
+        1. Put your image files inside the img/ folder (e.g. img/photo1.jpg)
+        2. For each photo, add a block like this inside .gallery (remove the empty state above):
+
+        <div class="gallery__item">
+          <img src="img/photo1.jpg" alt="Brief description" loading="lazy">
+        </div>
+
+        The grid handles layout automatically — just keep adding blocks.
+      -->
+
+    </div>
+
+    <div class="upload-hint">
+      <strong>// How to add photos:</strong> put your images in the <code>img/</code> folder on GitHub,
+      then add a <code>&lt;div class="gallery__item"&gt;&lt;img src="img/yourphoto.jpg"&gt;&lt;/div&gt;</code>
+      block inside the <code>.gallery</code> div in this file. The grid handles the rest automatically.
+    </div>
+
+  </section>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
+  <img class="lightbox__img" id="lightboxImg" src="" alt="">
+</div>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Tommaso Bombelli.</p>
+  <p class="footer__built">Built by hand · Hosted on GitHub Pages</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// Lightbox
+const gallery = document.getElementById('gallery');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+
+gallery.addEventListener('click', e => {
+  const img = e.target.closest('.gallery__item img');
+  if (!img) return;
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  lightbox.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>

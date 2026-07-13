@@ -512,3 +512,156 @@ section {
   .skills__grid { grid-template-columns: 1fr; }
   .footer { flex-direction: column; gap: 6px; }
 }
+
+/* =========================================================
+   PHOTOGRAPHY
+========================================================= */
+.photography { }
+.photography .about__text {
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  min-height: 260px;
+}
+.photo-placeholder {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 60px 32px;
+  color: var(--text-faint);
+}
+.photo-placeholder svg {
+  width: 48px; height: 48px;
+  color: var(--text-faint);
+}
+.photo-placeholder p {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* =========================================================
+   SKILL NOTE
+========================================================= */
+.skill-note {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--copper);
+}
+
+/* =========================================================
+   CONTACT — 4 columns on wide screens
+========================================================= */
+.contact__grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.contact-card--soon {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.contact-card--soon:hover {
+  transform: none;
+  border-color: var(--border);
+}
+
+/* =========================================================
+   PROJECT CARD PLACEHOLDER
+========================================================= */
+.project-card--placeholder {
+  border-style: dashed;
+  opacity: 0.65;
+}
+
+@media (max-width: 1024px) {
+  .contact__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .contact__grid { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   PHOTOGRAPHY TEASER (homepage)
+========================================================= */
+.photo-teaser {
+  max-width: none;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 90px 32px;
+}
+.photo-teaser__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+}
+.photo-teaser__text h2 { font-size: clamp(26px, 3.5vw, 36px); margin-bottom: 14px; }
+.photo-teaser__text p { color: var(--text-muted); max-width: 480px; }
+.photo-teaser__icon svg { width: 160px; height: auto; opacity: 0.7; }
+
+@media (max-width: 680px) {
+  .photo-teaser__inner { grid-template-columns: 1fr; }
+  .photo-teaser__icon { display: none; }
+}
+
+/* =========================================================
+   PROJECTS — aggiornamenti v2
+========================================================= */
+.projects__grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.tag--sm {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-color: var(--cyan-soft);
+  color: var(--cyan);
+  background: var(--bg-elevated);
+}
+.project-card__bullets {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.project-card__bullets li { margin-bottom: 4px; }
+.project-card code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--bg-elevated);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--cyan);
+}
+.project-link--private {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-faint);
+  cursor: default;
+}
+
+/* 2 columns on medium, 1 on small */
+@media (max-width: 1024px) {
+  .projects__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .projects__grid { grid-template-columns: 1fr; }
+}
