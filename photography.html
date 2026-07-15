@@ -4,209 +4,157 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Photography — Tommaso Bombelli</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230B0E14'/%3E%3Ctext x='50' y='66' font-family='monospace' font-size='44' font-weight='700' fill='%2356E3D6' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23080B10'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='46' font-weight='700' fill='%2356E3D6' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-/* Photography page specific styles */
-.photo-page { padding-top: 140px; }
-.photo-page__header { margin-bottom: 56px; }
-.photo-page__header h1 { font-size: clamp(36px, 5vw, 56px); margin-bottom: 16px; }
-.photo-page__header p { color: var(--text-muted); max-width: 520px; font-size: 17px; }
+.photo-page { padding-top: 140px; min-height: 80vh; }
+.photo-page h1 { font-size:clamp(40px,6vw,68px); color:var(--text); margin:10px 0 18px; }
+.photo-page__lead { font-size:17px; max-width:520px; margin-bottom:56px; }
 
-/* Masonry-style grid */
-.gallery {
-  columns: 3;
-  column-gap: 16px;
-}
+/* masonry gallery */
+.gallery { columns:3; column-gap:14px; }
 .gallery__item {
-  break-inside: avoid;
-  margin-bottom: 16px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  position: relative;
-  cursor: pointer;
+  break-inside:avoid; margin-bottom:14px;
+  border-radius:var(--radius); overflow:hidden;
+  background:var(--bg-card); border:1px solid var(--border);
+  cursor:none; position:relative;
 }
-.gallery__item img {
-  width: 100%;
-  display: block;
-  transition: transform 0.3s ease;
+.gallery__item img { width:100%; display:block; transition:transform .4s ease; }
+.gallery__item:hover img { transform:scale(1.04); }
+.gallery__item__overlay {
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(8,11,16,0.7) 0%, transparent 50%);
+  opacity:0; transition:opacity .3s ease;
+  display:flex;align-items:flex-end;padding:16px;
 }
-.gallery__item:hover img { transform: scale(1.03); }
+.gallery__item:hover .gallery__item__overlay { opacity:1; }
+.gallery__item__caption { font-family:var(--font-mono);font-size:12px;color:var(--text);letter-spacing:0.04em; }
 
-/* Empty state */
+/* empty state */
 .gallery-empty {
-  columns: 1;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 18px;
-  border: 1px dashed var(--border);
-  border-radius: var(--radius);
-  color: var(--text-faint);
+  min-height:360px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:16px;
+  border:1px dashed var(--border); border-radius:var(--radius);
+  color:var(--text-faint);
 }
-.gallery-empty svg { width: 56px; height: 56px; opacity: 0.4; }
-.gallery-empty p { font-family: var(--font-mono); font-size: 13px; }
-.gallery-empty .gallery-empty__hint {
-  font-size: 12px;
-  color: var(--text-faint);
-  max-width: 320px;
-  text-align: center;
-  line-height: 1.7;
-}
+.gallery-empty svg { width:52px;height:52px;opacity:0.35; }
+.gallery-empty p { font-family:var(--font-mono);font-size:13px; }
 
-/* Lightbox */
+/* lightbox */
 .lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  z-index: 200;
-  align-items: center;
-  justify-content: center;
-  padding: 32px;
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.94); z-index:10000;
+  align-items:center; justify-content:center; padding:32px;
 }
-.lightbox.is-open { display: flex; }
-.lightbox__img {
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: var(--radius);
-  object-fit: contain;
-}
+.lightbox.is-open { display:flex; }
+.lightbox__img { max-width:90vw;max-height:88vh;border-radius:var(--radius);object-fit:contain; }
 .lightbox__close {
-  position: fixed;
-  top: 24px; right: 28px;
-  background: none;
-  border: none;
-  color: var(--text);
-  font-size: 32px;
-  cursor: pointer;
-  line-height: 1;
+  position:fixed;top:20px;right:24px;
+  background:var(--bg-card);border:1px solid var(--border);
+  color:var(--text);font-size:20px;width:40px;height:40px;
+  border-radius:50%;cursor:none;display:flex;align-items:center;justify-content:center;
+  transition:border-color var(--transition);
 }
+.lightbox__close:hover { border-color:var(--cyan); }
 
-/* Upload hint */
+/* how-to hint */
 .upload-hint {
-  margin-top: 48px;
-  padding: 20px 24px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--copper);
+  margin-top:40px;padding:16px 20px;
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);font-family:var(--font-mono);font-size:12px;color:var(--copper);
 }
-.upload-hint strong { color: var(--text); }
+.upload-hint code { color:var(--cyan);background:var(--bg-elevated);padding:1px 5px;border-radius:3px; }
 
-@media (max-width: 880px) { .gallery { columns: 2; } }
-@media (max-width: 560px) { .gallery { columns: 1; } }
+@media(max-width:880px){ .gallery{columns:2;} }
+@media(max-width:560px){ .gallery{columns:1;} }
 </style>
 </head>
 <body>
 
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__logo">TB<span class="nav__logo-dot">.</span></a>
-    <nav class="nav__links" id="navLinks">
-      <a href="index.html#about">About</a>
-      <a href="index.html#experience">Experience</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#easydomotica">Easydomotica</a>
-      <a href="index.html#contact" class="nav__cta">Contact</a>
-    </nav>
-    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">TB<span>.</span></a>
+  <div id="navIndicator" class="nav__indicator"></div>
+  <a href="index.html#about">About</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="easydomotica.html">Easydomotica</a>
+  <a href="index.html#contact">Contact</a>
+  <button class="nav__mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
+</nav>
 
 <main>
-  <section class="photo-page">
+<section class="photo-page" id="hero">
+  <p class="eyebrow" data-anim><span class="eyebrow__dot"></span>Photography</p>
+  <h1 data-anim>Through<br>the lens.</h1>
+  <p class="photo-page__lead" data-anim data-delay="1">Landscapes, details and light — shooting is how I switch off from code. Gallery updated as I shoot. All photos compressed to web size (200–500 KB JPG).</p>
 
-    <div class="photo-page__header">
-      <p class="eyebrow"><span class="eyebrow__dot"></span>Photography</p>
-      <h1>Through the lens.</h1>
-      <p>Landscapes, details, light. Photography is one of my passions alongside code — shots uploaded as I take them.</p>
-    </div>
+  <!-- GALLERY — add your photos here -->
+  <div class="gallery" id="gallery" data-anim data-delay="2">
 
-    <!-- GALLERY — add your photos inside this div as <img> tags -->
-    <div class="gallery" id="gallery">
+    <!--
+      HOW TO ADD PHOTOS:
+      1. Compress your JPGs to ~200-500KB (use squoosh.app)
+      2. Upload them to the img/ folder in your GitHub repo
+      3. Remove the gallery-empty block below
+      4. Add blocks like this for each photo:
 
-      <!-- EMPTY STATE — remove this block once you add real photos -->
-      <div class="gallery-empty">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="1.6"/>
-          <circle cx="24" cy="25" r="7" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M18 10l2-4h8l2 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <p>Photos coming soon</p>
-        <p class="gallery-empty__hint">Upload your images to the <code>img/</code> folder and add them below as shown in the hint.</p>
-      </div>
-
-      <!--
-        HOW TO ADD PHOTOS:
-        1. Put your image files inside the img/ folder (e.g. img/photo1.jpg)
-        2. For each photo, add a block like this inside .gallery (remove the empty state above):
-
-        <div class="gallery__item">
-          <img src="img/photo1.jpg" alt="Brief description" loading="lazy">
+      <div class="gallery__item">
+        <img src="img/photo1.jpg" alt="Description" loading="lazy">
+        <div class="gallery__item__overlay">
+          <span class="gallery__item__caption">Optional caption</span>
         </div>
+      </div>
+    -->
 
-        The grid handles layout automatically — just keep adding blocks.
-      -->
-
+    <div class="gallery-empty">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="1.6"/><circle cx="24" cy="25" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M18 10l2-4h8l2 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <p>Gallery coming soon</p>
     </div>
 
-    <div class="upload-hint">
-      <strong>// How to add photos:</strong> put your images in the <code>img/</code> folder on GitHub,
-      then add a <code>&lt;div class="gallery__item"&gt;&lt;img src="img/yourphoto.jpg"&gt;&lt;/div&gt;</code>
-      block inside the <code>.gallery</code> div in this file. The grid handles the rest automatically.
-    </div>
+  </div>
 
-  </section>
+  <div class="upload-hint">
+    <strong style="color:var(--text)">// How to add photos:</strong>
+    compress to JPG ~200–500 KB (use <code>squoosh.app</code>),
+    upload to <code>img/</code> on GitHub, add a <code>&lt;div class="gallery__item"&gt;</code>
+    block inside <code>.gallery</code> and remove the empty-state div.
+  </div>
+</section>
 </main>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
-  <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
+<div class="lightbox" id="lightbox" role="dialog">
+  <button class="lightbox__close" id="lightboxClose">✕</button>
   <img class="lightbox__img" id="lightboxImg" src="" alt="">
 </div>
 
 <footer class="footer">
-  <p>© <span id="year"></span> Tommaso Bombelli.</p>
-  <p class="footer__built">Built by hand · Hosted on GitHub Pages</p>
+  <span>© <span class="js-year"></span> Tommaso Bombelli</span>
+  <div class="footer__links">
+    <a href="index.html">Portfolio</a>
+    <a href="easydomotica.html">Easydomotica</a>
+    <a href="game.html">UE5 Game</a>
+  </div>
+  <span>Photography</span>
 </footer>
 
 <script src="script.js"></script>
 <script>
-// Lightbox
-const gallery = document.getElementById('gallery');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const lightboxClose = document.getElementById('lightboxClose');
-
-gallery.addEventListener('click', e => {
-  const img = e.target.closest('.gallery__item img');
-  if (!img) return;
-  lightboxImg.src = img.src;
-  lightboxImg.alt = img.alt;
-  lightbox.classList.add('is-open');
-  document.body.style.overflow = 'hidden';
+const gallery=document.getElementById('gallery');
+const lightbox=document.getElementById('lightbox');
+const lbImg=document.getElementById('lightboxImg');
+const lbClose=document.getElementById('lightboxClose');
+gallery.addEventListener('click',e=>{
+  const img=e.target.closest('.gallery__item img');
+  if(!img)return;
+  lbImg.src=img.src; lbImg.alt=img.alt;
+  lightbox.classList.add('is-open'); document.body.style.overflow='hidden';
 });
-
-function closeLightbox() {
-  lightbox.classList.remove('is-open');
-  document.body.style.overflow = '';
-}
-
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+function closeLB(){ lightbox.classList.remove('is-open'); document.body.style.overflow=''; }
+lbClose.addEventListener('click',closeLB);
+lightbox.addEventListener('click',e=>{ if(e.target===lightbox)closeLB(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape')closeLB(); });
 </script>
 </body>
 </html>
