@@ -4,44 +4,291 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Easydomotica — Tommaso Bombelli</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230B0E14'/%3E%3Ctext x='50' y='66' font-family='monospace' font-size='44' font-weight='700' fill='%2356E3D6' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Easydomotica: home automation company co-founded by Tommaso Bombelli. ERP, HASS integration and real installations.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23080B10'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='46' font-weight='700' fill='%2356E3D6' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-  .placeholder-page { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding-top: 140px; }
-  .placeholder-page h1 { font-size: clamp(36px, 6vw, 56px); margin-bottom: 18px; }
-  .placeholder-page p { color: var(--text-muted); max-width: 540px; font-size: 17px; margin-bottom: 32px; }
+/* ── page-specific ── */
+.ed-hero {
+  min-height: 70vh; display:flex; align-items:center;
+  padding-top: 120px; position:relative; overflow:hidden;
+}
+.ed-hero::before {
+  content:'';position:absolute;inset:0;
+  background-image: radial-gradient(circle,rgba(86,227,214,0.07) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:radial-gradient(ellipse 80% 80% at 30% 50%,black 40%,transparent 100%);
+}
+.ed-hero::after {
+  content:'';position:absolute;top:10%;left:5%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(86,227,214,0.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.ed-hero__inner { position:relative;z-index:1; max-width:var(--container);margin:0 auto;padding:0 32px; }
+.ed-hero h1 { font-size:clamp(48px,8vw,88px); color:var(--text); margin:10px 0 20px; }
+.ed-hero h1 span { color:var(--cyan); }
+.ed-hero__sub { font-size:18px; max-width:560px; color:var(--text-muted); margin-bottom:36px; line-height:1.7; }
+.ed-hero__badges { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px; }
+.ed-hero__actions { display:flex; gap:14px; flex-wrap:wrap; }
+
+/* services */
+.services__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.service-card {
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:var(--radius); padding:24px;
+  transition:border-color var(--transition),transform var(--transition);
+}
+.service-card:hover { border-color:var(--border-glow); transform:translateY(-3px); }
+.service-card__icon { font-size:28px; margin-bottom:14px; }
+.service-card h3 { font-size:15px; color:var(--text); margin-bottom:8px; }
+.service-card p { font-size:13px; line-height:1.6; }
+
+/* ERP section */
+.erp-section { background:var(--bg-elevated); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.erp-section .section-inner { max-width:var(--container); margin:0 auto; padding:100px 32px; }
+.erp-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+.erp-features { display:flex; flex-direction:column; gap:16px; margin-top:32px; }
+.erp-feature {
+  display:flex; gap:14px; align-items:flex-start;
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:var(--radius); padding:18px 20px;
+  transition:border-color var(--transition);
+}
+.erp-feature:hover { border-color:var(--border-glow); }
+.erp-feature__icon { font-size:20px; flex-shrink:0; margin-top:2px; }
+.erp-feature__title { font-size:14px; color:var(--text); font-weight:600; margin-bottom:4px; }
+.erp-feature__desc { font-size:13px; color:var(--text-muted); line-height:1.6; }
+
+/* stack list */
+.stack-list { display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+.stack-item { display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size:13px; padding:10px 14px; background:var(--bg-card); border:1px solid var(--border); border-radius:6px; }
+.stack-item__label { color:var(--text-muted); }
+.stack-item__val { color:var(--cyan); }
+
+/* HASS section */
+.hass-section .section-inner { max-width:var(--container); margin:0 auto; padding:100px 32px; }
+.hass-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+.hass-terminal {
+  background:var(--bg-card); border:1px solid var(--border); border-radius:12px; overflow:hidden;
+  box-shadow:0 0 0 1px rgba(86,227,214,0.05), 0 24px 60px rgba(0,0,0,0.5);
+}
+.hass-features { display:flex; flex-direction:column; gap:14px; margin-top:28px; }
+.hass-feat { display:flex; gap:12px; align-items:flex-start; }
+.hass-feat__dot { width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);flex-shrink:0;margin-top:6px; }
+.hass-feat__text { font-size:14px; color:var(--text-muted); line-height:1.6; }
+.hass-feat__text strong { color:var(--text); }
+
+/* stats bar */
+.stats-bar { background:var(--bg-elevated); border-top:1px solid var(--border); }
+.stats-bar__inner { max-width:var(--container);margin:0 auto;padding:48px 32px; display:grid;grid-template-columns:repeat(4,1fr);gap:32px; }
+.stats-bar__item { text-align:center; }
+.stats-bar__num { display:block;font-family:var(--font-mono);font-size:28px;color:var(--cyan);margin-bottom:6px; }
+.stats-bar__label { font-size:13px;color:var(--text-muted); }
+
+@media(max-width:880px){
+  .services__grid{grid-template-columns:repeat(2,1fr);}
+  .erp-grid,.hass-grid{grid-template-columns:1fr;}
+  .stats-bar__inner{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:560px){
+  .services__grid{grid-template-columns:1fr;}
+  .stats-bar__inner{grid-template-columns:1fr 1fr;}
+}
 </style>
 </head>
 <body>
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__logo">TB<span class="nav__logo-dot">.</span></a>
-    <nav class="nav__links" id="navLinks">
-      <a href="index.html#about">About</a>
-      <a href="index.html#experience">Experience</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#contact" class="nav__cta">Contact</a>
-    </nav>
-    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">TB<span>.</span></a>
+  <div id="navIndicator" class="nav__indicator"></div>
+  <a href="index.html#about">About</a>
+  <a href="index.html#experience">Experience</a>
+  <a href="#services">Services</a>
+  <a href="#erp">ERP</a>
+  <a href="#hass">HASS App</a>
+  <a href="index.html#contact">Contact</a>
+  <button class="nav__mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
+</nav>
+
 <main>
-  <section class="placeholder-page">
-    <p class="eyebrow"><span class="eyebrow__dot"></span>In progress</p>
-    <h1>Easydomotica</h1>
-    <p>A full dedicated page is coming — story of the project, services, real installations and more. Back to the main portfolio for now.</p>
-    <a href="index.html" class="btn btn--ghost">← Back to home</a>
-  </section>
+
+<!-- HERO -->
+<section class="ed-hero" id="hero">
+  <div class="ed-hero__inner">
+    <p class="eyebrow" data-anim><span class="eyebrow__dot"></span>My startup · Since March 2024</p>
+    <h1 data-anim>Easy<span>domotica</span></h1>
+    <p class="ed-hero__sub" data-anim data-delay="1">Home automation, CCTV, alarm systems and smart integrations — designed and installed from scratch. Built together with my business partner, one installation at a time.</p>
+    <div class="ed-hero__badges" data-anim data-delay="2">
+      <span class="badge badge--live">Active company</span>
+      <span class="badge badge--live">Co-Founder & CTO</span>
+      <span class="tag">Castelletto Sopra Ticino</span>
+    </div>
+    <div class="ed-hero__actions" data-anim data-delay="3">
+      <a href="#services" class="btn btn--primary">Our services</a>
+      <a href="#erp" class="btn btn--ghost">Behind the scenes →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar__inner">
+    <div class="stats-bar__item" data-anim data-delay="1"><span class="stats-bar__num">2024</span><span class="stats-bar__label">Founded</span></div>
+    <div class="stats-bar__item" data-anim data-delay="2"><span class="stats-bar__num">2</span><span class="stats-bar__label">Co-founders</span></div>
+    <div class="stats-bar__item" data-anim data-delay="3"><span class="stats-bar__num">ERP</span><span class="stats-bar__label">Custom-built software</span></div>
+    <div class="stats-bar__item" data-anim data-delay="4"><span class="stats-bar__num">HASS</span><span class="stats-bar__label">Home Assistant integration</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-head" data-anim>
+    <p class="eyebrow"><span class="eyebrow__dot"></span>Services</p>
+    <h2>What we do.</h2>
+    <p>We design and install complete smart-home systems — from the cable up.</p>
+  </div>
+  <div class="services__grid">
+    <div class="service-card" data-anim data-delay="1">
+      <div class="service-card__icon">🏠</div>
+      <h3>Home Automation</h3>
+      <p>Full domotics design and installation — lighting, climate, blinds, energy monitoring and scene automation.</p>
+    </div>
+    <div class="service-card" data-anim data-delay="2">
+      <div class="service-card__icon">📹</div>
+      <h3>CCTV & Surveillance</h3>
+      <p>IP camera systems, NVR configuration, remote viewing and motion-triggered recording.</p>
+    </div>
+    <div class="service-card" data-anim data-delay="3">
+      <div class="service-card__icon">🔒</div>
+      <h3>Alarm Systems</h3>
+      <p>Intrusion detection, door/window sensors, sirens and smart alarm integrations.</p>
+    </div>
+    <div class="service-card" data-anim data-delay="4">
+      <div class="service-card__icon">⚡</div>
+      <h3>Smart Automations</h3>
+      <p>Custom automation flows, voice assistant integration, app control and scheduled routines.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ERP SECTION -->
+<div class="erp-section" id="erp">
+  <div class="section-inner">
+    <div class="section-head" data-anim>
+      <p class="eyebrow"><span class="eyebrow__dot"></span>Behind the scenes · Tech</p>
+      <h2>We built our own ERP.</h2>
+      <p>Because no off-the-shelf tool fit our workflow, I built a full-stack business management system from scratch — used daily to run Easydomotica.</p>
+    </div>
+    <div class="erp-grid">
+      <div>
+        <div class="erp-features">
+          <div class="erp-feature" data-anim data-delay="1">
+            <div class="erp-feature__icon">👥</div>
+            <div><div class="erp-feature__title">CRM & Customer Registry</div><div class="erp-feature__desc">Full customer and prospect management with questionnaire, regional filters and linked interventions.</div></div>
+          </div>
+          <div class="erp-feature" data-anim data-delay="2">
+            <div class="erp-feature__icon">📦</div>
+            <div><div class="erp-feature__title">Inventory & Product Catalogue</div><div class="erp-feature__desc">Dual-mode warehouse: admin catalogue with pricing logic (cost → markup → VAT) and a simplified stock view. Products locked from accidental deletion.</div></div>
+          </div>
+          <div class="erp-feature" data-anim data-delay="3">
+            <div class="erp-feature__icon">📄</div>
+            <div><div class="erp-feature__title">Quote Builder</div><div class="erp-feature__desc">3-column modal — warehouse search, quote form, client questionnaire. Package pricing, real-time totals, separate PDF output for client vs technician.</div></div>
+          </div>
+          <div class="erp-feature" data-anim data-delay="4">
+            <div class="erp-feature__icon">🎫</div>
+            <div><div class="erp-feature__title">Ticketing & Interventions</div><div class="erp-feature__desc">Job tracking with status, star ratings from the client portal, and automatic admin notifications on new feedback.</div></div>
+          </div>
+          <div class="erp-feature" data-anim data-delay="5">
+            <div class="erp-feature__icon">🌐</div>
+            <div><div class="erp-feature__title">Client & Installer Portals</div><div class="erp-feature__desc">Separate React portals for clients (interventions, ratings) and installers — each with its own auth and themed UI.</div></div>
+          </div>
+          <div class="erp-feature" data-anim data-delay="5">
+            <div class="erp-feature__icon">💬</div>
+            <div><div class="erp-feature__title">Internal Chat & Notifications</div><div class="erp-feature__desc">Real-time internal messaging between colleagues, unread badges, and automatic notifications for key events.</div></div>
+          </div>
+        </div>
+      </div>
+      <div data-anim="right">
+        <h3 style="font-size:18px;color:var(--text);margin-bottom:20px;">Tech stack</h3>
+        <div class="stack-list">
+          <div class="stack-item"><span class="stack-item__label">Frontend</span><span class="stack-item__val">React + Vite</span></div>
+          <div class="stack-item"><span class="stack-item__label">Backend</span><span class="stack-item__val">Node.js / Express</span></div>
+          <div class="stack-item"><span class="stack-item__label">Database</span><span class="stack-item__val">PostgreSQL</span></div>
+          <div class="stack-item"><span class="stack-item__label">PDF</span><span class="stack-item__val">Custom generator</span></div>
+          <div class="stack-item"><span class="stack-item__label">Process mgmt</span><span class="stack-item__val">PM2</span></div>
+          <div class="stack-item"><span class="stack-item__label">Auth</span><span class="stack-item__val">JWT / Role-based</span></div>
+          <div class="stack-item"><span class="stack-item__label">File storage</span><span class="stack-item__val">NAS + local</span></div>
+          <div class="stack-item"><span class="stack-item__label">Repo</span><span class="stack-item__val">🔒 Private</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HASS SECTION -->
+<section class="hass-section" id="hass">
+  <div class="section-inner" style="max-width:var(--container);margin:0 auto;padding:100px 32px;">
+    <div class="section-head" data-anim>
+      <p class="eyebrow"><span class="eyebrow__dot"></span>Open source · HACS</p>
+      <h2>Home Assistant<br>Integration.</h2>
+      <p>A custom HA integration installable via HACS — built to manage client Home Assistant installations remotely from within the ERP.</p>
+    </div>
+    <div class="hass-grid">
+      <div>
+        <div class="hass-features">
+          <div class="hass-feat" data-anim data-delay="1"><div class="hass-feat__dot"></div><div class="hass-feat__text"><strong>Dedicated sidebar panel</strong> — visible only to the <code style="font-family:var(--font-mono);font-size:12px;background:var(--bg-card);padding:2px 6px;border-radius:4px;color:var(--cyan)">easydomotica</code> HA user, using native HA authentication. No separate passwords.</div></div>
+          <div class="hass-feat" data-anim data-delay="2"><div class="hass-feat__dot"></div><div class="hass-feat__text"><strong>SmartThings auto-reload</strong> — configurable reload every 10 minutes to keep the SmartThings integration stable.</div></div>
+          <div class="hass-feat" data-anim data-delay="3"><div class="hass-feat__dot"></div><div class="hass-feat__text"><strong>Integration scheduler</strong> — per-client reload schedules with configurable hours, days and intervals. Logs saved to NAS.</div></div>
+          <div class="hass-feat" data-anim data-delay="4"><div class="hass-feat__dot"></div><div class="hass-feat__text"><strong>Update checker</strong> — reads live states from HA, detects pending updates for all integrations, Core and OS. Retry logic with 15-min intervals.</div></div>
+          <div class="hass-feat" data-anim data-delay="5"><div class="hass-feat__dot"></div><div class="hass-feat__text"><strong>REST API with Bearer auth</strong> — all endpoints use <code style="font-family:var(--font-mono);font-size:12px;background:var(--bg-card);padding:2px 6px;border-radius:4px;color:var(--cyan)">requires_auth = True</code>, HTTP 403 on any unauthorised request.</div></div>
+        </div>
+        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;" data-anim data-delay="5">
+          <a href="https://github.com/easydomotica/APP-HASS-Easydomotica" target="_blank" rel="noopener" class="btn btn--ghost">View on GitHub →</a>
+          <span class="badge badge--live" style="align-self:center;">v1.4.0 · MIT</span>
+        </div>
+      </div>
+      <div class="hass-terminal" data-anim="right">
+        <div class="terminal__bar">
+          <span class="terminal__dot"></span><span class="terminal__dot"></span><span class="terminal__dot"></span>
+          <span class="terminal__title">__init__.py · easydomotica</span>
+        </div>
+        <div class="terminal__body" style="font-size:12px;line-height:1.8;">
+          <div><span style="color:#7A8499"># Only this HA user gets in</span></div>
+          <div><span style="color:#D17D3A">ALLOWED_USERNAME</span><span style="color:var(--text)"> = </span><span style="color:#56E3D6">"easydomotica"</span></div>
+          <br>
+          <div><span style="color:#7A8499"># Auto-reload every 10 min</span></div>
+          <div><span style="color:#D17D3A">RELOAD_INTERVAL</span><span style="color:var(--text)"> = </span><span style="color:#56E3D6">timedelta(minutes=10)</span></div>
+          <br>
+          <div><span style="color:#7A8499"># All views need HA auth token</span></div>
+          <div><span style="color:#D17D3A">requires_auth</span><span style="color:var(--text)"> = </span><span style="color:#56E3D6">True</span></div>
+          <br>
+          <div><span style="color:#7A8499"># 403 for anyone else</span></div>
+          <div><span style="color:var(--text-muted)">if not _is_authorized(request):</span></div>
+          <div><span style="color:var(--text-muted)">&nbsp;&nbsp;return json_response(</span></div>
+          <div><span style="color:var(--text-muted)">&nbsp;&nbsp;&nbsp;&nbsp;{"error": </span><span style="color:#56E3D6">"Accesso negato"</span><span style="color:var(--text-muted)">},</span></div>
+          <div><span style="color:var(--text-muted)">&nbsp;&nbsp;&nbsp;&nbsp;status=</span><span style="color:#D17D3A">403</span><span style="color:var(--text-muted)">)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
+
 <footer class="footer">
-  <p>© <span id="year"></span> Tommaso Bombelli.</p>
-  <p class="footer__built">Built by hand · Hosted on GitHub Pages</p>
+  <span>© <span class="js-year"></span> Tommaso Bombelli</span>
+  <div class="footer__links">
+    <a href="index.html">Portfolio</a>
+    <a href="game.html">UE5 Game</a>
+    <a href="photography.html">Photography</a>
+  </div>
+  <span>Easydomotica · Est. 2024</span>
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>
