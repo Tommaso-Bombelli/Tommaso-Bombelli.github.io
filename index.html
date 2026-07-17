@@ -11,50 +11,51 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="no-subnav">
 
-<!-- CURSOR injected by JS -->
-
-<!-- FLOATING PILL NAV -->
+<!-- NAV -->
 <nav class="nav" id="nav">
   <a href="#hero" class="nav__logo">TB<span>.</span></a>
-  <div id="navIndicator" class="nav__indicator"></div>
-  <a href="#about">About</a>
-  <a href="#experience">Experience</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#easydomotica">Easydomotica</a>
-  <a href="#photography">Photography</a>
-  <a href="#contact">Contact</a>
-  <button class="nav__mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
+  <div class="nav__links">
+    <a href="#about"      data-section="about">About</a>
+    <a href="#projects"   data-section="projects">Projects</a>
+    <a href="easydomotica.html">Easydomotica</a>
+    <a href="photography.html">Photography</a>
+    <a href="game.html">UE5 Game</a>
+    <a href="#contact"    data-section="contact">Contact</a>
+  </div>
+  <a href="mailto:tommaso.bombelli03@gmail.com" class="nav__cta">Get in touch</a>
+  <button class="nav__mobile-btn" id="mobileBtn">☰</button>
 </nav>
 
-<!-- SECTION DOTS -->
-<div class="section-dots" id="sectionDots"></div>
+<!-- MOBILE MENU -->
+<div class="nav__mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="easydomotica.html">Easydomotica</a>
+  <a href="photography.html">Photography</a>
+  <a href="game.html">UE5 Game</a>
+  <a href="#contact">Contact</a>
+</div>
 
 <main>
 
-<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
-<section class="hero" id="hero" data-label="Home">
+<!-- HERO -->
+<section class="hero" id="hero" style="padding-top:var(--nav-h)">
   <div class="hero__inner">
-    <div class="hero__content">
+    <div>
       <p class="hero__location">Castelletto Sopra Ticino, Italy</p>
       <h1 class="hero__name" data-anim>Tommaso<br><span>Bombelli</span></h1>
       <p class="hero__role"><span id="typewriter"></span><span class="cursor-blink">|</span></p>
-      <p class="hero__tagline" data-anim data-delay="2">
-        From cables to code — IT infrastructure, software development<br>and home automation, all at once.
-      </p>
+      <p class="hero__tagline" data-anim data-delay="2">From cables to code — IT infrastructure, software development and home automation, all at once.</p>
       <div class="hero__actions" data-anim data-delay="3">
         <a href="#projects" class="btn btn--primary">See my work</a>
-        <a href="#contact" class="btn btn--ghost">Get in touch</a>
+        <a href="#contact"  class="btn btn--ghost">Get in touch</a>
       </div>
     </div>
-
     <div class="hero__terminal" data-anim="right">
       <div class="terminal__bar">
-        <span class="terminal__dot"></span>
-        <span class="terminal__dot"></span>
-        <span class="terminal__dot"></span>
+        <span class="terminal__dot"></span><span class="terminal__dot"></span><span class="terminal__dot"></span>
         <span class="terminal__title">~/tombombelli</span>
       </div>
       <div class="terminal__body">
@@ -68,183 +69,66 @@
         <div><span class="t-out-val">Networks · Firewall · HASS</span></div>
         <div><span class="t-out-val">Proxmox · UE5 · Photography</span></div>
         <br>
-        <div><span class="t-prompt">→ </span><span class="t-cmd">cat languages.txt</span></div>
-        <div><span class="t-out-val">Italian (native) · English (fluent)</span></div>
-        <br>
         <div><span class="t-prompt">→ </span><span class="t-cursor"></span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
-<section id="about" data-label="About">
+<!-- ABOUT — compact -->
+<section id="about">
   <div class="section-head" data-anim>
     <p class="eyebrow"><span class="eyebrow__dot"></span>About me</p>
-    <h2>A journey that starts<br>with my hands.</h2>
+    <h2>A journey that starts with my hands.</h2>
   </div>
   <div class="about__grid">
     <div class="about__text" data-anim>
-      <p>I'm Tommaso, an IT technician and developer based near Milan. My path started in electrical work — a year as an electrician taught me to think in systems, reliability and safety, skills I carry into every network and infrastructure I touch today.</p>
-      <p style="margin-top:16px">I currently work as an IT technician at <strong>MAST Srl</strong>, handling everything from helpdesk to network installation, firewall configuration and cybersecurity. Alongside that, I'm co-founder and technical director of <strong>Easydomotica</strong>, a home-automation company I'm building with my business partner since March 2024.</p>
-      <p style="margin-top:16px">In whatever spare time is left: building a video game in <strong>Unreal Engine 5</strong>, maintaining a self-hosted homelab, and shooting photos.</p>
+      <p>I'm Tommaso, IT technician and developer near Milan. Started as an electrician — a year wiring real systems taught me to think in reliability, safety and structure. Now I work at <strong>MAST Srl</strong> on networks, firewalls and cybersecurity, while co-founding <strong>Easydomotica</strong>, a home-automation company I'm building with my business partner since March 2024.</p>
+      <p>In the spare time that's left: a game in <strong>UE5</strong>, a self-hosted homelab with 20+ containers, and photography.</p>
+      <p style="margin-top:14px;font-family:var(--font-mono);font-size:12px;color:var(--copper)">// Python · JS · Java · C# · C++ · Italian (native) · English (fluent)</p>
     </div>
     <div class="about__stats" data-anim="right">
+      <div class="stat"><span class="stat__num">IT</span><span class="stat__label">Networks & security @ MAST · Dec 2025</span></div>
+      <div class="stat"><span class="stat__num">CO</span><span class="stat__label">Founder & CTO @ Easydomotica · Mar 2024</span></div>
       <div class="stat"><span class="stat__num">1yr</span><span class="stat__label">Electrician — hands-on foundation</span></div>
-      <div class="stat"><span class="stat__num">IT</span><span class="stat__label">Networks & security @ MAST</span></div>
-      <div class="stat"><span class="stat__num">CO</span><span class="stat__label">Founder & CTO @ Easydomotica</span></div>
       <div class="stat"><span class="stat__num">20+</span><span class="stat__label">LXC containers in homelab</span></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ EXPERIENCE ═══════════════════════════ -->
-<section id="experience" data-label="Experience">
-  <div class="section-head" data-anim>
-    <p class="eyebrow"><span class="eyebrow__dot"></span>Experience</p>
-    <h2>The journey,<br>one node at a time.</h2>
-  </div>
-  <div class="timeline">
-    <article class="timeline__item" data-anim data-delay="1">
-      <div class="timeline__node timeline__node--active"></div>
-      <div class="timeline__card">
-        <p class="timeline__period">Dec 2025 — Present</p>
-        <h3>IT Technician</h3>
-        <p class="timeline__org">MAST Srl — Soluzioni Informatiche</p>
-        <p class="timeline__desc">Helpdesk support, network installation and configuration, cybersecurity and firewall management. A bit of everything — from hardware troubleshooting to securing client infrastructures.</p>
-      </div>
-    </article>
-    <article class="timeline__item" data-anim data-delay="2">
-      <div class="timeline__node timeline__node--active"></div>
-      <div class="timeline__card">
-        <p class="timeline__period">March 2024 — Present</p>
-        <h3>Co-Founder & Technical Director</h3>
-        <p class="timeline__org">Easydomotica</p>
-        <p class="timeline__desc">Design and installation of home automation systems, CCTV, alarm systems and smart automations. I handle all the technical side together with my co-founder. <a href="easydomotica.html" style="color:var(--cyan)">Full story →</a></p>
-      </div>
-    </article>
-    <article class="timeline__item" data-anim data-delay="3">
-      <div class="timeline__node"></div>
-      <div class="timeline__card">
-        <p class="timeline__period">~1 year</p>
-        <h3>Electrician</h3>
-        <p class="timeline__org">Massimo Parnisari — Angera (VA)</p>
-        <p class="timeline__desc">Residential and commercial electrical systems: installation, maintenance and compliance. The practical foundation everything else is built on.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- ═══════════════════════════ SKILLS ═══════════════════════════ -->
-<section id="skills" data-label="Skills">
-  <div class="section-head" data-anim>
-    <p class="eyebrow"><span class="eyebrow__dot"></span>Skills</p>
-    <h2>Stack & tools.</h2>
-  </div>
-  <div class="skills__grid">
-    <div class="skill-group" data-anim data-delay="1">
-      <h3>Programming</h3>
-      <div class="tags">
-        <span class="tag tag--cyan">Python</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">Java</span>
-        <span class="tag">C#</span>
-        <span class="tag">C++</span>
-        <span class="tag">HTML/CSS</span>
-      </div>
-      <p class="skill-note">// Give me a new language and I'll learn it.</p>
-    </div>
-    <div class="skill-group" data-anim data-delay="2">
-      <h3>Networking & Security</h3>
-      <div class="tags">
-        <span class="tag">LAN / WAN</span>
-        <span class="tag">Firewall</span>
-        <span class="tag">Cybersecurity</span>
-        <span class="tag">VPN</span>
-        <span class="tag">IT Support</span>
-      </div>
-    </div>
-    <div class="skill-group" data-anim data-delay="3">
-      <h3>Infrastructure</h3>
-      <div class="tags">
-        <span class="tag">Proxmox VE</span>
-        <span class="tag">Linux</span>
-        <span class="tag">Docker</span>
-        <span class="tag">Prometheus</span>
-        <span class="tag">Grafana</span>
-        <span class="tag">Wazuh</span>
-      </div>
-    </div>
-    <div class="skill-group" data-anim data-delay="4">
-      <h3>Tools & Platforms</h3>
-      <div class="tags">
-        <span class="tag">Git / GitHub</span>
-        <span class="tag">VS Code</span>
-        <span class="tag">Home Assistant</span>
-        <span class="tag">PM2</span>
-        <span class="tag">Node.js</span>
-      </div>
-    </div>
-    <div class="skill-group" data-anim data-delay="5">
-      <h3>Game Dev</h3>
-      <div class="tags">
-        <span class="tag tag--copper">Unreal Engine 5</span>
-        <span class="tag">Blueprints</span>
-        <span class="tag">C++</span>
-      </div>
-    </div>
-    <div class="skill-group" data-anim data-delay="5">
-      <h3>Languages</h3>
-      <div class="tags">
-        <span class="tag">Italian — native</span>
-        <span class="tag tag--cyan">English — fluent</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════ PROJECTS ═══════════════════════════ -->
-<section id="projects" data-label="Projects">
+<!-- PROJECTS -->
+<section id="projects">
   <div class="section-head" data-anim>
     <p class="eyebrow"><span class="eyebrow__dot"></span>Projects</p>
     <h2>Things I've built.</h2>
-    <p>Real projects — click through for the full story on the dedicated pages.</p>
   </div>
   <div class="projects__grid">
 
     <article class="project-card project-card--featured" data-anim data-delay="1">
       <div class="project-card__bar">
-        <span class="project-card__bar-dot"></span>
-        <span class="project-card__bar-dot"></span>
-        <span class="project-card__bar-dot"></span>
+        <span class="project-card__bar-dot"></span><span class="project-card__bar-dot"></span><span class="project-card__bar-dot"></span>
         <span class="badge badge--live">Live</span>
       </div>
       <div class="project-card__body">
-        <div class="project-card__tags">
-          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span>
-        </div>
+        <div class="project-card__tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span></div>
         <h3>Easydomotica ERP</h3>
-        <p>Full-stack business management system built from scratch for my own company — CRM, inventory, quote builder, contracts, ticketing, internal chat and customer portal.</p>
+        <p>Full-stack ERP built from scratch — CRM, inventory, quote builder with PDF, contracts, ticketing, internal chat and two client portals.</p>
       </div>
       <div class="project-card__footer">
         <a href="easydomotica.html#erp" class="project-link">Full breakdown →</a>
-        <span class="project-link project-link--muted">🔒 Private repo</span>
+        <span class="project-link project-link--muted">🔒 Private</span>
       </div>
     </article>
 
     <article class="project-card" data-anim data-delay="2">
       <div class="project-card__bar">
-        <span class="project-card__bar-dot"></span>
-        <span class="project-card__bar-dot"></span>
-        <span class="project-card__bar-dot"></span>
+        <span class="project-card__bar-dot"></span><span class="project-card__bar-dot"></span><span class="project-card__bar-dot"></span>
         <span class="badge badge--live">v1.4.0</span>
       </div>
       <div class="project-card__body">
-        <div class="project-card__tags">
-          <span class="tag">Python</span><span class="tag">Home Assistant</span><span class="tag">HACS</span>
-        </div>
+        <div class="project-card__tags"><span class="tag">Python</span><span class="tag">Home Assistant</span><span class="tag">HACS</span></div>
         <h3>HASS Integration</h3>
-        <p>Custom Home Assistant integration installable via HACS — sidebar panel, SmartThings auto-reload, secure auth tied to HA's native system.</p>
+        <p>Custom HA integration via HACS — sidebar panel, SmartThings auto-reload, secure auth tied to HA's native system.</p>
       </div>
       <div class="project-card__footer">
         <a href="easydomotica.html#hass" class="project-link">Details →</a>
@@ -254,36 +138,28 @@
 
     <article class="project-card" data-anim data-delay="3">
       <div class="project-card__bar">
-        <span class="project-card__bar-dot"></span>
-        <span class="project-card__bar-dot"></span>
-        <span class="project-card__bar-dot"></span>
+        <span class="project-card__bar-dot"></span><span class="project-card__bar-dot"></span><span class="project-card__bar-dot"></span>
         <span class="badge badge--live">Running</span>
       </div>
       <div class="project-card__body">
-        <div class="project-card__tags">
-          <span class="tag">Proxmox</span><span class="tag">Prometheus</span><span class="tag">Wazuh</span>
-        </div>
+        <div class="project-card__tags"><span class="tag">Proxmox</span><span class="tag">Prometheus</span><span class="tag">Wazuh</span></div>
         <h3>Home Datacenter</h3>
-        <p>Self-hosted homelab — 20+ LXC containers, full observability stack, SIEM, media server, dual Pi-hole DNS and Nginx reverse proxy.</p>
+        <p>20+ LXC containers on Proxmox — Grafana, Alertmanager, Wazuh SIEM, Plex, dual Pi-hole and Nginx reverse proxy.</p>
       </div>
       <div class="project-card__footer">
-        <span class="project-link project-link--muted">🔒 Private infrastructure</span>
+        <span class="project-link project-link--muted">🔒 Private infra</span>
       </div>
     </article>
 
     <article class="project-card" data-anim data-delay="4">
       <div class="project-card__bar">
-        <span class="project-card__bar-dot"></span>
-        <span class="project-card__bar-dot"></span>
-        <span class="project-card__bar-dot"></span>
+        <span class="project-card__bar-dot"></span><span class="project-card__bar-dot"></span><span class="project-card__bar-dot"></span>
         <span class="badge badge--wip">In dev</span>
       </div>
       <div class="project-card__body">
-        <div class="project-card__tags">
-          <span class="tag tag--copper">Unreal Engine 5</span><span class="tag">C++</span><span class="tag">Blueprints</span>
-        </div>
-        <h3>UE5 Game — [WIP]</h3>
-        <p>A video game I'm developing in my spare time. Massive work in progress — details and a dedicated page coming as the project evolves.</p>
+        <div class="project-card__tags"><span class="tag tag--copper">Unreal Engine 5</span><span class="tag">C++</span></div>
+        <h3>UE5 Game [WIP]</h3>
+        <p>A video game I'm making in my spare time. Massive work in progress — details coming as the project evolves.</p>
       </div>
       <div class="project-card__footer">
         <a href="game.html" class="project-link">Teaser page →</a>
@@ -292,17 +168,13 @@
 
     <article class="project-card" data-anim data-delay="5">
       <div class="project-card__bar">
-        <span class="project-card__bar-dot"></span>
-        <span class="project-card__bar-dot"></span>
-        <span class="project-card__bar-dot"></span>
+        <span class="project-card__bar-dot"></span><span class="project-card__bar-dot"></span><span class="project-card__bar-dot"></span>
         <span class="badge badge--live">You're here</span>
       </div>
       <div class="project-card__body">
-        <div class="project-card__tags">
-          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
-        </div>
+        <div class="project-card__tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
         <h3>This portfolio</h3>
-        <p>Built from scratch — no frameworks, no build step. Floating pill nav, custom cursor, scroll animations, dedicated pages for each project.</p>
+        <p>Built from scratch — no frameworks. Custom cursor, scroll animations, dedicated pages per project.</p>
       </div>
       <div class="project-card__footer">
         <a href="https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io" target="_blank" rel="noopener" class="project-link">Source →</a>
@@ -312,42 +184,36 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════ EASYDOMOTICA TEASER ═══════════════════════════ -->
-<section class="easy-teaser" id="easydomotica" data-label="Easydomotica">
+<!-- EASYDOMOTICA TEASER -->
+<section class="easy-teaser" id="easydomotica">
   <div class="easy-teaser__inner">
     <div data-anim>
       <p class="easy-teaser__eyebrow">My startup</p>
       <h2>Easydomotica</h2>
-      <p>Home automation, CCTV, alarm systems and smart integrations — built from the ground up since March 2024 with my business partner. ERP, HASS integration and real client installations.</p>
+      <p>Home automation, CCTV, alarm systems and smart integrations — co-founded in March 2024. ERP, HASS integration and real installations.</p>
       <a href="easydomotica.html" class="btn btn--inverse">Explore the project →</a>
     </div>
     <div class="easy-teaser__logo" aria-hidden="true">ED</div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ PHOTOGRAPHY TEASER ═══════════════════════════ -->
-<section class="photo-teaser" id="photography" data-label="Photography">
+<!-- PHOTOGRAPHY TEASER -->
+<section class="photo-teaser" id="photography">
   <div class="photo-teaser__inner">
     <div class="photo-teaser__text" data-anim>
       <p class="eyebrow"><span class="eyebrow__dot"></span>Photography</p>
       <h2>Through the lens.</h2>
-      <p>Landscapes, details and light — photography is one of my passions alongside code. Gallery updated as I shoot.</p>
-      <a href="photography.html" class="btn btn--ghost" style="margin-top:28px">Open gallery →</a>
+      <p>Landscapes, details and light. Gallery updated as I shoot.</p>
+      <a href="photography.html" class="btn btn--ghost" style="margin-top:24px">Open gallery →</a>
     </div>
     <div class="photo-teaser__icon" aria-hidden="true">
-      <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="5" y="20" width="110" height="72" rx="6" stroke="#56E3D6" stroke-width="1.5" opacity="0.4"/>
-        <circle cx="60" cy="56" r="22" stroke="#56E3D6" stroke-width="1.5" opacity="0.5"/>
-        <circle cx="60" cy="56" r="10" stroke="#D17D3A" stroke-width="1.5"/>
-        <path d="M42 20l5-12h26l5 12" stroke="#56E3D6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-        <circle cx="94" cy="34" r="4" fill="#D17D3A" opacity="0.7"/>
-      </svg>
+      <svg viewBox="0 0 120 100" fill="none"><rect x="5" y="20" width="110" height="72" rx="6" stroke="#56E3D6" stroke-width="1.5" opacity="0.4"/><circle cx="60" cy="56" r="22" stroke="#56E3D6" stroke-width="1.5" opacity="0.5"/><circle cx="60" cy="56" r="10" stroke="#D17D3A" stroke-width="1.5"/><path d="M42 20l5-12h26l5 12" stroke="#56E3D6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/><circle cx="94" cy="34" r="4" fill="#D17D3A" opacity="0.7"/></svg>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
-<section id="contact" data-label="Contact">
+<!-- CONTACT -->
+<section id="contact">
   <div class="section-head" data-anim>
     <p class="eyebrow"><span class="eyebrow__dot"></span>Contact</p>
     <h2>Let's talk.</h2>
