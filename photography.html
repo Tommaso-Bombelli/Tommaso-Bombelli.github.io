@@ -9,117 +9,56 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-.photo-page { padding-top: 140px; min-height: 80vh; }
-.photo-page h1 { font-size:clamp(40px,6vw,68px); color:var(--text); margin:10px 0 18px; }
-.photo-page__lead { font-size:17px; max-width:520px; margin-bottom:56px; }
-
-/* masonry gallery */
-.gallery { columns:3; column-gap:14px; }
-.gallery__item {
-  break-inside:avoid; margin-bottom:14px;
-  border-radius:var(--radius); overflow:hidden;
-  background:var(--bg-card); border:1px solid var(--border);
-  cursor:none; position:relative;
-}
-.gallery__item img { width:100%; display:block; transition:transform .4s ease; }
-.gallery__item:hover img { transform:scale(1.04); }
-.gallery__item__overlay {
-  position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(8,11,16,0.7) 0%, transparent 50%);
-  opacity:0; transition:opacity .3s ease;
-  display:flex;align-items:flex-end;padding:16px;
-}
-.gallery__item:hover .gallery__item__overlay { opacity:1; }
-.gallery__item__caption { font-family:var(--font-mono);font-size:12px;color:var(--text);letter-spacing:0.04em; }
-
-/* empty state */
-.gallery-empty {
-  min-height:360px; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; gap:16px;
-  border:1px dashed var(--border); border-radius:var(--radius);
-  color:var(--text-faint);
-}
-.gallery-empty svg { width:52px;height:52px;opacity:0.35; }
-.gallery-empty p { font-family:var(--font-mono);font-size:13px; }
-
-/* lightbox */
-.lightbox {
-  display:none; position:fixed; inset:0;
-  background:rgba(0,0,0,0.94); z-index:10000;
-  align-items:center; justify-content:center; padding:32px;
-}
-.lightbox.is-open { display:flex; }
-.lightbox__img { max-width:90vw;max-height:88vh;border-radius:var(--radius);object-fit:contain; }
-.lightbox__close {
-  position:fixed;top:20px;right:24px;
-  background:var(--bg-card);border:1px solid var(--border);
-  color:var(--text);font-size:20px;width:40px;height:40px;
-  border-radius:50%;cursor:none;display:flex;align-items:center;justify-content:center;
-  transition:border-color var(--transition);
-}
-.lightbox__close:hover { border-color:var(--cyan); }
-
-/* how-to hint */
-.upload-hint {
-  margin-top:40px;padding:16px 20px;
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius);font-family:var(--font-mono);font-size:12px;color:var(--copper);
-}
-.upload-hint code { color:var(--cyan);background:var(--bg-elevated);padding:1px 5px;border-radius:3px; }
-
-@media(max-width:880px){ .gallery{columns:2;} }
-@media(max-width:560px){ .gallery{columns:1;} }
-</style>
 </head>
 <body class="no-subnav">
 
+<!-- NAV -->
 <nav class="nav" id="nav">
   <a href="index.html" class="nav__logo">TB<span>.</span></a>
-  <div id="navIndicator" class="nav__indicator"></div>
+  <div class="nav__links">
+    <a href="index.html">← Portfolio</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="easydomotica.html">Easydomotica</a>
+    <a href="game.html">UE5 Game</a>
+    <a href="index.html#contact" class="nav__page-active">Photography</a>
+  </div>
+  <a href="index.html#contact" class="nav__cta">Contact</a>
+  <button class="nav__mobile-btn" id="mobileBtn">☰</button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav__mobile-menu" id="mobileMenu">
+  <a href="index.html">← Back to portfolio</a>
   <a href="index.html#about">About</a>
   <a href="index.html#projects">Projects</a>
   <a href="easydomotica.html">Easydomotica</a>
+  <a href="game.html">UE5 Game</a>
   <a href="index.html#contact">Contact</a>
-  <button class="nav__mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
-</nav>
+</div>
 
 <main>
-<section class="photo-page" id="hero">
+<section class="photo-page" id="hero" style="padding-top:calc(var(--nav-h) + 40px)">
   <p class="eyebrow" data-anim><span class="eyebrow__dot"></span>Photography</p>
   <h1 data-anim>Through<br>the lens.</h1>
-  <p class="photo-page__lead" data-anim data-delay="1">Landscapes, details and light — shooting is how I switch off from code. Gallery updated as I shoot. All photos compressed to web size (200–500 KB JPG).</p>
+  <p style="font-size:16px;max-width:500px;margin-bottom:48px" data-anim data-delay="1">Landscapes, details and light — shooting is how I switch off from code. More shots coming soon.</p>
 
-  <!-- GALLERY — add your photos here -->
   <div class="gallery" id="gallery" data-anim data-delay="2">
 
-    <!--
-      HOW TO ADD PHOTOS:
-      1. Compress your JPGs to ~200-500KB (use squoosh.app)
-      2. Upload them to the img/ folder in your GitHub repo
-      3. Remove the gallery-empty block below
-      4. Add blocks like this for each photo:
-
-      <div class="gallery__item">
-        <img src="img/photo1.jpg" alt="Description" loading="lazy">
-        <div class="gallery__item__overlay">
-          <span class="gallery__item__caption">Optional caption</span>
-        </div>
+    <div class="gallery__item">
+      <img src="img/photo_001.jpg" alt="Cable cars in the Dolomites, foggy mountains" loading="lazy">
+      <div class="gallery__item__overlay">
+        <span class="gallery__item__caption">Dolomiti · Alta Badia</span>
       </div>
-    -->
-
-    <div class="gallery-empty">
-      <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="1.6"/><circle cx="24" cy="25" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M18 10l2-4h8l2 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <p>Gallery coming soon</p>
     </div>
 
-  </div>
+    <!--
+      ADD MORE PHOTOS:
+      1. Compress to ~300-500 KB with squoosh.app
+      2. Upload to img/ folder on GitHub
+      3. Add a block like the one above
+    -->
 
-  <div class="upload-hint">
-    <strong style="color:var(--text)">// How to add photos:</strong>
-    compress to JPG ~200–500 KB (use <code>squoosh.app</code>),
-    upload to <code>img/</code> on GitHub, add a <code>&lt;div class="gallery__item"&gt;</code>
-    block inside <code>.gallery</code> and remove the empty-state div.
   </div>
 </section>
 </main>
