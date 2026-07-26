@@ -2,7 +2,7 @@
   "_meta": {
     "repo_owner": "Tommaso-Bombelli",
     "repo_name": "Tommaso-Bombelli.github.io",
-    "last_updated": ""
+    "last_updated": "2026-07-26T14:00:17.663Z"
   },
   "site": {
     "name": "Tommaso Bombelli",
@@ -10,7 +10,7 @@
     "github_url": "https://github.com/Tommaso-Bombelli",
     "linkedin_url": "https://www.linkedin.com/in/tommaso-bombelli-204723286",
     "instagram_url": "",
-    "location": "Castelletto Sopra Ticino, Italy"
+    "location": "Angera (VA) Italy"
   },
   "hero": {
     "typewriter_phrases": [
@@ -20,33 +20,45 @@
       "Game Dev with UE5",
       "Fast learner. Always."
     ],
-    "tagline": "From cables to code — IT infrastructure, software development and home automation, all at once."
+    "tagline": "From cables to code â IT infrastructure, software development and home automation, all at once."
   },
   "about": {
     "paragraphs": [
-      "I'm Tommaso, IT technician and developer near Milan. Started as an electrician — a year wiring real systems taught me to think in reliability, safety and structure. Now I work at <strong>MAST Srl</strong> on networks, firewalls and cybersecurity, while co-founding <strong>Easydomotica</strong>, a home-automation company I'm building with my business partner since March 2024.",
+      "I'm Tommaso, IT technician and developer near Milan. Started as an electrician â a year wiring real systems taught me to think in reliability, safety and structure. Now I work at <strong>MAST Srl</strong> on networks, firewalls and cybersecurity, while co-founding <strong>Easydomotica</strong>, a home-automation company I'm building with my business partner since March 2024.",
       "In the spare time that's left: a game in <strong>UE5</strong>, a self-hosted homelab with 20+ containers, and photography."
     ],
-    "skills_line": "Python · JS · Java · C# · C++ · Italian (native) · English (fluent)",
+    "skills_line": "Python Â· JS Â· Java Â· C# Â· C++ Â· Italian (native) Â· English (fluent)",
     "stats": [
-      { "num": "IT",  "label": "Networks & security @ MAST · Dec 2025" },
-      { "num": "CO",  "label": "Founder & CTO @ Easydomotica · Mar 2024" },
-      { "num": "1yr", "label": "Electrician — hands-on foundation" },
-      { "num": "20+", "label": "LXC containers in homelab" }
+      {
+        "num": "IT",
+        "label": "Networks & security @ MAST Â· Dec 2025"
+      },
+      {
+        "num": "CO",
+        "label": "Founder & CTO @ Easydomotica Â· Mar 2024"
+      },
+      {
+        "num": "1yr",
+        "label": "Electrician â hands-on foundation"
+      },
+      {
+        "num": "20+",
+        "label": "LXC containers in homelab"
+      }
     ]
   },
   "experience": [
     {
       "id": "mast",
-      "period": "Dec 2025 — Present",
+      "period": "Dec 2025 â Present",
       "role": "IT Technician",
-      "org": "MAST Srl — Soluzioni Informatiche",
-      "desc": "Helpdesk support, network installation and configuration, cybersecurity and firewall management. A bit of everything — from hardware troubleshooting to securing client infrastructures.",
+      "org": "MAST Srl â Soluzioni Informatiche",
+      "desc": "Helpdesk support, network installation and configuration, cybersecurity and firewall management. A bit of everything â from hardware troubleshooting to securing client infrastructures.",
       "active": true
     },
     {
       "id": "easydomotica",
-      "period": "March 2024 — Present",
+      "period": "March 2024 â Present",
       "role": "Co-Founder & Technical Director",
       "org": "Easydomotica",
       "desc": "Design and installation of home automation systems, CCTV, alarm systems and smart automations. I handle all the technical side together with my co-founder.",
@@ -57,70 +69,159 @@
       "id": "parnisari",
       "period": "~1 year",
       "role": "Electrician",
-      "org": "Massimo Parnisari — Angera (VA)",
+      "org": "Massimo Parnisari â Angera (VA)",
       "desc": "Residential and commercial electrical systems: installation, maintenance and compliance. The practical foundation everything else is built on.",
       "active": false
     }
   ],
   "skills": [
-    { "group": "Programming",        "tags": ["Python","JavaScript","Java","C#","C++","HTML/CSS"], "note": "// Give me a new language and I'll learn it.", "highlight": "cyan" },
-    { "group": "Networking & Security", "tags": ["LAN / WAN","Firewall","Cybersecurity","VPN","IT Support"] },
-    { "group": "Infrastructure",     "tags": ["Proxmox VE","Linux","Docker","Prometheus","Grafana","Wazuh"] },
-    { "group": "Tools & Platforms",  "tags": ["Git / GitHub","VS Code","Home Assistant","PM2","Node.js"] },
-    { "group": "Game Dev",           "tags": ["Unreal Engine 5","Blueprints","C++"], "highlight": "copper" },
-    { "group": "Languages",          "tags": ["Italian — native","English — fluent"], "highlight": "cyan" }
+    {
+      "group": "Programming",
+      "tags": [
+        "Python",
+        "JavaScript",
+        "Java",
+        "C#",
+        "C++",
+        "HTML/CSS"
+      ],
+      "note": "// Give me a new language and I'll learn it.",
+      "highlight": "cyan"
+    },
+    {
+      "group": "Networking & Security",
+      "tags": [
+        "LAN / WAN",
+        "Firewall",
+        "Cybersecurity",
+        "VPN",
+        "IT Support"
+      ]
+    },
+    {
+      "group": "Infrastructure",
+      "tags": [
+        "Proxmox VE",
+        "Linux",
+        "Docker",
+        "Prometheus",
+        "Grafana",
+        "Wazuh"
+      ]
+    },
+    {
+      "group": "Tools & Platforms",
+      "tags": [
+        "Git / GitHub",
+        "VS Code",
+        "Home Assistant",
+        "PM2",
+        "Node.js"
+      ]
+    },
+    {
+      "group": "Game Dev",
+      "tags": [
+        "Unreal Engine 5",
+        "Blueprints",
+        "C++"
+      ],
+      "highlight": "copper"
+    },
+    {
+      "group": "Languages",
+      "tags": [
+        "Italian â native",
+        "English â fluent"
+      ],
+      "highlight": "cyan"
+    }
   ],
   "projects": [
     {
       "id": "erp",
       "title": "Easydomotica ERP",
-      "desc": "Full-stack ERP built from scratch — CRM, inventory, quote builder with PDF, contracts, ticketing, internal chat and two client portals.",
-      "tags": ["React","Node.js","PostgreSQL"],
-      "badge": "live", "badge_label": "Live",
+      "desc": "Full-stack ERP built from scratch â CRM, inventory, quote builder with PDF, contracts, ticketing, internal chat and two client portals.",
+      "tags": [
+        "React",
+        "Node.js",
+        "PostgreSQL"
+      ],
+      "badge": "live",
+      "badge_label": "Live",
       "featured": true,
-      "link": "easydomotica.html#erp", "link_label": "Full breakdown →",
-      "private_label": "🔒 Private"
+      "link": "easydomotica.html#erp",
+      "link_label": "Full breakdown â",
+      "private_label": "ð Private"
     },
     {
       "id": "hass",
       "title": "HASS Integration",
-      "desc": "Custom HA integration via HACS — sidebar panel, SmartThings auto-reload, secure auth tied to HA's native system.",
-      "tags": ["Python","Home Assistant","HACS"],
-      "badge": "live", "badge_label": "v1.4.0",
-      "link": "easydomotica.html#hass", "link_label": "Details →",
-      "link2": "https://github.com/easydomotica/APP-HASS-Easydomotica", "link2_label": "GitHub →"
+      "desc": "Custom HA integration via HACS â sidebar panel, SmartThings auto-reload, secure auth tied to HA's native system.",
+      "tags": [
+        "Python",
+        "Home Assistant",
+        "HACS"
+      ],
+      "badge": "live",
+      "badge_label": "v1.4.0",
+      "link": "easydomotica.html#hass",
+      "link_label": "Details â",
+      "link2": "https://github.com/easydomotica/APP-HASS-Easydomotica",
+      "link2_label": "GitHub â"
     },
     {
       "id": "datacenter",
       "title": "Home Datacenter",
-      "desc": "20+ LXC containers on Proxmox — Grafana, Alertmanager, Wazuh SIEM, Plex, dual Pi-hole and Nginx reverse proxy.",
-      "tags": ["Proxmox","Prometheus","Wazuh"],
-      "badge": "live", "badge_label": "Running",
-      "private_label": "🔒 Private infra"
+      "desc": "20+ LXC containers on Proxmox â Grafana, Alertmanager, Wazuh SIEM, Plex, dual Pi-hole and Nginx reverse proxy.",
+      "tags": [
+        "Proxmox",
+        "Prometheus",
+        "Wazuh"
+      ],
+      "badge": "live",
+      "badge_label": "Running",
+      "private_label": "ð Private infra"
     },
     {
       "id": "game",
       "title": "UE5 Game [WIP]",
-      "desc": "A video game I'm making in my spare time. Massive work in progress — details coming as the project evolves.",
-      "tags": ["Unreal Engine 5","C++"],
-      "badge": "wip", "badge_label": "In dev",
-      "link": "game.html", "link_label": "Teaser page →"
+      "desc": "A video game I'm making in my spare time. Massive work in progress â details coming as the project evolves.",
+      "tags": [
+        "Unreal Engine 5",
+        "C++"
+      ],
+      "badge": "wip",
+      "badge_label": "In dev",
+      "link": "game.html",
+      "link_label": "Teaser page â"
     },
     {
       "id": "portfolio",
       "title": "This portfolio",
-      "desc": "Built from scratch — no frameworks. Custom cursor, scroll animations, dedicated pages per project.",
-      "tags": ["HTML","CSS","JS"],
-      "badge": "live", "badge_label": "You're here",
+      "desc": "Built from scratch â no frameworks. Custom cursor, scroll animations, dedicated pages per project.",
+      "tags": [
+        "HTML",
+        "CSS",
+        "JS"
+      ],
+      "badge": "live",
+      "badge_label": "You're here",
       "link": "https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io",
-      "link_label": "Source →", "link_external": true
+      "link_label": "Source â",
+      "link_external": true
     }
   ],
   "photography": [
     {
       "file": "img/photo_001.jpg",
       "alt": "Cable cars in the Dolomites, foggy mountains",
-      "caption": "Dolomiti · Alta Badia"
+      "caption": "Alpe di Siusi - Ortisei"
+    },
+    {
+      "file": "img/_mg_4333_1785074387902.webp",
+      "alt": " mg 4333",
+      "caption": "Col Alt - Corvara"
     }
   ]
 }
