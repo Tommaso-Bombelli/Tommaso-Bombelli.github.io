@@ -11,8 +11,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="no-subnav">
-
-<!-- NAV -->
 <nav class="nav" id="nav">
   <a href="index.html" class="nav__logo">TB<span>.</span></a>
   <div class="nav__links">
@@ -26,8 +24,6 @@
   <a href="index.html#contact" class="nav__cta">Contact</a>
   <button class="nav__mobile-btn" id="mobileBtn">☰</button>
 </nav>
-
-<!-- MOBILE MENU -->
 <div class="nav__mobile-menu" id="mobileMenu">
   <a href="index.html">← Back to portfolio</a>
   <a href="index.html#about">About</a>
@@ -36,38 +32,23 @@
   <a href="game.html">UE5 Game</a>
   <a href="index.html#contact">Contact</a>
 </div>
-
 <main>
 <section class="photo-page" id="hero" style="padding-top:calc(var(--nav-h) + 40px)">
   <p class="eyebrow" data-anim><span class="eyebrow__dot"></span>Photography</p>
   <h1 data-anim>Through<br>the lens.</h1>
-  <p style="font-size:16px;max-width:500px;margin-bottom:48px" data-anim data-delay="1">Landscapes, details and light — shooting is how I switch off from code. More shots coming soon.</p>
-
+  <p style="font-size:16px;max-width:500px;margin-bottom:48px;color:var(--text-muted)" data-anim data-delay="1">Landscapes, details and light — shooting is how I switch off from code. More shots coming soon.</p>
   <div class="gallery" id="gallery" data-anim data-delay="2">
-
-    <div class="gallery__item">
-      <img src="img/photo_001.jpg" alt="Cable cars in the Dolomites, foggy mountains" loading="lazy">
-      <div class="gallery__item__overlay">
-        <span class="gallery__item__caption">Dolomiti · Alta Badia</span>
-      </div>
+    <div class="gallery-empty">
+      <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="1.6"/><circle cx="24" cy="25" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M18 10l2-4h8l2 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <p>Loading gallery...</p>
     </div>
-
-    <!--
-      ADD MORE PHOTOS:
-      1. Compress to ~300-500 KB with squoosh.app
-      2. Upload to img/ folder on GitHub
-      3. Add a block like the one above
-    -->
-
   </div>
 </section>
 </main>
-
 <div class="lightbox" id="lightbox" role="dialog">
   <button class="lightbox__close" id="lightboxClose">✕</button>
   <img class="lightbox__img" id="lightboxImg" src="" alt="">
 </div>
-
 <footer class="footer">
   <span>© <span class="js-year"></span> Tommaso Bombelli</span>
   <div class="footer__links">
@@ -77,23 +58,7 @@
   </div>
   <span>Photography</span>
 </footer>
-
 <script src="script.js"></script>
-<script>
-const gallery=document.getElementById('gallery');
-const lightbox=document.getElementById('lightbox');
-const lbImg=document.getElementById('lightboxImg');
-const lbClose=document.getElementById('lightboxClose');
-gallery.addEventListener('click',e=>{
-  const img=e.target.closest('.gallery__item img');
-  if(!img)return;
-  lbImg.src=img.src; lbImg.alt=img.alt;
-  lightbox.classList.add('is-open'); document.body.style.overflow='hidden';
-});
-function closeLB(){ lightbox.classList.remove('is-open'); document.body.style.overflow=''; }
-lbClose.addEventListener('click',closeLB);
-lightbox.addEventListener('click',e=>{ if(e.target===lightbox)closeLB(); });
-document.addEventListener('keydown',e=>{ if(e.key==='Escape')closeLB(); });
-</script>
+<script src="site.js"></script>
 </body>
 </html>

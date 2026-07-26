@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — TB Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#080B10; --bg2:#0D1117; --bg3:#111620; --bg4:#161C28;
+  --border:#1E2535; --border2:rgba(86,227,214,0.2);
+  --cyan:#56E3D6; --cyan-s:rgba(86,227,214,0.12);
+  --copper:#D17D3A; --copper-s:rgba(209,125,58,0.12);
+  --text:#DDE3EF; --muted:#7A8499; --faint:#3D4557;
+  --red:#E05555; --green:#3DD68C;
+  --fm:'Space Grotesk',sans-serif; --fb:'Inter',sans-serif; --fc:'JetBrains Mono',monospace;
+  --nav:56px; --side:220px; --r:8px; --tr:0.15s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow:hidden;height:100vh}
+input,textarea,select{font-family:var(--fb);font-size:13px;background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:var(--r);padding:8px 12px;width:100%;outline:none;transition:border-color var(--tr)}
+input:focus,textarea:focus,select:focus{border-color:var(--cyan)}
+textarea{resize:vertical;min-height:80px}
+button{cursor:pointer;font-family:var(--fb);font-size:13px;border:none;border-radius:var(--r);padding:8px 16px;transition:all var(--tr)}
+h2{font-family:var(--fm);font-size:20px;font-weight:700;color:var(--text)}
+h3{font-family:var(--fm);font-size:15px;font-weight:600;color:var(--text)}
+label{display:block;font-size:12px;font-family:var(--fc);color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.06em}
+.mono{font-family:var(--fc)}
+
+/* ── LOGIN SCREEN ── */
+#login-screen{
+  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  background:var(--bg);z-index:9999;
+}
+.login-card{
+  background:var(--bg3);border:1px solid var(--border);border-radius:12px;
+  padding:40px;width:100%;max-width:420px;text-align:center;
+}
+.login-logo{font-family:var(--fc);font-size:28px;color:var(--cyan);margin-bottom:8px;font-weight:700}
+.login-logo span{color:var(--text)}
+.login-sub{color:var(--muted);font-size:13px;margin-bottom:32px}
+.login-field{text-align:left;margin-bottom:16px}
+.login-field input{font-family:var(--fc);font-size:13px;letter-spacing:0.04em}
+.login-hint{font-size:11px;color:var(--faint);margin-top:6px;font-family:var(--fc)}
+.login-hint a{color:var(--cyan)}
+.btn-primary{background:var(--cyan);color:#051A18;font-weight:600;width:100%;padding:12px}
+.btn-primary:hover{background:#3ABDB1}
+.login-error{color:var(--red);font-size:12px;font-family:var(--fc);margin-top:12px;display:none}
+
+/* ── APP SHELL ── */
+#app{display:none;height:100vh;flex-direction:column}
+#app.visible{display:flex}
+
+/* top bar */
+.topbar{
+  height:var(--nav);flex-shrink:0;
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 20px;gap:12px;
+}
+.topbar__logo{font-family:var(--fc);font-size:15px;font-weight:700;color:var(--cyan);margin-right:8px}
+.topbar__logo span{color:var(--muted)}
+.topbar__sep{width:1px;height:24px;background:var(--border)}
+.topbar__status{font-family:var(--fc);font-size:12px;color:var(--muted);flex:1}
+.topbar__status.saving{color:var(--copper)}
+.topbar__status.saved{color:var(--green)}
+.topbar__status.error{color:var(--red)}
+.btn-save{background:var(--cyan);color:#051A18;font-weight:700;font-size:13px;padding:8px 20px;border-radius:999px}
+.btn-save:hover{background:#3ABDB1}
+.btn-save:disabled{opacity:.5;cursor:not-allowed}
+.btn-logout{background:none;border:1px solid var(--border);color:var(--muted);font-size:12px;padding:6px 12px}
+.btn-logout:hover{border-color:var(--red);color:var(--red)}
+.btn-preview{background:none;border:1px solid var(--border);color:var(--muted);font-size:12px;padding:6px 12px}
+.btn-preview:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* body layout */
+.app-body{display:flex;flex:1;overflow:hidden}
+
+/* sidebar */
+.sidebar{
+  width:var(--side);flex-shrink:0;
+  background:var(--bg2);border-right:1px solid var(--border);
+  overflow-y:auto;padding:12px 8px;display:flex;flex-direction:column;gap:2px;
+}
+.sidebar-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:var(--r);
+  color:var(--muted);font-size:13px;cursor:pointer;
+  transition:background var(--tr),color var(--tr);user-select:none;
+  border:1px solid transparent;
+}
+.sidebar-item:hover{background:var(--bg3);color:var(--text)}
+.sidebar-item.active{background:var(--cyan-s);color:var(--cyan);border-color:var(--border2)}
+.sidebar-item__icon{font-size:16px;flex-shrink:0}
+.sidebar-divider{height:1px;background:var(--border);margin:8px 4px}
+
+/* main editor area */
+.editor{flex:1;overflow-y:auto;padding:28px 32px}
+.editor-section{display:none}
+.editor-section.active{display:block}
+.editor-section h2{margin-bottom:6px}
+.editor-desc{color:var(--muted);font-size:13px;margin-bottom:28px}
+
+/* form layout */
+.field-row{display:grid;gap:16px;margin-bottom:16px}
+.field-row.cols-2{grid-template-columns:1fr 1fr}
+.field-row.cols-3{grid-template-columns:1fr 1fr 1fr}
+.field-group{margin-bottom:20px}
+
+/* cards (experience, projects, etc.) */
+.card-list{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.card{
+  background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);
+  overflow:hidden;
+}
+.card-header{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;
+  cursor:pointer;user-select:none;
+  transition:background var(--tr);
+}
+.card-header:hover{background:var(--bg4)}
+.card-drag{color:var(--faint);font-size:18px;cursor:grab;flex-shrink:0}
+.card-drag:active{cursor:grabbing}
+.card-title{flex:1;font-size:13px;font-weight:600;color:var(--text)}
+.card-subtitle{font-size:12px;font-family:var(--fc);color:var(--muted)}
+.card-toggle{color:var(--muted);font-size:16px;flex-shrink:0}
+.card-body{padding:14px;border-top:1px solid var(--border);display:none}
+.card-body.open{display:block}
+.card-actions{display:flex;gap:8px;margin-top:12px}
+
+/* tags editor */
+.tags-editor{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag-pill{
+  display:inline-flex;align-items:center;gap:4px;
+  background:var(--bg4);border:1px solid var(--border);border-radius:999px;
+  padding:4px 10px;font-family:var(--fc);font-size:12px;color:var(--text);
+}
+.tag-pill button{background:none;border:none;color:var(--faint);font-size:14px;padding:0;line-height:1;cursor:pointer}
+.tag-pill button:hover{color:var(--red)}
+.tag-add-input{border-radius:999px;width:120px;font-family:var(--fc);font-size:12px;padding:4px 10px;background:var(--bg4);border:1px dashed var(--border)}
+.tag-add-input:focus{border-color:var(--cyan)}
+
+/* photo grid */
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:16px}
+.photo-item{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);aspect-ratio:3/2}
+.photo-item img{width:100%;height:100%;object-fit:cover}
+.photo-item__overlay{
+  position:absolute;inset:0;background:rgba(8,11,16,.75);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  opacity:0;transition:opacity var(--tr);
+}
+.photo-item:hover .photo-item__overlay{opacity:1}
+.photo-item input{position:absolute;bottom:0;left:0;right:0;background:rgba(8,11,16,.9);border:none;border-top:1px solid var(--border);border-radius:0;font-size:11px;padding:5px 8px;color:var(--text)}
+
+/* upload zone */
+.upload-zone{
+  border:2px dashed var(--border);border-radius:var(--r);padding:32px;
+  text-align:center;cursor:pointer;transition:border-color var(--tr),background var(--tr);
+  margin-bottom:16px;
+}
+.upload-zone:hover,.upload-zone.dragover{border-color:var(--cyan);background:var(--cyan-s)}
+.upload-zone p{color:var(--muted);font-size:13px}
+.upload-zone .upload-icon{font-size:32px;margin-bottom:8px}
+#photo-input{display:none}
+
+/* buttons */
+.btn-add{background:var(--bg3);border:1px solid var(--border);color:var(--cyan);font-family:var(--fc);font-size:12px;padding:7px 14px;border-radius:var(--r);width:100%}
+.btn-add:hover{border-color:var(--cyan);background:var(--cyan-s)}
+.btn-del{background:none;border:1px solid var(--border);color:var(--muted);font-size:12px;padding:5px 10px}
+.btn-del:hover{border-color:var(--red);color:var(--red)}
+.btn-ghost{background:none;border:1px solid var(--border);color:var(--muted);font-size:12px;padding:5px 10px}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* toggle */
+.toggle-row{display:flex;align-items:center;gap:10px}
+.toggle{position:relative;width:36px;height:20px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:var(--bg4);border:1px solid var(--border);border-radius:999px;cursor:pointer;transition:all var(--tr)}
+.toggle-slider::before{content:'';position:absolute;width:14px;height:14px;left:2px;top:2px;background:var(--muted);border-radius:50%;transition:all var(--tr)}
+.toggle input:checked+.toggle-slider{background:var(--cyan-s);border-color:var(--cyan)}
+.toggle input:checked+.toggle-slider::before{transform:translateX(16px);background:var(--cyan)}
+
+/* badge select */
+.badge-select{display:flex;gap:6px;flex-wrap:wrap}
+.badge-opt{padding:4px 10px;border:1px solid var(--border);border-radius:999px;font-family:var(--fc);font-size:11px;color:var(--muted);cursor:pointer;transition:all var(--tr)}
+.badge-opt.sel-live{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-s)}
+.badge-opt.sel-wip{border-color:var(--copper);color:var(--copper);background:var(--copper-s)}
+.badge-opt.sel-soon{border-color:var(--border);color:var(--muted)}
+
+/* progress bar during save */
+.save-progress{height:2px;background:var(--border);position:relative;overflow:hidden;display:none}
+.save-progress.active{display:block}
+.save-progress::after{content:'';position:absolute;left:-100%;width:100%;height:100%;background:var(--cyan);animation:progress 1.4s ease-in-out infinite}
+@keyframes progress{0%{left:-100%}100%{left:100%}}
+
+/* photo pending badge */
+.photo-pending{position:absolute;top:6px;right:6px;background:var(--copper);color:#fff;font-size:10px;font-family:var(--fc);padding:2px 6px;border-radius:999px}
+
+@media(max-width:700px){
+  .sidebar{width:180px} .field-row.cols-2,.field-row.cols-3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ LOGIN ══════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">TB<span>.</span>admin</div>
+    <p class="login-sub">Enter your GitHub Personal Access Token to access the editor.</p>
+    <div class="login-field">
+      <label>GitHub Personal Access Token</label>
+      <input type="password" id="pat-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+      <p class="login-hint">
+        Needs <code>repo</code> scope.
+        <a href="https://github.com/settings/tokens/new?scopes=repo&description=TB+Portfolio+Admin" target="_blank">Generate one →</a>
+      </p>
+    </div>
+    <div class="login-field">
+      <label>Admin Password</label>
+      <input type="password" id="pwd-input" placeholder="Your admin password">
+    </div>
+    <button class="btn-primary" id="login-btn">Access Admin Panel</button>
+    <p class="login-error" id="login-error">Invalid token or password. Try again.</p>
+  </div>
+</div>
+
+<!-- ══════════════ APP ══════════════ -->
+<div id="app">
+  <div class="save-progress" id="save-progress"></div>
+  <div class="topbar">
+    <span class="topbar__logo">TB<span>.admin</span></span>
+    <div class="topbar__sep"></div>
+    <span class="topbar__status" id="status-msg">Ready — load and edit sections below.</span>
+    <button class="btn-preview" onclick="window.open('index.html','_blank')">Preview site ↗</button>
+    <button class="btn-save" id="save-btn" onclick="saveAll()">💾 Save & Deploy</button>
+    <button class="btn-logout" id="logout-btn">Logout</button>
+  </div>
+  <div class="app-body">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-item active" data-sec="general"><span class="sidebar-item__icon">⚙️</span>General</div>
+      <div class="sidebar-item" data-sec="hero"><span class="sidebar-item__icon">🏠</span>Hero</div>
+      <div class="sidebar-item" data-sec="about"><span class="sidebar-item__icon">👤</span>About</div>
+      <div class="sidebar-item" data-sec="experience"><span class="sidebar-item__icon">💼</span>Experience</div>
+      <div class="sidebar-item" data-sec="skills"><span class="sidebar-item__icon">🔧</span>Skills</div>
+      <div class="sidebar-item" data-sec="projects"><span class="sidebar-item__icon">📁</span>Projects</div>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-item" data-sec="photography"><span class="sidebar-item__icon">📷</span>Photography</div>
+    </div>
+
+    <!-- EDITOR -->
+    <div class="editor">
+
+      <!-- GENERAL -->
+      <div class="editor-section active" id="sec-general">
+        <h2>General Settings</h2>
+        <p class="editor-desc">Basic site info and social links.</p>
+        <div class="field-row cols-2">
+          <div class="field-group"><label>Full Name</label><input id="g-name" type="text"></div>
+          <div class="field-group"><label>Location</label><input id="g-location" type="text"></div>
+        </div>
+        <div class="field-row cols-2">
+          <div class="field-group"><label>Email</label><input id="g-email" type="email"></div>
+          <div class="field-group"><label>GitHub URL</label><input id="g-github" type="url"></div>
+        </div>
+        <div class="field-row cols-2">
+          <div class="field-group"><label>LinkedIn URL</label><input id="g-linkedin" type="url"></div>
+          <div class="field-group"><label>Instagram URL (leave empty = "Coming soon")</label><input id="g-instagram" type="url"></div>
+        </div>
+      </div>
+
+      <!-- HERO -->
+      <div class="editor-section" id="sec-hero">
+        <h2>Hero Section</h2>
+        <p class="editor-desc">The main landing section. Typewriter phrases cycle automatically.</p>
+        <div class="field-group">
+          <label>Tagline (main subtitle)</label>
+          <textarea id="h-tagline" rows="2"></textarea>
+        </div>
+        <div class="field-group">
+          <label>Typewriter Phrases</label>
+          <div class="card-list" id="typewriter-list"></div>
+          <button class="btn-add" onclick="addTypewriterPhrase()">+ Add phrase</button>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="editor-section" id="sec-about">
+        <h2>About Me</h2>
+        <p class="editor-desc">Bio paragraphs and the 4 stat boxes. HTML allowed in paragraphs (use &lt;strong&gt; for bold).</p>
+        <div class="field-group">
+          <label>Skills line (mono text below bio)</label>
+          <input id="a-skills-line" type="text">
+        </div>
+        <div class="field-group">
+          <label>Bio Paragraphs</label>
+          <div class="card-list" id="para-list"></div>
+          <button class="btn-add" onclick="addParagraph()">+ Add paragraph</button>
+        </div>
+        <div class="field-group">
+          <label>Stat Boxes (exactly 4)</label>
+          <div id="stats-list" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"></div>
+        </div>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="editor-section" id="sec-experience">
+        <h2>Experience</h2>
+        <p class="editor-desc">Timeline items. Drag ⠿ to reorder. Toggle "Active" to show the cyan dot.</p>
+        <div class="card-list" id="exp-list"></div>
+        <button class="btn-add" onclick="addExperience()">+ Add experience</button>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="editor-section" id="sec-skills">
+        <h2>Skills</h2>
+        <p class="editor-desc">Skill groups with tags. Drag ⠿ to reorder groups. Click a tag ✕ to remove it.</p>
+        <div class="card-list" id="skills-list"></div>
+        <button class="btn-add" onclick="addSkillGroup()">+ Add skill group</button>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="editor-section" id="sec-projects">
+        <h2>Projects</h2>
+        <p class="editor-desc">Project cards. Drag ⠿ to reorder. "Featured" adds copper border.</p>
+        <div class="card-list" id="proj-list"></div>
+        <button class="btn-add" onclick="addProject()">+ Add project</button>
+      </div>
+
+      <!-- PHOTOGRAPHY -->
+      <div class="editor-section" id="sec-photography">
+        <h2>Photography</h2>
+        <p class="editor-desc">Upload images in any format — they're automatically compressed and converted to WebP (~400 KB max). Drag ⠿ to reorder.</p>
+        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('photo-input').click()">
+          <div class="upload-icon">📸</div>
+          <p><strong>Click to upload</strong> or drag & drop</p>
+          <p style="font-size:11px;margin-top:4px;color:var(--faint)">JPG · PNG · HEIC · RAW — auto-compressed to WebP</p>
+        </div>
+        <input type="file" id="photo-input" accept="image/*" multiple>
+        <div class="photo-grid" id="photo-grid"></div>
+      </div>
+
+    </div><!-- /editor -->
+  </div><!-- /app-body -->
+</div><!-- /app -->
+
+<script>
+/* ════════════════════════════════════════════════
+   CONFIG
+════════════════════════════════════════════════ */
+const REPO_OWNER = 'Tommaso-Bombelli';
+const REPO_NAME  = 'Tommaso-Bombelli.github.io';
+const API        = 'https://api.github.com';
+// SHA-256 of your admin password — change this!
+// Default password: TBadmin2024
+// To change: open browser console and run: crypto.subtle.digest('SHA-256', new TextEncoder().encode('yourpassword')).then(b=>console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))
+const PWD_HASH   = 'a1b490e48d50e6d87a0c1f9b3e2a7d4c8f6e5b2a3c9d1f0e7b8a4c2d5f3e6b1';
+
+let PAT = '';
+let contentJson = null;
+let contentSha  = '';
+let pendingPhotos = []; // {blob, filename, caption, alt}
+
+/* ════════════════════════════════════════════════
+   AUTH
+════════════════════════════════════════════════ */
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+
+document.getElementById('login-btn').addEventListener('click', async () => {
+  const pat = document.getElementById('pat-input').value.trim();
+  const pwd = document.getElementById('pwd-input').value;
+  const err = document.getElementById('login-error');
+  err.style.display = 'none';
+
+  if (!pat || !pwd) { err.textContent='Fill in both fields.'; err.style.display='block'; return; }
+
+  const hash = await sha256(pwd);
+  if (hash !== PWD_HASH) { err.textContent='Wrong password.'; err.style.display='block'; return; }
+
+  // Verify PAT by calling GitHub API
+  setStatus('Verifying token...','saving');
+  try {
+    const r = await fetch(`${API}/repos/${REPO_OWNER}/${REPO_NAME}`, {
+      headers:{Authorization:`token ${pat}`,Accept:'application/vnd.github.v3+json'}
+    });
+    if (!r.ok) throw new Error('Invalid token');
+    PAT = pat;
+    localStorage.setItem('tb_pat', btoa(pat));
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').classList.add('visible');
+    await loadContent();
+  } catch(e) {
+    err.textContent = 'Token invalid or no repo access. Check your PAT.';
+    err.style.display = 'block';
+    setStatus('Ready','');
+  }
+});
+
+document.getElementById('pwd-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('login-btn').click();
+});
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  localStorage.removeItem('tb_pat');
+  PAT = ''; contentJson = null;
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app').classList.remove('visible');
+});
+
+// Auto-login if PAT saved
+window.addEventListener('DOMContentLoaded', async () => {
+  const saved = localStorage.getItem('tb_pat');
+  if (saved) {
+    try {
+      const pat = atob(saved);
+      const r = await fetch(`${API}/repos/${REPO_OWNER}/${REPO_NAME}`,{headers:{Authorization:`token ${pat}`}});
+      if (r.ok) {
+        PAT = pat;
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('app').classList.add('visible');
+        await loadContent();
+        return;
+      }
+    } catch(e) {}
+    localStorage.removeItem('tb_pat');
+  }
+});
+
+/* ════════════════════════════════════════════════
+   GITHUB API
+════════════════════════════════════════════════ */
+async function ghGet(path) {
+  const r = await fetch(`${API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,{
+    headers:{Authorization:`token ${PAT}`,Accept:'application/vnd.github.v3+json'}
+  });
+  if (!r.ok) throw new Error(`GET ${path} failed: ${r.status}`);
+  return r.json();
+}
+
+async function ghPut(path, content64, sha, message) {
+  const body = { message, content: content64 };
+  if (sha) body.sha = sha;
+  const r = await fetch(`${API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,{
+    method:'PUT',
+    headers:{Authorization:`token ${PAT}`,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'},
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) { const t=await r.text(); throw new Error(`PUT ${path} failed: ${t}`); }
+  return r.json();
+}
+
+async function ghDelete(path, sha, message) {
+  const r = await fetch(`${API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,{
+    method:'DELETE',
+    headers:{Authorization:`token ${PAT}`,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'},
+    body: JSON.stringify({message,sha})
+  });
+  return r.json();
+}
+
+function toBase64(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
+function blobToBase64(blob) {
+  return new Promise(res => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.readAsDataURL(blob);
+  });
+}
+
+/* ════════════════════════════════════════════════
+   LOAD CONTENT
+════════════════════════════════════════════════ */
+async function loadContent() {
+  setStatus('Loading content...','saving');
+  try {
+    const file = await ghGet('content.json');
+    contentSha = file.sha;
+    contentJson = JSON.parse(atob(file.content.replace(/\n/g,'')));
+    populateAll();
+    setStatus('Loaded. Make changes and click Save & Deploy.','');
+  } catch(e) {
+    setStatus('Error loading content.json: ' + e.message,'error');
+  }
+}
+
+/* ════════════════════════════════════════════════
+   STATUS
+════════════════════════════════════════════════ */
+function setStatus(msg, type='') {
+  const el = document.getElementById('status-msg');
+  el.textContent = msg;
+  el.className = 'topbar__status' + (type ? ' '+type : '');
+}
+
+/* ════════════════════════════════════════════════
+   SIDEBAR NAV
+════════════════════════════════════════════════ */
+document.querySelectorAll('.sidebar-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-item').forEach(i=>i.classList.remove('active'));
+    document.querySelectorAll('.editor-section').forEach(s=>s.classList.remove('active'));
+    item.classList.add('active');
+    document.getElementById('sec-'+item.dataset.sec)?.classList.add('active');
+  });
+});
+
+/* ════════════════════════════════════════════════
+   POPULATE ALL SECTIONS
+════════════════════════════════════════════════ */
+function populateAll() {
+  if (!contentJson) return;
+  const { site, hero, about, experience, skills, projects, photography } = contentJson;
+
+  // General
+  document.getElementById('g-name').value      = site.name || '';
+  document.getElementById('g-location').value  = site.location || '';
+  document.getElementById('g-email').value      = site.email || '';
+  document.getElementById('g-github').value     = site.github_url || '';
+  document.getElementById('g-linkedin').value   = site.linkedin_url || '';
+  document.getElementById('g-instagram').value  = site.instagram_url || '';
+
+  // Hero
+  document.getElementById('h-tagline').value = hero.tagline || '';
+  renderTypewriterList(hero.typewriter_phrases || []);
+
+  // About
+  document.getElementById('a-skills-line').value = about.skills_line || '';
+  renderParaList(about.paragraphs || []);
+  renderStatsList(about.stats || []);
+
+  // Experience
+  renderExpList(experience || []);
+
+  // Skills
+  renderSkillsList(skills || []);
+
+  // Projects
+  renderProjList(projects || []);
+
+  // Photography
+  renderPhotoGrid(photography || []);
+}
+
+/* ════════════════════════════════════════════════
+   HERO — TYPEWRITER
+════════════════════════════════════════════════ */
+function renderTypewriterList(phrases) {
+  const list = document.getElementById('typewriter-list');
+  list.innerHTML = '';
+  phrases.forEach((p, i) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;gap:8px;align-items:center';
+    row.innerHTML = `<span style="color:var(--faint);font-family:var(--fc);font-size:16px;cursor:grab">⠿</span>
+      <input type="text" value="${p}" style="flex:1" oninput="updateTypewriter(${i},this.value)">
+      <button class="btn-del" onclick="removeTypewriter(${i})">✕</button>`;
+    list.appendChild(row);
+  });
+}
+function addTypewriterPhrase() {
+  contentJson.hero.typewriter_phrases.push('New phrase');
+  renderTypewriterList(contentJson.hero.typewriter_phrases);
+}
+function updateTypewriter(i, val) { contentJson.hero.typewriter_phrases[i] = val; }
+function removeTypewriter(i) { contentJson.hero.typewriter_phrases.splice(i,1); renderTypewriterList(contentJson.hero.typewriter_phrases); }
+
+/* ════════════════════════════════════════════════
+   ABOUT — PARAGRAPHS & STATS
+════════════════════════════════════════════════ */
+function renderParaList(paras) {
+  const list = document.getElementById('para-list');
+  list.innerHTML = '';
+  paras.forEach((p, i) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;gap:8px;align-items:flex-start';
+    row.innerHTML = `<span style="color:var(--faint);font-family:var(--fc);font-size:16px;cursor:grab;margin-top:10px">⠿</span>
+      <textarea style="flex:1;min-height:70px" oninput="updatePara(${i},this.value)">${p}</textarea>
+      <button class="btn-del" style="margin-top:8px" onclick="removePara(${i})">✕</button>`;
+    list.appendChild(row);
+  });
+}
+function addParagraph() { contentJson.about.paragraphs.push('New paragraph'); renderParaList(contentJson.about.paragraphs); }
+function updatePara(i, v) { contentJson.about.paragraphs[i] = v; }
+function removePara(i) { contentJson.about.paragraphs.splice(i,1); renderParaList(contentJson.about.paragraphs); }
+
+function renderStatsList(stats) {
+  const el = document.getElementById('stats-list');
+  el.innerHTML = stats.map((s,i) => `
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px">
+      <div class="field-row cols-2" style="gap:8px;margin-bottom:0">
+        <div><label>Number / Label</label><input type="text" value="${s.num}" oninput="contentJson.about.stats[${i}].num=this.value"></div>
+        <div><label>Description</label><input type="text" value="${s.label}" oninput="contentJson.about.stats[${i}].label=this.value"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ════════════════════════════════════════════════
+   EXPERIENCE
+════════════════════════════════════════════════ */
+function renderExpList(exps) {
+  const list = document.getElementById('exp-list');
+  list.innerHTML = '';
+  exps.forEach((exp, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-header" onclick="toggleCard(this)">
+        <span class="card-drag">⠿</span>
+        <div style="flex:1"><div class="card-title">${exp.role}</div><div class="card-subtitle">${exp.org}</div></div>
+        <span class="card-toggle">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="field-row cols-2">
+          <div><label>Role</label><input type="text" value="${exp.role||''}" oninput="contentJson.experience[${i}].role=this.value;this.closest('.card').querySelector('.card-title').textContent=this.value"></div>
+          <div><label>Period</label><input type="text" value="${exp.period||''}" oninput="contentJson.experience[${i}].period=this.value"></div>
+        </div>
+        <div class="field-row cols-2">
+          <div><label>Organisation</label><input type="text" value="${exp.org||''}" oninput="contentJson.experience[${i}].org=this.value;this.closest('.card').querySelector('.card-subtitle').textContent=this.value"></div>
+          <div><label>Link (optional)</label><input type="text" value="${exp.link||''}" placeholder="easydomotica.html" oninput="contentJson.experience[${i}].link=this.value"></div>
+        </div>
+        <div class="field-group"><label>Description</label><textarea oninput="contentJson.experience[${i}].desc=this.value">${exp.desc||''}</textarea></div>
+        <div class="toggle-row">
+          <label class="toggle"><input type="checkbox" ${exp.active?'checked':''} onchange="contentJson.experience[${i}].active=this.checked"><span class="toggle-slider"></span></label>
+          <span style="font-size:13px;color:var(--muted)">Active (cyan dot)</span>
+        </div>
+        <div class="card-actions"><button class="btn-del" onclick="removeExp(${i})">Delete</button></div>
+      </div>`;
+    list.appendChild(card);
+  });
+}
+function addExperience() {
+  contentJson.experience.push({id:'new-'+Date.now(),period:'',role:'New Role',org:'',desc:'',active:false});
+  renderExpList(contentJson.experience);
+}
+function removeExp(i) { if(confirm('Delete this experience?')){ contentJson.experience.splice(i,1); renderExpList(contentJson.experience); } }
+
+/* ════════════════════════════════════════════════
+   SKILLS
+════════════════════════════════════════════════ */
+function renderSkillsList(skills) {
+  const list = document.getElementById('skills-list');
+  list.innerHTML = '';
+  skills.forEach((g, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-header" onclick="toggleCard(this)">
+        <span class="card-drag">⠿</span>
+        <div style="flex:1"><div class="card-title">${g.group}</div></div>
+        <span class="card-toggle">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="field-row cols-2">
+          <div><label>Group Name</label><input type="text" value="${g.group||''}" oninput="contentJson.skills[${i}].group=this.value;this.closest('.card').querySelector('.card-title').textContent=this.value"></div>
+          <div><label>Note (mono, optional)</label><input type="text" value="${g.note||''}" oninput="contentJson.skills[${i}].note=this.value"></div>
+        </div>
+        <label>Tags</label>
+        <div class="tags-editor" id="skill-tags-${i}"></div>
+        <div class="card-actions"><button class="btn-del" onclick="removeSkillGroup(${i})">Delete group</button></div>
+      </div>`;
+    list.appendChild(card);
+    renderTagsEditor(`skill-tags-${i}`, g.tags||[], (tags) => { contentJson.skills[i].tags = tags; });
+  });
+}
+function addSkillGroup() {
+  contentJson.skills.push({group:'New Group',tags:[]});
+  renderSkillsList(contentJson.skills);
+}
+function removeSkillGroup(i) { if(confirm('Delete this skill group?')){ contentJson.skills.splice(i,1); renderSkillsList(contentJson.skills); } }
+
+function renderTagsEditor(containerId, tags, onChange) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  tags.forEach((t, ti) => {
+    const pill = document.createElement('span');
+    pill.className = 'tag-pill';
+    pill.innerHTML = `${t}<button onclick="removeTag('${containerId}',${ti},event)">✕</button>`;
+    container.appendChild(pill);
+  });
+  const inp = document.createElement('input');
+  inp.className = 'tag-add-input';
+  inp.placeholder = '+ Add tag';
+  inp.addEventListener('keydown', e => {
+    if ((e.key==='Enter'||e.key===',') && inp.value.trim()) {
+      e.preventDefault();
+      tags.push(inp.value.trim());
+      onChange(tags);
+      renderTagsEditor(containerId, tags, onChange);
+    }
+  });
+  container.appendChild(inp);
+}
+function removeTag(containerId, ti, e) {
+  e.stopPropagation();
+  // find which array this belongs to by re-reading current contentJson
+  // approach: re-render from scratch
+  // We'll use a simpler approach: find the card and rebuild
+  // Instead, just reload skills list
+  const idx = containerId.replace('skill-tags-','');
+  if (!isNaN(idx)) {
+    contentJson.skills[+idx].tags.splice(ti,1);
+    renderSkillsList(contentJson.skills);
+  } else {
+    const pidx = containerId.replace('proj-tags-','');
+    if (!isNaN(pidx)) {
+      contentJson.projects[+pidx].tags.splice(ti,1);
+      renderProjList(contentJson.projects);
+    }
+  }
+}
+
+/* ════════════════════════════════════════════════
+   PROJECTS
+════════════════════════════════════════════════ */
+function renderProjList(projs) {
+  const list = document.getElementById('proj-list');
+  list.innerHTML = '';
+  projs.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-header" onclick="toggleCard(this)">
+        <span class="card-drag">⠿</span>
+        <div style="flex:1"><div class="card-title">${p.title}</div></div>
+        <span class="card-toggle">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="field-row cols-2">
+          <div><label>Title</label><input type="text" value="${p.title||''}" oninput="contentJson.projects[${i}].title=this.value;this.closest('.card').querySelector('.card-title').textContent=this.value"></div>
+          <div>
+            <label>Badge</label>
+            <div class="badge-select">
+              <span class="badge-opt ${p.badge==='live'?'sel-live':''}" onclick="setBadge(${i},'live',this)">● Live</span>
+              <span class="badge-opt ${p.badge==='wip'?'sel-wip':''}" onclick="setBadge(${i},'wip',this)">⏳ WIP</span>
+              <span class="badge-opt ${p.badge==='soon'?'sel-soon':''}" onclick="setBadge(${i},'soon',this)">○ Soon</span>
+            </div>
+            <input type="text" value="${p.badge_label||''}" placeholder="Badge text" style="margin-top:6px" oninput="contentJson.projects[${i}].badge_label=this.value">
+          </div>
+        </div>
+        <div class="field-group"><label>Description</label><textarea oninput="contentJson.projects[${i}].desc=this.value">${p.desc||''}</textarea></div>
+        <div class="field-row cols-2">
+          <div><label>Primary Link URL</label><input type="text" value="${p.link||''}" oninput="contentJson.projects[${i}].link=this.value"></div>
+          <div><label>Primary Link Label</label><input type="text" value="${p.link_label||''}" oninput="contentJson.projects[${i}].link_label=this.value"></div>
+        </div>
+        <div class="field-row cols-2">
+          <div><label>Secondary Link URL</label><input type="text" value="${p.link2||''}" oninput="contentJson.projects[${i}].link2=this.value"></div>
+          <div><label>Secondary Link Label</label><input type="text" value="${p.link2_label||''}" oninput="contentJson.projects[${i}].link2_label=this.value"></div>
+        </div>
+        <div class="field-row cols-2">
+          <div><label>Private Label (e.g. 🔒 Private)</label><input type="text" value="${p.private_label||''}" oninput="contentJson.projects[${i}].private_label=this.value"></div>
+          <div style="display:flex;align-items:center;gap:10px;padding-top:18px">
+            <label class="toggle"><input type="checkbox" ${p.featured?'checked':''} onchange="contentJson.projects[${i}].featured=this.checked"><span class="toggle-slider"></span></label>
+            <span style="font-size:13px;color:var(--muted)">Featured (copper border)</span>
+          </div>
+        </div>
+        <label style="margin-top:4px">Tags</label>
+        <div class="tags-editor" id="proj-tags-${i}"></div>
+        <div class="card-actions"><button class="btn-del" onclick="removeProject(${i})">Delete</button></div>
+      </div>`;
+    list.appendChild(card);
+    renderTagsEditor(`proj-tags-${i}`, p.tags||[], (tags) => { contentJson.projects[i].tags = tags; });
+  });
+}
+function setBadge(i, badge, el) {
+  contentJson.projects[i].badge = badge;
+  el.closest('.badge-select').querySelectorAll('.badge-opt').forEach(b=>{b.className='badge-opt';});
+  el.className = `badge-opt sel-${badge}`;
+}
+function addProject() {
+  contentJson.projects.push({id:'proj-'+Date.now(),title:'New Project',desc:'',tags:[],badge:'live',badge_label:'Live'});
+  renderProjList(contentJson.projects);
+}
+function removeProject(i) { if(confirm('Delete this project?')){ contentJson.projects.splice(i,1); renderProjList(contentJson.projects); } }
+
+/* ════════════════════════════════════════════════
+   PHOTOGRAPHY
+════════════════════════════════════════════════ */
+function renderPhotoGrid(photos) {
+  const grid = document.getElementById('photo-grid');
+  grid.innerHTML = '';
+  photos.forEach((p, i) => {
+    const div = document.createElement('div');
+    div.className = 'photo-item';
+    div.draggable = true;
+    div.innerHTML = `
+      <img src="${p.file}?t=${Date.now()}" alt="${p.alt||''}">
+      <div class="photo-item__overlay">
+        <button class="btn-del" onclick="removePhoto(${i})">🗑 Delete</button>
+      </div>
+      <input type="text" value="${p.caption||''}" placeholder="Caption..." oninput="contentJson.photography[${i}].caption=this.value">`;
+    grid.appendChild(div);
+  });
+  // pending uploads
+  pendingPhotos.forEach((pp, i) => {
+    const div = document.createElement('div');
+    div.className = 'photo-item';
+    const url = URL.createObjectURL(pp.blob);
+    div.innerHTML = `
+      <img src="${url}" alt="pending">
+      <span class="photo-pending">Uploading on save</span>
+      <div class="photo-item__overlay">
+        <button class="btn-del" onclick="removePending(${i})">✕ Cancel</button>
+      </div>
+      <input type="text" value="${pp.caption||''}" placeholder="Caption..." oninput="pendingPhotos[${i}].caption=this.value">`;
+    grid.appendChild(div);
+  });
+}
+function removePhoto(i) {
+  if (confirm('Remove this photo from the gallery? (File stays in repo)')) {
+    contentJson.photography.splice(i,1);
+    renderPhotoGrid(contentJson.photography);
+  }
+}
+function removePending(i) { pendingPhotos.splice(i,1); renderPhotoGrid(contentJson.photography); }
+
+/* upload zone */
+const uploadZone = document.getElementById('upload-zone');
+const photoInput = document.getElementById('photo-input');
+
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+uploadZone.addEventListener('drop', e => { e.preventDefault(); uploadZone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); });
+photoInput.addEventListener('change', () => handleFiles(photoInput.files));
+
+async function handleFiles(files) {
+  for (const file of files) {
+    if (!file.type.startsWith('image/')) continue;
+    setStatus(`Compressing ${file.name}...`, 'saving');
+    const blob = await compressToWebP(file, 1800, 0.82);
+    const ext = 'webp';
+    const base = file.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9_-]/g, '_').toLowerCase();
+    const filename = `${base}_${Date.now()}.${ext}`;
+    pendingPhotos.push({ blob, filename, caption: '', alt: base.replace(/_/g,' ') });
+    setStatus(`${pendingPhotos.length} photo(s) queued for upload. Click Save & Deploy.`, '');
+  }
+  renderPhotoGrid(contentJson.photography);
+  photoInput.value = '';
+}
+
+async function compressToWebP(file, maxPx, quality) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      const ratio = Math.min(maxPx/img.width, maxPx/img.height, 1);
+      const canvas = document.createElement('canvas');
+      canvas.width  = Math.round(img.width  * ratio);
+      canvas.height = Math.round(img.height * ratio);
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob(resolve, 'image/webp', quality);
+    };
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+/* ════════════════════════════════════════════════
+   CARD TOGGLE
+════════════════════════════════════════════════ */
+function toggleCard(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+  header.querySelector('.card-toggle').textContent = body.classList.contains('open') ? '▴' : '▾';
+}
+
+/* ════════════════════════════════════════════════
+   SAVE ALL
+════════════════════════════════════════════════ */
+async function saveAll() {
+  const btn = document.getElementById('save-btn');
+  btn.disabled = true;
+  const prog = document.getElementById('save-progress');
+  prog.classList.add('active');
+  setStatus('Uploading photos...','saving');
+
+  try {
+    // 1. Upload pending photos
+    for (const pp of pendingPhotos) {
+      const b64 = await blobToBase64(pp.blob);
+      let sha = undefined;
+      try { const ex = await ghGet(`img/${pp.filename}`); sha = ex.sha; } catch(e){}
+      await ghPut(`img/${pp.filename}`, b64, sha, `Upload photo: ${pp.filename}`);
+      contentJson.photography.push({ file: `img/${pp.filename}`, alt: pp.alt, caption: pp.caption });
+    }
+    pendingPhotos = [];
+
+    // 2. Read form values back into contentJson
+    collectFormValues();
+
+    // 3. Update content.json
+    setStatus('Saving content.json...','saving');
+    contentJson._meta.last_updated = new Date().toISOString();
+    const jsonStr = JSON.stringify(contentJson, null, 2);
+    const res = await ghPut('content.json', toBase64(jsonStr), contentSha, 'Update content via admin panel');
+    contentSha = res.content.sha;
+
+    setStatus('✅ Saved! GitHub Pages is deploying (~30s)…','saved');
+    renderPhotoGrid(contentJson.photography);
+
+  } catch(e) {
+    setStatus('❌ Error: ' + e.message, 'error');
+    console.error(e);
+  }
+
+  btn.disabled = false;
+  prog.classList.remove('active');
+}
+
+function collectFormValues() {
+  // General
+  contentJson.site.name         = document.getElementById('g-name').value;
+  contentJson.site.location     = document.getElementById('g-location').value;
+  contentJson.site.email        = document.getElementById('g-email').value;
+  contentJson.site.github_url   = document.getElementById('g-github').value;
+  contentJson.site.linkedin_url = document.getElementById('g-linkedin').value;
+  contentJson.site.instagram_url= document.getElementById('g-instagram').value;
+  // Hero
+  contentJson.hero.tagline = document.getElementById('h-tagline').value;
+  // About
+  contentJson.about.skills_line = document.getElementById('a-skills-line').value;
+  // (arrays already updated via oninput)
+}
+</script>
+</body>
+</html>
