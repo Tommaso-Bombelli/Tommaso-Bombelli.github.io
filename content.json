@@ -2,7 +2,7 @@
   "_meta": {
     "repo_owner": "Tommaso-Bombelli",
     "repo_name": "Tommaso-Bombelli.github.io",
-    "last_updated": "2026-07-26T14:00:17.663Z"
+    "last_updated": "2026-07-27T09:13:37.658Z"
   },
   "site": {
     "name": "Tommaso Bombelli",
@@ -20,26 +20,26 @@
       "Game Dev with UE5",
       "Fast learner. Always."
     ],
-    "tagline": "From cables to code â IT infrastructure, software development and home automation, all at once."
+    "tagline": "From cables to code Ã¢ÂÂ IT infrastructure, software development and home automation, all at once."
   },
   "about": {
     "paragraphs": [
-      "I'm Tommaso, IT technician and developer near Milan. Started as an electrician â a year wiring real systems taught me to think in reliability, safety and structure. Now I work at <strong>MAST Srl</strong> on networks, firewalls and cybersecurity, while co-founding <strong>Easydomotica</strong>, a home-automation company I'm building with my business partner since March 2024.",
+      "I'm Tommaso, IT technician and developer near Milan. Started as an electrician Ã¢ÂÂ a year wiring real systems taught me to think in reliability, safety and structure. Now I work at <strong>MAST Srl</strong> on networks, firewalls and cybersecurity, while co-founding <strong>Easydomotica</strong>, a home-automation company I'm building with my business partner since March 2024.",
       "In the spare time that's left: a game in <strong>UE5</strong>, a self-hosted homelab with 20+ containers, and photography."
     ],
-    "skills_line": "Python Â· JS Â· Java Â· C# Â· C++ Â· Italian (native) Â· English (fluent)",
+    "skills_line": "Python ÃÂ· JS ÃÂ· Java ÃÂ· C# ÃÂ· C++ ÃÂ· Italian (native) ÃÂ· English (fluent)",
     "stats": [
       {
         "num": "IT",
-        "label": "Networks & security @ MAST Â· Dec 2025"
+        "label": "Networks & security @ MAST ÃÂ· Dec 2025"
       },
       {
         "num": "CO",
-        "label": "Founder & CTO @ Easydomotica Â· Mar 2024"
+        "label": "Founder & CTO @ Easydomotica ÃÂ· Mar 2024"
       },
       {
         "num": "1yr",
-        "label": "Electrician â hands-on foundation"
+        "label": "Electrician Ã¢ÂÂ hands-on foundation"
       },
       {
         "num": "20+",
@@ -50,26 +50,27 @@
   "experience": [
     {
       "id": "mast",
-      "period": "Dec 2025 â Present",
+      "period": "Dec 2025 - Present",
       "role": "IT Technician",
-      "org": "MAST Srl â Soluzioni Informatiche",
-      "desc": "Helpdesk support, network installation and configuration, cybersecurity and firewall management. A bit of everything â from hardware troubleshooting to securing client infrastructures.",
-      "active": true
+      "org": "MAST Srl  Soluzioni Informatiche",
+      "desc": "Helpdesk support, network installation and configuration, cybersecurity and firewall management. A bit of everything from hardware troubleshooting to securing client infrastructures.",
+      "active": true,
+      "link": "https://mastsolutions.it/"
     },
     {
       "id": "easydomotica",
-      "period": "March 2024 â Present",
+      "period": "March 2024 - Present",
       "role": "Co-Founder & Technical Director",
       "org": "Easydomotica",
       "desc": "Design and installation of home automation systems, CCTV, alarm systems and smart automations. I handle all the technical side together with my co-founder.",
-      "link": "easydomotica.html",
+      "link": "https://www.easydomotica.net/",
       "active": true
     },
     {
       "id": "parnisari",
-      "period": "~1 year",
+      "period": "~2 year",
       "role": "Electrician",
-      "org": "Massimo Parnisari â Angera (VA)",
+      "org": "Massimo Parnisari Angera (VA)",
       "desc": "Residential and commercial electrical systems: installation, maintenance and compliance. The practical foundation everything else is built on.",
       "active": false
     }
@@ -131,8 +132,8 @@
     {
       "group": "Languages",
       "tags": [
-        "Italian â native",
-        "English â fluent"
+        "Italian Ã¢ÂÂ native",
+        "English Ã¢ÂÂ fluent"
       ],
       "highlight": "cyan"
     }
@@ -141,7 +142,7 @@
     {
       "id": "erp",
       "title": "Easydomotica ERP",
-      "desc": "Full-stack ERP built from scratch â CRM, inventory, quote builder with PDF, contracts, ticketing, internal chat and two client portals.",
+      "desc": "Full-stack ERP built from scratch Ã¢ÂÂ CRM, inventory, quote builder with PDF, contracts, ticketing, internal chat and two client portals.",
       "tags": [
         "React",
         "Node.js",
@@ -151,13 +152,13 @@
       "badge_label": "Live",
       "featured": true,
       "link": "easydomotica.html#erp",
-      "link_label": "Full breakdown â",
-      "private_label": "ð Private"
+      "link_label": "Full breakdown Ã¢ÂÂ",
+      "private_label": "Ã°ÂÂÂ Private"
     },
     {
       "id": "hass",
       "title": "HASS Integration",
-      "desc": "Custom HA integration via HACS â sidebar panel, SmartThings auto-reload, secure auth tied to HA's native system.",
+      "desc": "Custom HA integration via HACS Ã¢ÂÂ sidebar panel, SmartThings auto-reload, secure auth tied to HA's native system.",
       "tags": [
         "Python",
         "Home Assistant",
@@ -166,14 +167,14 @@
       "badge": "live",
       "badge_label": "v1.4.0",
       "link": "easydomotica.html#hass",
-      "link_label": "Details â",
+      "link_label": "Details Ã¢ÂÂ",
       "link2": "https://github.com/easydomotica/APP-HASS-Easydomotica",
-      "link2_label": "GitHub â"
+      "link2_label": "GitHub Ã¢ÂÂ"
     },
     {
       "id": "datacenter",
       "title": "Home Datacenter",
-      "desc": "20+ LXC containers on Proxmox â Grafana, Alertmanager, Wazuh SIEM, Plex, dual Pi-hole and Nginx reverse proxy.",
+      "desc": "20+ LXC containers on Proxmox Ã¢ÂÂ Grafana, Alertmanager, Wazuh SIEM, Plex, dual Pi-hole and Nginx reverse proxy.",
       "tags": [
         "Proxmox",
         "Prometheus",
@@ -181,12 +182,12 @@
       ],
       "badge": "live",
       "badge_label": "Running",
-      "private_label": "ð Private infra"
+      "private_label": "Ã°ÂÂÂ Private infra"
     },
     {
       "id": "game",
       "title": "UE5 Game [WIP]",
-      "desc": "A video game I'm making in my spare time. Massive work in progress â details coming as the project evolves.",
+      "desc": "A video game I'm making in my spare time. Massive work in progress Ã¢ÂÂ details coming as the project evolves.",
       "tags": [
         "Unreal Engine 5",
         "C++"
@@ -194,12 +195,12 @@
       "badge": "wip",
       "badge_label": "In dev",
       "link": "game.html",
-      "link_label": "Teaser page â"
+      "link_label": "Teaser page Ã¢ÂÂ"
     },
     {
       "id": "portfolio",
       "title": "This portfolio",
-      "desc": "Built from scratch â no frameworks. Custom cursor, scroll animations, dedicated pages per project.",
+      "desc": "Built from scratch Ã¢ÂÂ no frameworks. Custom cursor, scroll animations, dedicated pages per project.",
       "tags": [
         "HTML",
         "CSS",
@@ -208,7 +209,7 @@
       "badge": "live",
       "badge_label": "You're here",
       "link": "https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io",
-      "link_label": "Source â",
+      "link_label": "Source Ã¢ÂÂ",
       "link_external": true
     }
   ],
