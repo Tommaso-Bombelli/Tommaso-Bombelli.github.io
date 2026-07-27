@@ -2,7 +2,7 @@
   "_meta": {
     "repo_owner": "Tommaso-Bombelli",
     "repo_name": "Tommaso-Bombelli.github.io",
-    "last_updated": "2026-07-27T09:13:37.658Z"
+    "last_updated": "2026-07-27T09:14:59.210Z"
   },
   "site": {
     "name": "Tommaso Bombelli",
@@ -24,22 +24,22 @@
   },
   "about": {
     "paragraphs": [
-      "I'm Tommaso, IT technician and developer near Milan. Started as an electrician Ã¢ÂÂ a year wiring real systems taught me to think in reliability, safety and structure. Now I work at <strong>MAST Srl</strong> on networks, firewalls and cybersecurity, while co-founding <strong>Easydomotica</strong>, a home-automation company I'm building with my business partner since March 2024.",
+      "I'm Tommaso, IT technician and developer near Milan. Started as an electrician two year wiring real systems taught me to think in reliability, safety and structure. Now I work at <strong>MAST Srl</strong> on networks, firewalls and cybersecurity, while co-founding <strong>Easydomotica</strong>, a home-automation company I'm building with my business partner since March 2024.",
       "In the spare time that's left: a game in <strong>UE5</strong>, a self-hosted homelab with 20+ containers, and photography."
     ],
-    "skills_line": "Python ÃÂ· JS ÃÂ· Java ÃÂ· C# ÃÂ· C++ ÃÂ· Italian (native) ÃÂ· English (fluent)",
+    "skills_line": "Python· JS · Java · C#· C++  Italian (native) · English (fluent)",
     "stats": [
       {
         "num": "IT",
-        "label": "Networks & security @ MAST ÃÂ· Dec 2025"
+        "label": "Networks & security @ MAST SRL · Dec 2025"
       },
       {
         "num": "CO",
-        "label": "Founder & CTO @ Easydomotica ÃÂ· Mar 2024"
+        "label": "Co-founder & Technical Director of EasyDomotica · Mar 2024"
       },
       {
-        "num": "1yr",
-        "label": "Electrician Ã¢ÂÂ hands-on foundation"
+        "num": "2yr",
+        "label": "Electrician hands-on foundation"
       },
       {
         "num": "20+",
