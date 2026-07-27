@@ -2,7 +2,7 @@
   "_meta": {
     "repo_owner": "Tommaso-Bombelli",
     "repo_name": "Tommaso-Bombelli.github.io",
-    "last_updated": "2026-07-27T09:15:55.481Z"
+    "last_updated": "2026-07-27T09:16:46.169Z"
   },
   "site": {
     "name": "Tommaso Bombelli",
@@ -142,7 +142,7 @@
     {
       "id": "erp",
       "title": "Easydomotica ERP",
-      "desc": "Full-stack ERP built from scratch Ã¢ÂÂ CRM, inventory, quote builder with PDF, contracts, ticketing, internal chat and two client portals.",
+      "desc": "Full-stack ERP built from scratch CRM, inventory, quote builder with PDF, contracts, ticketing, internal chat and two client portals.",
       "tags": [
         "React",
         "Node.js",
@@ -152,8 +152,8 @@
       "badge_label": "Live",
       "featured": true,
       "link": "easydomotica.html#erp",
-      "link_label": "Full breakdown Ã¢ÂÂ",
-      "private_label": "Ã°ÂÂÂ Private"
+      "link_label": "Full breakdown ",
+      "private_label": "Private"
     },
     {
       "id": "hass",
@@ -167,14 +167,14 @@
       "badge": "live",
       "badge_label": "v1.4.0",
       "link": "easydomotica.html#hass",
-      "link_label": "Details Ã¢ÂÂ",
+      "link_label": "Details ",
       "link2": "https://github.com/easydomotica/APP-HASS-Easydomotica",
-      "link2_label": "GitHub Ã¢ÂÂ"
+      "link2_label": "GitHub "
     },
     {
       "id": "datacenter",
       "title": "Home Datacenter",
-      "desc": "20+ LXC containers on Proxmox Ã¢ÂÂ Grafana, Alertmanager, Wazuh SIEM, Plex, dual Pi-hole and Nginx reverse proxy.",
+      "desc": "20+ LXC containers on Proxmox Grafana, Alertmanager, Wazuh SIEM, Plex, dual Pi-hole and Nginx reverse proxy.",
       "tags": [
         "Proxmox",
         "Prometheus",
@@ -182,7 +182,7 @@
       ],
       "badge": "live",
       "badge_label": "Running",
-      "private_label": "Ã°ÂÂÂ Private infra"
+      "private_label": "Private infra"
     },
     {
       "id": "game",
@@ -195,12 +195,12 @@
       "badge": "wip",
       "badge_label": "In dev",
       "link": "game.html",
-      "link_label": "Teaser page Ã¢ÂÂ"
+      "link_label": "Teaser page "
     },
     {
       "id": "portfolio",
       "title": "This portfolio",
-      "desc": "Built from scratch Ã¢ÂÂ no frameworks. Custom cursor, scroll animations, dedicated pages per project.",
+      "desc": "Built from scratch no frameworks. Custom cursor, scroll animations, dedicated pages per project.",
       "tags": [
         "HTML",
         "CSS",
@@ -209,7 +209,7 @@
       "badge": "live",
       "badge_label": "You're here",
       "link": "https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io",
-      "link_label": "Source Ã¢ÂÂ",
+      "link_label": "Source ",
       "link_external": true
     }
   ],
