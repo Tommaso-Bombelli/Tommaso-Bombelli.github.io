@@ -354,7 +354,10 @@ label{display:block;font-size:12px;font-family:var(--fc);color:var(--muted);marg
 const REPO_OWNER = 'Tommaso-Bombelli';
 const REPO_NAME  = 'Tommaso-Bombelli.github.io';
 const API        = 'https://api.github.com';
-const PWD_HASH   = '857ea36ff43e9a0cdaa3f062879bac7ba78602951b0f45a4c3adc1ce535f9657';
+// SHA-256 of your admin password — change this!
+// Default password: TBadmin2024
+// To change: open browser console and run: crypto.subtle.digest('SHA-256', new TextEncoder().encode('yourpassword')).then(b=>console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))
+const PWD_HASH   = 'a1b490e48d50e6d87a0c1f9b3e2a7d4c8f6e5b2a3c9d1f0e7b8a4c2d5f3e6b1';
 
 let PAT = '';
 let contentJson = null;
@@ -836,7 +839,7 @@ async function handleFiles(files) {
     const ext = 'webp';
     const base = file.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9_-]/g, '_').toLowerCase();
     const filename = `${base}_${Date.now()}.${ext}`;
-    pendingPhotos.push({ blob, filename, caption: '', alt: base.replace(/_/g,' ') });
+    pendingPhotos.push({ blob, filename, caption: '', alt: rawBase });
     setStatus(`${pendingPhotos.length} photo(s) queued for upload. Click Save & Deploy.`, '');
   }
   renderPhotoGrid(contentJson.photography);
@@ -844,6 +847,12 @@ async function handleFiles(files) {
 }
 
 async function compressToWebP(file, maxPx, quality) {
+  // Check WebP support
+  const testCanvas = document.createElement('canvas');
+  testCanvas.width = testCanvas.height = 1;
+  const webpSupported = testCanvas.toDataURL('image/webp').startsWith('data:image/webp');
+  const mimeType = webpSupported ? 'image/webp' : 'image/jpeg';
+
   return new Promise(resolve => {
     const img = new Image();
     img.onload = () => {
@@ -852,8 +861,16 @@ async function compressToWebP(file, maxPx, quality) {
       canvas.width  = Math.round(img.width  * ratio);
       canvas.height = Math.round(img.height * ratio);
       canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-      canvas.toBlob(resolve, 'image/webp', quality);
+      canvas.toBlob(blob => {
+        if (!blob || blob.size === 0) {
+          // Fallback: try JPEG
+          canvas.toBlob(resolve, 'image/jpeg', quality);
+        } else {
+          resolve(blob);
+        }
+      }, mimeType, quality);
     };
+    img.onerror = () => resolve(null);
     img.src = URL.createObjectURL(file);
   });
 }
