@@ -2,155 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UE5 Game [WIP] — Tommaso Bombelli</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23080B10'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='46' font-weight='700' fill='%2356E3D6' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23F1F2F0'/%3E%3Crect x='0' y='7' width='22' height='4' fill='%2374472A'/%3E%3Crect x='0' y='14' width='22' height='4' fill='%232C8A47'/%3E%3Crect x='0' y='21' width='22' height='4' fill='%231F4FCC'/%3E%3Crect x='21' y='4' width='8' height='24' rx='1.5' fill='none' stroke='%2316181B' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+<title>Untitled UE5 game — Tommaso Bombelli</title>
+<meta name="description" content="A single-player game Tommaso Bombelli is building in Unreal Engine 5 in his spare time. Work in progress.">
+<link rel="canonical" href="https://tommasobombelli.com/game.html">
 </head>
-<body class="no-subnav">
+<body data-page="game">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <a class="nav__home" href="index.html">Tommaso Bombelli</a>
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+  <ul class="nav__links" id="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="easydomotica.html">Easydomotica</a></li>
+    <li><a href="pcsumisura.html">PC su Misura</a></li>
+    <li><a href="photography.html">Photography</a></li>
+    <li><a href="game.html" aria-current="page">Game</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</header>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <a href="index.html" class="nav__logo">TB<span>.</span></a>
-  <div class="nav__links">
-    <a href="index.html">← Portfolio</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#projects">Projects</a>
-    <a href="easydomotica.html">Easydomotica</a>
-    <a href="photography.html">Photography</a>
-    <a href="#hero" class="nav__page-active">UE5 Game</a>
-  </div>
-  <a href="index.html#contact" class="nav__cta">Contact</a>
-  <button class="nav__mobile-btn" id="mobileBtn">☰</button>
-</nav>
+<main id="main">
+  <div class="feed" aria-hidden="true"></div>
+  <div class="board">
+    <section class="sec page-head" aria-labelledby="g-title">
+      <h1 class="display" id="g-title">Untitled game</h1>
+      <p class="lead">A video game I'm building in Unreal Engine 5 in my spare time, which isn't much. It's early, but it's real and it keeps moving.</p>
+      <p class="proj__meta" style="margin-top:20px"><span class="status status--wip">In development</span><span>Solo project, no release date</span></p>
+    </section>
 
-<!-- MOBILE MENU -->
-<div class="nav__mobile-menu" id="mobileMenu">
-  <a href="index.html">← Back to portfolio</a>
-  <a href="index.html#about">About</a>
-  <a href="index.html#projects">Projects</a>
-  <a href="easydomotica.html">Easydomotica</a>
-  <a href="photography.html">Photography</a>
-  <a href="index.html#contact">Contact</a>
-</div>
-
-<main>
-
-<!-- HERO -->
-<section class="game-hero" id="hero" style="padding-top:var(--nav-h)">
-  <div class="game-hero__inner">
-    <div>
-      <p class="eyebrow" data-anim><span class="eyebrow__dot"></span>Personal project · Unreal Engine 5</p>
-      <h1 data-anim>[<span>WIP</span>]<br>Untitled<br>Game</h1>
-      <p class="game-hero__sub" data-anim data-delay="2">A video game I'm developing in my spare time — which isn't much. Still in early stages, but it's real and it's moving forward.</p>
-      <div class="game-hero__actions" data-anim data-delay="3">
-        <a href="index.html#contact" class="btn btn--ghost">Follow updates →</a>
-        <span class="badge badge--wip" style="font-size:13px;padding:8px 16px">Massive WIP</span>
-      </div>
-    </div>
-
-    <div class="wip-card" data-anim="right">
-      <div class="wip-card__header">
-        <span class="wip-card__icon">🎮</span>
+    <section class="sec" id="status" aria-labelledby="st-h">
+      <div class="split">
         <div>
-          <div class="wip-card__title">Development status</div>
-          <div class="wip-card__sub">Last updated: 2025</div>
+          <div class="sec__head"><h2 id="st-h">Where it's at</h2><p>Rough estimates, updated when something real lands.</p></div>
+          <p class="note" style="margin-top:0">Screenshots come when there's something worth showing. It ships when it ships.</p>
         </div>
+        <ul class="progress">
+          <li>Concept and design <span>80%</span><i class="bar" style="--v:80%"></i></li>
+          <li>Core mechanics <span>30%</span><i class="bar" style="--v:30%"></i></li>
+          <li>World building <span>15%</span><i class="bar" style="--v:15%"></i></li>
+          <li>Art and assets <span>10%</span><i class="bar" style="--v:10%"></i></li>
+          <li><b>Overall</b> <span>20%</span><i class="bar" style="--v:20%"></i></li>
+        </ul>
       </div>
-      <div class="wip-bar">
-        <div class="wip-bar__label"><span>Concept & design</span><span>✓</span></div>
-        <div class="wip-bar__track"><div class="wip-bar__fill" style="width:80%"></div></div>
-      </div>
-      <div class="wip-bar">
-        <div class="wip-bar__label"><span>Core mechanics</span><span>~30%</span></div>
-        <div class="wip-bar__track"><div class="wip-bar__fill" style="width:30%;animation-delay:.2s"></div></div>
-      </div>
-      <div class="wip-bar">
-        <div class="wip-bar__label"><span>World building</span><span>~15%</span></div>
-        <div class="wip-bar__track"><div class="wip-bar__fill" style="width:15%;animation-delay:.4s"></div></div>
-      </div>
-      <div class="wip-bar">
-        <div class="wip-bar__label"><span>Art & assets</span><span>~10%</span></div>
-        <div class="wip-bar__track"><div class="wip-bar__fill" style="width:10%;animation-delay:.6s"></div></div>
-      </div>
-      <div class="wip-bar">
-        <div class="wip-bar__label"><span>Overall</span><span>~20%</span></div>
-        <div class="wip-bar__track"><div class="wip-bar__fill" style="width:20%;animation-delay:.8s"></div></div>
-      </div>
-      <p class="wip-note">// Details and screenshots coming when there's something worth showing. Solo side-project — ships when it ships.</p>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- TECH STACK -->
-<div class="game-stack" id="stack">
-  <div class="game-stack__inner">
-    <div data-anim>
-      <p class="eyebrow"><span class="eyebrow__dot"></span>Tech stack</p>
-      <h2>Built with Unreal Engine 5.</h2>
-      <p style="margin-bottom:24px">UE5 for Nanite, Lumen and a mature ecosystem. Gameplay logic in both Blueprints and C++, learning as I go.</p>
-      <div class="tech-pills">
-        <span class="tech-pill">Unreal Engine 5</span>
-        <span class="tech-pill">C++</span>
-        <span class="tech-pill">Blueprints</span>
-        <span class="tech-pill">Nanite</span>
-        <span class="tech-pill">Lumen</span>
-        <span class="tech-pill">MetaSounds</span>
+    <section class="sec" id="details" aria-labelledby="d-h">
+      <div class="sec__head"><h2 id="d-h">What I can say so far</h2></div>
+      <div class="cols">
+        <div><h3>Genre</h3><p>Still under wraps. Single-player, built around one core mechanic I find genuinely interesting to design for.</p></div>
+        <div><h3>World</h3><p>An original setting, written alongside the code: story first, levels second.</p></div>
+        <div><h3>Development</h3><p>Just me, whenever work and Easydomotica leave time. No ETA, no promises.</p></div>
+        <div><h3>Engine and tools</h3><p>Unreal Engine 5 for Nanite and Lumen. Gameplay in Blueprints and C++, sound in MetaSounds.</p></div>
       </div>
-    </div>
-    <div data-anim="right" style="text-align:center">
-      <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px">Engine</div>
-      <div style="font-family:var(--font-display);font-size:80px;font-weight:700;color:var(--copper);line-height:1;opacity:0.75">UE5</div>
-      <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-faint);margin-top:10px">Unreal Engine 5</div>
-    </div>
+      <div class="actions" style="margin-top:40px"><a class="btn" href="index.html#contact">Ask me for updates</a></div>
+    </section>
   </div>
-</div>
-
-<!-- WHAT I CAN SAY -->
-<section id="details">
-  <div class="section-head" data-anim>
-    <p class="eyebrow"><span class="eyebrow__dot"></span>What I can say</p>
-    <h2>What's in the game (so far).</h2>
-    <p>Details are sparse on purpose — I'll update this page as the project matures.</p>
-  </div>
-  <div class="known-grid">
-    <div class="known-card" data-anim data-delay="1">
-      <div class="known-card__icon">🕹️</div>
-      <h3>Genre</h3>
-      <p>Details to be revealed. Single-player focus, built around a core mechanic I find genuinely interesting to design around.</p>
-    </div>
-    <div class="known-card" data-anim data-delay="2">
-      <div class="known-card__icon">🌍</div>
-      <h3>World</h3>
-      <p>Original setting designed from scratch. World-building happening in parallel with the code — story first, levels second.</p>
-    </div>
-    <div class="known-card" data-anim data-delay="3">
-      <div class="known-card__icon">⚙️</div>
-      <h3>Development</h3>
-      <p>Solo side-project. I work on it when work, Easydomotica and life leave me time — no ETA, no promises.</p>
-    </div>
-  </div>
-  <div style="margin-top:48px;text-align:center" data-anim>
-    <p style="font-family:var(--font-mono);font-size:13px;color:var(--text-faint);margin-bottom:20px">// Want to know when there's news?</p>
-    <a href="index.html#contact" class="btn btn--ghost">Get in touch →</a>
-  </div>
-</section>
-
+  <div class="ground" aria-hidden="true"><i></i></div>
 </main>
 
 <footer class="footer">
-  <span>© <span class="js-year"></span> Tommaso Bombelli</span>
-  <div class="footer__links">
-    <a href="index.html">Portfolio</a>
-    <a href="easydomotica.html">Easydomotica</a>
-    <a href="photography.html">Photography</a>
-  </div>
-  <span>UE5 · Work in progress</span>
+  <span>© <span class="js-year">2026</span> Tommaso Bombelli</span>
+  <nav aria-label="Footer"><a href="index.html">Home</a><a href="easydomotica.html">Easydomotica</a><a href="pcsumisura.html">PC su Misura</a><a href="photography.html">Photography</a><a href="game.html">Game</a><a href="https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io" target="_blank" rel="noopener">Source</a></nav>
+  <span>Handwritten HTML, CSS and JS on GitHub Pages</span>
 </footer>
-
-<script src="script.js"></script>
+<script src="site.js"></script>
 </body>
 </html>

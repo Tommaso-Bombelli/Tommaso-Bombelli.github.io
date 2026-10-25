@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin — TB Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -464,6 +465,11 @@ async function ghDelete(path, sha, message) {
   return r.json();
 }
 
+function fromBase64(b64) {
+  // GitHub returns base64 of UTF-8 bytes: decode bytes as UTF-8 (plain atob() mangled accents and dashes on every save)
+  const bin = atob(b64.replace(/\n/g,''));
+  return new TextDecoder('utf-8').decode(Uint8Array.from(bin, c => c.charCodeAt(0)));
+}
 function toBase64(str) {
   return btoa(unescape(encodeURIComponent(str)));
 }
@@ -483,7 +489,7 @@ async function loadContent() {
   try {
     const file = await ghGet('content.json');
     contentSha = file.sha;
-    contentJson = JSON.parse(atob(file.content.replace(/\n/g,'')));
+    contentJson = JSON.parse(fromBase64(file.content));
     populateAll();
     setStatus('Loaded. Make changes and click Save & Deploy.','');
   } catch(e) {
