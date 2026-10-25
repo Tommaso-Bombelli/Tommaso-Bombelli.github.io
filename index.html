@@ -2,173 +2,144 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tommaso Bombelli — IT Technician & Developer</title>
-<meta name="description" content="Portfolio of Tommaso Bombelli: IT technician, developer, co-founder of Easydomotica.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23080B10'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='46' font-weight='700' fill='%2356E3D6' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23F1F2F0'/%3E%3Crect x='0' y='7' width='22' height='4' fill='%2374472A'/%3E%3Crect x='0' y='14' width='22' height='4' fill='%232C8A47'/%3E%3Crect x='0' y='21' width='22' height='4' fill='%231F4FCC'/%3E%3Crect x='21' y='4' width='8' height='24' rx='1.5' fill='none' stroke='%2316181B' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+<title>Tommaso Bombelli — IT technician, developer, co-founder</title>
+<meta name="description" content="Tommaso Bombelli: IT technician and developer, co-founder of Easydomotica and PC su Misura. Networks, cybersecurity, home automation, software and a UE5 game.">
+<meta property="og:title" content="Tommaso Bombelli">
+<meta property="og:description" content="IT technician, developer and co-founder of Easydomotica and PC su Misura. From cables to code.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tommasobombelli.com/">
+<meta property="og:image" content="https://tommasobombelli.com/img/photo_001.jpg">
+<link rel="canonical" href="https://tommasobombelli.com/">
 </head>
-<body class="no-subnav">
+<body data-page="home">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <a class="nav__home" href="index.html">Tommaso Bombelli</a>
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+  <ul class="nav__links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="easydomotica.html">Easydomotica</a></li>
+    <li><a href="pcsumisura.html">PC su Misura</a></li>
+    <li><a href="photography.html">Photography</a></li>
+    <li><a href="game.html">Game</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</header>
 
-<nav class="nav" id="nav">
-  <a href="#hero" class="nav__logo">TB<span>.</span></a>
-  <div class="nav__links">
-    <a href="#about"    data-section="about">About</a>
-    <a href="#projects" data-section="projects">Projects</a>
-    <a href="easydomotica.html">Easydomotica</a>
-    <a href="photography.html">Photography</a>
-    <a href="game.html">UE5 Game</a>
-    <a href="#contact"  data-section="contact">Contact</a>
-  </div>
-  <a href="mailto:tommaso.bombelli03@gmail.com" class="nav__cta">Get in touch</a>
-  <button class="nav__mobile-btn" id="mobileBtn">☰</button>
-</nav>
-<div class="nav__mobile-menu" id="mobileMenu">
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="easydomotica.html">Easydomotica</a>
-  <a href="photography.html">Photography</a>
-  <a href="game.html">UE5 Game</a>
-  <a href="#contact">Contact</a>
-</div>
+<main id="main">
+  <section class="hero" aria-labelledby="name">
+    <div class="hero__name">
+      <h1 class="display" id="name"><span>Tommaso</span><span>Bombelli</span></h1>
+    </div>
 
-<main>
+    <div class="wires" aria-label="What I do">
+      <div class="wire wire--L" style="grid-row:1"></div>
+      <div class="wire wire--E" style="grid-row:2"></div>
+      <div class="wire wire--N" style="grid-row:3"></div>
+      <div class="tap"><span class="drop"></span><span class="junction"></span></div>
+      <div class="terminal" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="wire__tag" style="grid-row:1" data-role>Co-Founder @ PC su Misura<small>custom PCs and IT support</small></p>
+      <p class="wire__tag" style="grid-row:2" data-role>Co-Founder @ Easydomotica<small>since March 2024</small></p>
+      <p class="wire__tag" style="grid-row:3" data-role>Network &amp; Cybersecurity<small>firewalls, VPN, homelab</small></p>
+    </div>
 
-<!-- HERO -->
-<section class="hero" id="hero" style="padding-top:var(--nav-h)">
-  <div class="hero__inner">
-    <div>
-      <p class="hero__location">Castelletto Sopra Ticino, Italy</p>
-      <h1 class="hero__name" data-anim>
-        <span id="hero-name-first">Tommaso</span><br>
-        <span style="color:var(--cyan)" id="hero-name-last">Bombelli</span>
-      </h1>
-      <p class="hero__role"><span id="typewriter"></span><span class="cursor-blink">|</span></p>
-      <p class="hero__tagline" id="hero-tagline" data-anim data-delay="2">From cables to code — IT infrastructure, software development and home automation, all at once.</p>
-      <div class="hero__actions" data-anim data-delay="3">
-        <a href="#projects" class="btn btn--primary">See my work</a>
-        <a href="#contact"  class="btn btn--ghost">Get in touch</a>
+    <div class="hero__foot">
+      <p class="lead" id="tagline">From cables to code — IT infrastructure, software development and home automation, all at once.</p>
+      <div class="actions">
+        <a class="btn btn--solid" href="#projects">See my projects</a>
+        <a class="btn js-email" href="mailto:tommaso.bombelli03@gmail.com">Email me</a>
       </div>
     </div>
-    <div class="hero__terminal" data-anim="right">
-      <div class="terminal__bar">
-        <span class="terminal__dot"></span><span class="terminal__dot"></span><span class="terminal__dot"></span>
-        <span class="terminal__title">~/tombombelli</span>
+  </section>
+
+  <div class="board">
+    <section class="sec" id="about" aria-labelledby="about-h">
+      <div class="sec__head"><h2 id="about-h">About</h2></div>
+      <div class="about">
+        <div class="about__text" id="about-text">
+          <p>I'm Tommaso, IT technician and developer near Milan. I started as an electrician, and a year of wiring real systems taught me to think in reliability, safety and structure. Today I co-run Easydomotica and PC su Misura.</p>
+        </div>
+        <ul class="facts" id="about-facts"></ul>
       </div>
-      <div class="terminal__body">
-        <div><span class="t-prompt">→ </span><span class="t-cmd">whoami</span></div>
-        <div><span class="t-out-label">name:&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="t-out-val">Tommaso Bombelli</span></div>
-        <div><span class="t-out-label">role:&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="t-out-val">IT Technician & Dev</span></div>
-        <div><span class="t-out-label">location:</span><span class="t-out-val">Castelletto s/T, IT</span></div>
-        <br>
-        <div><span class="t-prompt">→ </span><span class="t-cmd">cat skills.txt</span></div>
-        <div><span class="t-out-val">Python · JS · Java · C# · C++</span></div>
-        <div><span class="t-out-val">Networks · Firewall · HASS</span></div>
-        <div><span class="t-out-val">Proxmox · UE5 · Photography</span></div>
-        <br>
-        <div><span class="t-prompt">→ </span><span class="t-cursor"></span></div>
+    </section>
+
+    <section class="sec" id="experience" aria-labelledby="exp-h">
+      <div class="sec__head"><h2 id="exp-h">Experience</h2></div>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+
+    <section class="sec" id="projects" aria-labelledby="proj-h">
+      <div class="sec__head"><h2 id="proj-h">Projects</h2><p>Software I've written and infrastructure I run. Most of it is used every day.</p></div>
+      <div class="projects" id="projects-list"></div>
+    </section>
+
+    <section class="sec" id="skills" aria-labelledby="skills-h">
+      <div class="sec__head"><h2 id="skills-h">Skills</h2></div>
+      <dl class="skills" id="skills-list"></dl>
+    </section>
+
+    <section class="sec" id="easydomotica" aria-labelledby="ed-h">
+      <div class="band">
+        <div>
+          <div class="sec__head" style="margin-bottom:20px"><h2 id="ed-h">Easydomotica</h2></div>
+          <p class="lead">The home-automation company I co-founded in March 2024. We design and install smart homes, CCTV and alarm systems, and I wrote the ERP and the Home Assistant integration that run it.</p>
+          <div class="actions" style="margin-top:28px"><a class="btn" href="easydomotica.html">Read about Easydomotica</a></div>
+        </div>
+        <table class="spec">
+          <tr><th scope="row">We install</th><td>Home automation, CCTV, alarm systems, smart automations</td></tr>
+          <tr><th scope="row">I built</th><td>The company ERP and a Home Assistant integration</td></tr>
+          <tr><th scope="row">Area</th><td>Castelletto Sopra Ticino and around</td></tr>
+        </table>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-head" data-anim>
-    <p class="eyebrow"><span class="eyebrow__dot"></span>About me</p>
-    <h2>A journey that starts with my hands.</h2>
-  </div>
-  <div class="about__grid">
-    <div id="about-text" class="about__text" data-anim></div>
-    <div class="about__stats" id="about-stats" data-anim="right"></div>
-  </div>
-</section>
+    <section class="sec" id="pcsumisura" aria-labelledby="pc-h">
+      <div class="band">
+        <div>
+          <div class="sec__head" style="margin-bottom:20px"><h2 id="pc-h">PC su Misura</h2></div>
+          <p class="lead">My second company. We build custom PCs, new and refurbished, and look after IT for homes and small businesses. For companies we're the external IT department, so they can work without thinking about computers.</p>
+          <div class="actions" style="margin-top:28px"><a class="btn" href="pcsumisura.html">Read about PC su Misura</a><a class="btn" href="https://pcsumisura.net" target="_blank" rel="noopener">Visit pcsumisura.net</a></div>
+        </div>
+        <table class="spec">
+          <tr><th scope="row">Businesses</th><td>Managed IT, network and Wi-Fi, servers, backup, security</td></tr>
+          <tr><th scope="row">Homes and gamers</th><td>Custom builds, upgrades, cleaning, remote support</td></tr>
+          <tr><th scope="row">Starts with</th><td>A free IT check-up</td></tr>
+        </table>
+      </div>
+    </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-head" data-anim>
-    <p class="eyebrow"><span class="eyebrow__dot"></span>Experience</p>
-    <h2>The journey, one node at a time.</h2>
-  </div>
-  <div class="timeline" id="timeline"></div>
-</section>
+    <section class="sec" id="photography" aria-labelledby="ph-h">
+      <div class="sec__head"><h2 id="ph-h">Photography</h2><p>Mostly mountains. Shooting is how I switch off from screens.</p></div>
+      <div class="strip" id="photo-strip"></div>
+      <a class="link" href="photography.html">Open the gallery</a>
+    </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-head" data-anim>
-    <p class="eyebrow"><span class="eyebrow__dot"></span>Skills</p>
-    <h2>Stack & tools.</h2>
+    <section class="sec" id="contact" aria-labelledby="contact-h">
+      <div class="sec__head"><h2 id="contact-h">Contact</h2><p>Work, a collaboration, or a question about a network or a smart home: write to me.</p></div>
+      <a class="contact__mail js-email" href="mailto:tommaso.bombelli03@gmail.com">tommaso.bombelli03@gmail.com</a>
+      <ul class="contact__list" id="contact-list">
+        <li><span>GitHub</span><a class="link" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">Tommaso-Bombelli</a></li>
+        <li><span>LinkedIn</span><a class="link" href="https://www.linkedin.com/in/tommaso-bombelli-204723286" target="_blank" rel="noopener">tommaso-bombelli</a></li>
+      </ul>
+      <p class="note">Based in <span class="js-location">Angera (VA), Italy</span>.</p>
+    </section>
   </div>
-  <div class="skills__grid" id="skills-grid"></div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-head" data-anim>
-    <p class="eyebrow"><span class="eyebrow__dot"></span>Projects</p>
-    <h2>Things I've built.</h2>
-  </div>
-  <div class="projects__grid" id="projects-grid"></div>
-</section>
-
-<!-- EASYDOMOTICA TEASER -->
-<section class="easy-teaser" id="easydomotica">
-  <div class="easy-teaser__inner">
-    <div data-anim>
-      <p class="easy-teaser__eyebrow">My startup</p>
-      <h2>Easydomotica</h2>
-      <p>Home automation, CCTV, alarm systems and smart integrations — co-founded in March 2024. ERP, HASS integration and real installations.</p>
-      <a href="easydomotica.html" class="btn btn--inverse">Explore the project →</a>
-    </div>
-    <div class="easy-teaser__logo" aria-hidden="true">ED</div>
-  </div>
-</section>
-
-<!-- PHOTOGRAPHY TEASER -->
-<section class="photo-teaser" id="photography">
-  <div class="photo-teaser__inner">
-    <div class="photo-teaser__text" data-anim>
-      <p class="eyebrow"><span class="eyebrow__dot"></span>Photography</p>
-      <h2>Through the lens.</h2>
-      <p>Landscapes, details and light. Gallery updated as I shoot.</p>
-      <a href="photography.html" class="btn btn--ghost" style="margin-top:24px">Open gallery →</a>
-    </div>
-    <div class="photo-teaser__icon" aria-hidden="true">
-      <svg viewBox="0 0 120 100" fill="none"><rect x="5" y="20" width="110" height="72" rx="6" stroke="#56E3D6" stroke-width="1.5" opacity="0.4"/><circle cx="60" cy="56" r="22" stroke="#56E3D6" stroke-width="1.5" opacity="0.5"/><circle cx="60" cy="56" r="10" stroke="#D17D3A" stroke-width="1.5"/><path d="M42 20l5-12h26l5 12" stroke="#56E3D6" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/><circle cx="94" cy="34" r="4" fill="#D17D3A" opacity="0.7"/></svg>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-head" data-anim>
-    <p class="eyebrow"><span class="eyebrow__dot"></span>Contact</p>
-    <h2>Let's talk.</h2>
-    <p>Open to new opportunities, collaborations or just a good conversation about tech.</p>
-  </div>
-  <div class="contact__grid" id="contact-grid"></div>
-</section>
-
+  <div class="ground" aria-hidden="true"><i></i></div>
 </main>
 
 <footer class="footer">
-  <span>© <span class="js-year"></span> Tommaso Bombelli</span>
-  <div class="footer__links">
-    <a href="easydomotica.html">Easydomotica</a>
-    <a href="game.html">UE5 Game</a>
-    <a href="photography.html">Photography</a>
-  </div>
-  <span>Built by hand · GitHub Pages</span>
+  <span>© <span class="js-year">2026</span> Tommaso Bombelli</span>
+  <nav aria-label="Footer"><a href="index.html">Home</a><a href="easydomotica.html">Easydomotica</a><a href="pcsumisura.html">PC su Misura</a><a href="photography.html">Photography</a><a href="game.html">Game</a><a href="https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io" target="_blank" rel="noopener">Source</a></nav>
+  <span>Handwritten HTML, CSS and JS on GitHub Pages</span>
 </footer>
-
-<style>
-.about__text p+p { margin-top:14px; }
-.about__text .skills-inline { margin-top:14px; font-family:var(--font-mono); font-size:12px; color:var(--copper); }
-</style>
-<script src="script.js"></script>
 <script src="site.js"></script>
 </body>
 </html>
