@@ -39,8 +39,8 @@
   if (lab && logEl) {
     const SVGNS = 'http://www.w3.org/2000/svg';
     const SERVICES = [
-      ['nginx', 'Nginx proxy'], ['grafana', 'Grafana'], ['prom', 'Prometheus'], ['alert', 'Alertmanager'],
-      ['wazuh', 'Wazuh SIEM'], ['ph1', 'Pi-hole 1'], ['ph2', 'Pi-hole 2'], ['plex', 'Plex']
+      ['nginx', 'Nginx Proxy Mgr'], ['dns', 'Pi-hole + Unbound'], ['prom', 'Prometheus'], ['grafana', 'Grafana'],
+      ['kuma', 'Uptime Kuma'], ['pg', 'PostgreSQL'], ['hass', 'Home Assistant'], ['pbx', '3CX PBX']
     ];
     const layouts = {
       wide: () => {
@@ -80,7 +80,7 @@
       svg = document.createElementNS(SVGNS, 'svg');
       svg.setAttribute('viewBox', `0 0 ${G.w} ${G.h}`);
       svg.setAttribute('role', 'img');
-      svg.setAttribute('aria-label', 'Diagram of my homelab: internet, firewall, switch and a Proxmox host running Nginx, Grafana, Prometheus, Alertmanager, Wazuh, two Pi-holes and Plex.');
+      svg.setAttribute('aria-label', 'Diagram of my homelab: internet, firewall, switch and a Proxmox host running Nginx Proxy Manager, Pi-hole with Unbound, Prometheus, Grafana, Uptime Kuma, PostgreSQL, Home Assistant and 3CX.');
       const edges = document.createElementNS(SVGNS, 'g'); edges.setAttribute('class', 'lab__edges');
       Object.values(G.e).forEach(pts => {
         const p = document.createElementNS(SVGNS, 'polyline');
@@ -132,14 +132,15 @@
 
     const ip = () => `${pick(['203.0.113', '198.51.100', '192.0.2'])}.${rnd(2, 254)}`;
     const FLOWS = [
-      { w: 4, path: ['inet', 'fw', 'sw', 'px', 'nginx'], cls: 'ok', log: () => `nginx    GET ${pick(['/grafana/d/home', '/plex/web', '/status', '/api/health'])} 200 ${rnd(4, 38)}ms` },
+      { w: 4, path: ['inet', 'fw', 'sw', 'px', 'nginx'], cls: 'ok', log: () => `nginx    GET ${pick(['/erp/api/quotes', '/grafana/d/home', '/status', '/hass/api/states'])} 200 ${rnd(4, 38)}ms` },
       { w: 4, path: ['inet', 'fw'], cls: 'bad', log: () => `fw       drop tcp ${ip()}:${rnd(30000, 65000)} -> wan:${pick([22, 23, 3389, 445, 8080])} (${pick(['ssh scan', 'telnet probe', 'rdp scan', 'smb probe', 'port sweep'])})`, flash: 'fw' },
-      { w: 3, path: ['lan', 'sw', 'px', 'ph1'], cls: 'dns', log: () => `pihole1  blocked ${pick(['telemetry', 'ads', 'track', 'metrics', 'pixel'])}.${pick(['example-ads.net', 'tracker.example', 'adserver.example.com'])}` },
-      { w: 2, path: ['lan', 'sw', 'px', 'ph2'], cls: 'dns', log: () => `pihole2  query ${pick(['github.com', 'api.github.com', 'pcsumisura.net', 'home-assistant.io'])} forwarded` },
-      { w: 2, path: ['prom', 'px', 'grafana'], cls: 'ok', log: () => `prom     scrape ok ${rnd(21, 23)}/23 targets in ${rnd(80, 240)}ms` },
-      { w: 2, path: ['px', 'wazuh'], cls: 'warn', log: () => `wazuh    rule 5710 lvl 5 sshd invalid user '${pick(['admin', 'root', 'test', 'ubuntu', 'pi'])}' from ${ip()}` },
-      { w: 1, path: ['prom', 'px', 'alert'], cls: 'warn', log: () => `alert    ${pick(['DiskUsageHigh resolved on pve', 'ContainerRestarted ct-114 (pihole2)', 'BackupJob completed 23/23'])}` },
-      { w: 1, path: ['plex', 'px', 'sw', 'lan'], cls: 'ok', log: () => `plex     direct play ${pick(['1080p', '4K HDR', '720p'])} to ${pick(['living room TV', 'phone', 'laptop'])}` }
+      { w: 3, path: ['lan', 'sw', 'px', 'dns'], cls: 'dns', log: () => pick([`pihole   blocked ${pick(['telemetry', 'ads', 'track', 'pixel'])}.${pick(['example-ads.net', 'tracker.example', 'adserver.example.com'])}`, `unbound  resolved ${pick(['github.com', 'pcsumisura.net', 'home-assistant.io', 'proxmox.com'])} in ${rnd(8, 60)}ms`]) },
+      { w: 2, path: ['prom', 'px', 'grafana'], cls: 'ok', log: () => `prom     scrape ok ${rnd(46, 49)}/49 targets in ${rnd(80, 240)}ms` },
+      { w: 2, path: ['kuma', 'px', 'nginx'], cls: 'ok', log: () => `kuma     ${pick(['erp', 'grafana', 'hass-demo', 'pbx', 'portal'])} up, ${rnd(20, 140)}ms` },
+      { w: 1, path: ['prom', 'px', 'kuma'], cls: 'warn', log: () => `alert    ${pick(['DiskUsageHigh resolved on pve', 'ContainerRestarted ct-113 (pihole)', 'BackupJob completed 49/49', 'HighLatency resolved on blackbox'])}` },
+      { w: 2, path: ['nginx', 'px', 'pg'], cls: 'ok', log: () => `postgres ${pick(['erp', 'hass', 'pcsumisura'])}: ${pick(['query ok', 'nightly dump done', 'vacuum done'])} ${rnd(2, 90)}ms` },
+      { w: 2, path: ['lan', 'sw', 'px', 'hass'], cls: 'dns', log: () => `hass     ${pick(['automation "evening lights" ran', 'demo restored from backup', 'remote session opened', 'update check: 0 pending'])}` },
+      { w: 2, path: ['inet', 'fw', 'sw', 'px', 'pbx'], cls: 'ok', log: () => `3cx      ${pick(['inbound call routed to ext 101', 'trunk registered', 'voicemail delivered to ext 102'])}` }
     ];
     const weighted = FLOWS.flatMap(f => Array(f.w).fill(f));
 
@@ -207,7 +208,7 @@
     const print = (html, cls = '') => { const div = document.createElement('div'); if (cls) div.className = cls; div.innerHTML = html; out.appendChild(div); out.scrollTop = out.scrollHeight; };
     const line = t => print(esc(t));
     const uptime = () => { const s = Math.floor((Date.now() - start) / 1000); return `${Math.floor(s / 60)}m ${s % 60}s`; };
-    const pages = { easydomotica: 'easydomotica.html', pcsumisura: 'pcsumisura.html', game: 'game.html', photography: 'photography.html', photos: 'photography.html', github: 'https://github.com/Tommaso-Bombelli', linkedin: 'https://www.linkedin.com/in/tommaso-bombelli-204723286' };
+    const pages = { easydomotica: '#easydomotica', pcsumisura: '#pcsumisura', game: '#game', photography: '#photography', photos: '#photography', homelab: '#lab', lab: '#lab', skills: '#skills', github: 'https://github.com/Tommaso-Bombelli', linkedin: 'https://www.linkedin.com/in/tommaso-bombelli-204723286' };
     const files = { 'about.txt': 'about', 'skills.txt': 'skills', 'contact.txt': 'contact', 'projects/': 'projects', 'experience.log': 'experience', '.secrets': null };
     const setTheme = t => {
       if (t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.dataset.theme = t;
@@ -219,7 +220,7 @@
 <span class="k">whoami</span>       who I am            <span class="k">about</span>        the short version
 <span class="k">experience</span>   where I've worked   <span class="k">projects</span>     what I've built
 <span class="k">skills</span>       stack and tools     <span class="k">contact</span>      how to reach me
-<span class="k">ls</span>, <span class="k">cat</span>      browse files        <span class="k">open</span> &lt;page&gt;  easydomotica, pcsumisura, game, photos, github
+<span class="k">ls</span>, <span class="k">cat</span>      browse files        <span class="k">open</span> &lt;place&gt; homelab, easydomotica, pcsumisura, photos, github
 <span class="k">ping</span>         measure this site   <span class="k">nmap</span>         scan this site
 <span class="k">neofetch</span>     system info         <span class="k">theme</span>        dark, light or auto
 <span class="k">history</span>      past commands       <span class="k">clear</span>        clean the screen`),
@@ -240,9 +241,9 @@
       cd: a => (a[0] && a[0].replace('/', '') === 'projects' ? cmds.projects() : line('tbsh: there are no directories worth visiting. Try: open <page>')),
       open: a => {
         const k = (a[0] || '').toLowerCase().replace(/\.html$/, '');
-        if (!pages[k]) return line('open: try easydomotica, pcsumisura, game, photos, github or linkedin');
+        if (!pages[k]) return line('open: try skills, homelab, easydomotica, pcsumisura, game, photos, github or linkedin');
         line(`opening ${pages[k]}…`);
-        setTimeout(() => (/^https?:/.test(pages[k]) ? window.open(pages[k], '_blank', 'noopener') : (location.href = pages[k])), 400);
+        setTimeout(() => (/^https?:/.test(pages[k]) ? window.open(pages[k], '_blank', 'noopener') : document.querySelector(pages[k])?.scrollIntoView({ behavior: 'smooth' })), 300);
       },
       ping: async a => {
         const host = a[0] || location.hostname || 'tommasobombelli.com';
@@ -272,7 +273,7 @@ It's a static site: no server, no database, no admin panel online. Nothing to br
           Shell     tbsh 1.0
           Uptime    ${uptime()} (since you arrived)
           Packages  0 frameworks, 3 files
-          Homelab   Proxmox VE, 20+ LXC
+          Homelab   Proxmox VE, ~50 CT/VM
           Theme     ${document.documentElement.dataset.theme || 'auto'}</span>`),
       theme: a => { const t = a[0]; if (!['dark', 'light', 'auto'].includes(t)) return line('theme: use dark, light or auto'); setTheme(t); line(`theme set to ${t}`); },
       history: () => hist.forEach((h, i) => line(`${String(i + 1).padStart(3)}  ${h}`)),

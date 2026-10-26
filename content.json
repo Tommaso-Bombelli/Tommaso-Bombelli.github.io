@@ -25,7 +25,7 @@
   "about": {
     "paragraphs": [
       "I'm Tommaso, IT technician and developer near Milan. I started as an electrician, and a year of wiring real systems taught me to think in reliability, safety and structure. Then came <strong>MAST Srl</strong>, where I worked on helpdesk, networks, firewalls and cybersecurity for client companies. Today I co-run two companies: <strong>Easydomotica</strong>, home automation, CCTV and alarm systems since March 2024, and <strong>PC su Misura</strong>, custom PCs and IT support for homes and businesses.",
-      "In the spare time that's left: a game in <strong>UE5</strong>, a self-hosted homelab with 20+ containers, and photography."
+      "In the spare time that's left: a game in <strong>UE5</strong>, a Proxmox homelab with almost 50 containers and virtual machines, and photography."
     ],
     "skills_line": "Python · JS · Java · C# · C++ · Italian (native) · English (fluent)",
     "stats": [
@@ -42,8 +42,8 @@
         "label": "Networks, firewalls and security for client companies"
       },
       {
-        "num": "20+",
-        "label": "LXC containers in my homelab"
+        "num": "~50",
+        "label": "Containers and VMs in my homelab"
       }
     ]
   },
@@ -54,7 +54,7 @@
       "role": "Co-Founder",
       "org": "PC su Misura",
       "desc": "Custom PCs, new and refurbished, and IT support for homes and small businesses. For companies we act as the external IT department: network, servers, backup and security.",
-      "link": "pcsumisura.html",
+      "link": "#pcsumisura",
       "active": true
     },
     {
@@ -63,7 +63,7 @@
       "role": "Co-Founder & Technical Director",
       "org": "Easydomotica",
       "desc": "Design and installation of home automation systems, CCTV, alarm systems and smart automations. I handle all the technical side together with my co-founder.",
-      "link": "easydomotica.html",
+      "link": "#easydomotica",
       "active": true
     },
     {
@@ -102,8 +102,10 @@
       "tags": [
         "LAN / WAN",
         "Firewall",
-        "Cybersecurity",
+        "Reverse proxy",
+        "DNS (Pi-hole, Unbound)",
         "VPN",
+        "Kali Linux",
         "IT Support"
       ]
     },
@@ -112,10 +114,11 @@
       "tags": [
         "Proxmox VE",
         "Linux",
+        "Windows Server",
         "Docker",
         "Prometheus",
         "Grafana",
-        "Wazuh"
+        "Uptime Kuma"
       ]
     },
     {
@@ -124,8 +127,11 @@
         "Git / GitHub",
         "VS Code",
         "Home Assistant",
+        "3CX",
+        "n8n",
         "PM2",
-        "Node.js"
+        "Node.js",
+        "PostgreSQL"
       ]
     },
     {
@@ -159,7 +165,7 @@
       "badge": "live",
       "badge_label": "Live",
       "featured": true,
-      "link": "easydomotica.html#erp",
+      "link": "#easydomotica",
       "link_label": "Full breakdown →",
       "private_label": "🔒 Private"
     },
@@ -174,7 +180,7 @@
       ],
       "badge": "live",
       "badge_label": "v1.4.0",
-      "link": "easydomotica.html#hass",
+      "link": "#easydomotica",
       "link_label": "Details →",
       "link2": "https://github.com/easydomotica/APP-HASS-Easydomotica",
       "link2_label": "GitHub →"
@@ -182,15 +188,18 @@
     {
       "id": "datacenter",
       "title": "Home Datacenter",
-      "desc": "20+ LXC containers on Proxmox — Grafana, Alertmanager, Wazuh SIEM, Plex, dual Pi-hole and Nginx reverse proxy.",
+      "desc": "Almost 50 containers and VMs on Proxmox: monitoring and alerts, DNS filtering, reverse proxy, databases, Home Assistant, 3CX phone systems and a media stack.",
       "tags": [
         "Proxmox",
         "Prometheus",
-        "Wazuh"
+        "Grafana",
+        "Docker"
       ],
       "badge": "live",
       "badge_label": "Running",
-      "private_label": "🔒 Private infra"
+      "private_label": "🔒 Private infra",
+      "link": "#lab",
+      "link_label": "See how it is wired"
     },
     {
       "id": "game",
@@ -202,8 +211,8 @@
       ],
       "badge": "wip",
       "badge_label": "In dev",
-      "link": "game.html",
-      "link_label": "Teaser page →"
+      "link": "#game",
+      "link_label": "Status"
     },
     {
       "id": "portfolio",

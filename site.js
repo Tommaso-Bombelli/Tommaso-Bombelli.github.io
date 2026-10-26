@@ -79,7 +79,7 @@
           <h3>${esc(x.role)}</h3>
           <p class="job__org">${esc(x.org)}</p>
           <p>${esc(x.desc)}</p>
-          ${x.link ? `<p style="margin-top:10px"><a class="link" href="${esc(x.link)}"${linkAttrs(x.link)}>Read the full story</a></p>` : ''}
+          ${x.link ? `<p style="margin-top:10px"><a class="link" href="${esc(x.link)}"${linkAttrs(x.link)}>${x.link.startsWith('#') ? 'More below' : 'Read the full story'}</a></p>` : ''}
         </div>
       </li>`;
     }).join('');
@@ -155,7 +155,7 @@
 
   const page = document.body.dataset.page;
   if (page === 'home' || page === 'photography') {
-    load().then(d => (page === 'home' ? renderIndex(d) : renderGallery(d))).catch(() => {
+    load().then(d => { if (page === 'home') renderIndex(d); renderGallery(d); }).catch(() => {
       const g = $('#gallery');
       if (g) g.innerHTML = '<p class="empty">The gallery could not be loaded. Refresh the page to try again.</p>';
     });
