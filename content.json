@@ -204,15 +204,13 @@
     {
       "id": "game",
       "title": "UE5 Game [WIP]",
-      "desc": "A video game I'm making in my spare time. Massive work in progress — details coming as the project evolves.",
+      "desc": "A single-player game I'm building in Unreal Engine 5 in my spare time. Story first, levels second, gameplay in Blueprints and C++. Roughly 20% done, no release date.",
       "tags": [
         "Unreal Engine 5",
         "C++"
       ],
       "badge": "wip",
-      "badge_label": "In dev",
-      "link": "#game",
-      "link_label": "Status"
+      "badge_label": "In dev"
     },
     {
       "id": "portfolio",
@@ -247,5 +245,6 @@
       "height": 1200,
       "thumb": "img/thumbs/_mg_4333_1785074387902.webp"
     }
-  ]
+  ],
+  "certifications": []
 }

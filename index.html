@@ -73,11 +73,17 @@
       </div>
     </section>
 
-    <!-- ================= EXPERIENCE ================= -->
-    <section class="sec" id="experience" aria-labelledby="exp-h">
-      <div class="sec__head"><h2 id="exp-h">Experience</h2></div>
-      <ol class="timeline" id="timeline"></ol>
-    </section>
+    <!-- ================= EXPERIENCE + CERTIFICATIONS ================= -->
+    <div class="sec duo duo--exp" id="cv">
+      <section id="experience" aria-labelledby="exp-h">
+        <div class="sec__head"><h2 id="exp-h">Experience</h2></div>
+        <ol class="timeline" id="timeline"></ol>
+      </section>
+      <section id="certifications" class="side-col" aria-labelledby="cert-h">
+        <div class="sec__head"><h2 id="cert-h">Certifications</h2></div>
+        <ul class="certs" id="certs-list"></ul>
+      </section>
+    </div>
 
     <!-- ================= SKILLS / CAPABILITIES ================= -->
     <section class="sec" id="skills" aria-labelledby="skills-h">
@@ -91,13 +97,17 @@
         <article><h3>Smart homes and phone systems</h3><p>Home Assistant instances for testing, demos, backups and remote support, and 3CX phone systems for both companies.</p><p class="caps__tools">Home Assistant, HACS, 3CX</p></article>
       </div>
 
+      <div class="duo duo--skills">
       <aside class="callout" aria-labelledby="callout-h">
         <h3 id="callout-h">Tested at home, then used at work</h3>
         <p>Everything on this list runs in my homelab before it goes anywhere else. Then I bring the same setups to the business clients of <a class="link" href="#pcsumisura">PC su Misura</a>: monitoring and alerts, backups, DNS filtering, reverse proxies, access control, phone systems and remote support, configured for small offices that have no IT department of their own.</p>
       </aside>
 
-      <h3 class="subhead">Languages and tools</h3>
-      <dl class="skills" id="skills-list"></dl>
+      <div>
+        <h3 class="subhead">Languages and tools</h3>
+        <dl class="skills" id="skills-list"></dl>
+      </div>
+      </div>
     </section>
 
     <!-- ================= HOMELAB ================= -->
@@ -105,11 +115,12 @@
       <div class="sec__head"><h2 id="lab-h">Homelab</h2><p>One Proxmox server at home with almost 50 containers and VMs. This is a simplified view of how the main pieces are wired.</p></div>
       <div class="lab">
         <div class="lab__map" id="lab-map"></div>
+      </div>
+      <div class="duo duo--lab">
         <figure class="lab__feed">
           <ol class="lab__log" id="lab-log"></ol>
           <figcaption>Simulated feed, modelled on what the real one logs all day. Orange is traffic the firewall drops.</figcaption>
         </figure>
-      </div>
       <div class="lab__groups">
         <div><b>Monitoring</b><span>Prometheus, PVE and blackbox exporters, Alertmanager, Grafana, Uptime Kuma, MySpeed</span></div>
         <div><b>Network</b><span>Nginx Proxy Manager, Pi-hole, Unbound</span></div>
@@ -117,6 +128,7 @@
         <div><b>Work</b><span>Backend server, n8n, Home Assistant test and demo machines, 3CX for both companies</span></div>
         <div><b>Systems</b><span>Ubuntu and Windows Server VMs, Docker, Kali Linux</span></div>
         <div><b>Media</b><span>Plex, Jellyfin, Kavita and an automated library stack</span></div>
+      </div>
       </div>
     </section>
 
@@ -225,10 +237,11 @@
       </div>
     </section>
 
-    <!-- ================= SHELL ================= -->
-    <section class="sec" id="shell-sec" aria-labelledby="sh-h">
-      <div class="sec__head"><h2 id="sh-h">Try the shell</h2><p>A tiny command line that knows everything on this page. Start with <code>help</code>.</p></div>
-      <div class="shell" id="shell">
+    <!-- ================= SHELL + GITHUB ================= -->
+    <div class="sec duo duo--shell">
+      <section id="shell-sec" aria-labelledby="sh-h">
+        <div class="sec__head"><h2 id="sh-h">Try the shell</h2><p>A tiny command line that knows everything on this page. Start with <code>help</code>.</p></div>
+        <div class="shell" id="shell">
         <div class="shell__bar" aria-hidden="true"><i></i><i></i><i></i><span>guest@tommasobombelli.com</span></div>
         <div class="shell__out" aria-live="polite"></div>
         <form class="shell__in" autocomplete="off">
@@ -239,47 +252,29 @@
           <button type="button" data-cmd="help">help</button><button type="button" data-cmd="whoami">whoami</button><button type="button" data-cmd="neofetch">neofetch</button><button type="button" data-cmd="ping">ping</button><button type="button" data-cmd="nmap">nmap</button><button type="button" data-cmd="cat .secrets">cat .secrets</button>
         </div>
       </div>
-    </section>
+      </section>
+      <section id="github" class="side-col" aria-labelledby="gh-h">
+        <div class="sec__head"><h2 id="gh-h">Latest on GitHub</h2><p>Loaded live from the GitHub API.</p></div>
+        <ol class="repos" id="repos"><li><a class="repo__name" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">github.com/Tommaso-Bombelli</a><p>Public repositories and the Home Assistant integration.</p></li></ol>
+      </section>
+    </div>
 
-    <!-- ================= GITHUB + GAME ================= -->
-    <section class="sec" id="github" aria-labelledby="gh-h">
-      <div class="sec__head"><h2 id="gh-h">Latest on GitHub</h2><p>Loaded live from the GitHub API every time you open the page.</p></div>
-      <ol class="repos" id="repos"><li><a class="repo__name" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">github.com/Tommaso-Bombelli</a><p>Public repositories and the Home Assistant integration.</p></li></ol>
-    </section>
-
-    <section class="sec" id="game" aria-labelledby="game-h">
-      <div class="split">
-        <div>
-          <div class="sec__head"><h2 id="game-h">An untitled game</h2></div>
-          <p>A single-player game I'm building in Unreal Engine 5 in my spare time, which isn't much. Story first, levels second, gameplay in Blueprints and C++.</p>
-          <p class="proj__meta" style="margin-top:16px"><span class="status status--wip">In development</span><span>Solo project, no release date</span></p>
-        </div>
-        <ul class="progress" aria-label="Rough progress">
-          <li>Concept and design <span>80%</span><i class="bar" style="--v:80%"></i></li>
-          <li>Core mechanics <span>30%</span><i class="bar" style="--v:30%"></i></li>
-          <li>World building <span>15%</span><i class="bar" style="--v:15%"></i></li>
-          <li>Art and assets <span>10%</span><i class="bar" style="--v:10%"></i></li>
-          <li><b>Overall</b> <span>20%</span><i class="bar" style="--v:20%"></i></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ================= PHOTOGRAPHY ================= -->
-    <section class="sec" id="photography" aria-labelledby="ph-h">
-      <div class="sec__head"><h2 id="ph-h">Photography</h2><p>Mostly mountains. Shooting is how I switch off from screens. Tap a photo to open it.</p></div>
+    <!-- ================= PHOTOGRAPHY + CONTACT ================= -->
+    <div class="sec duo duo--end">
+      <section id="photography" aria-labelledby="ph-h">
+        <div class="sec__head"><h2 id="ph-h">Photography</h2><p>Mostly mountains. Shooting is how I switch off from screens. Tap a photo to open it.</p></div>
       <div class="gallery" id="gallery"><p class="empty">Loading photos…</p></div>
-    </section>
-
-    <!-- ================= CONTACT ================= -->
-    <section class="sec" id="contact" aria-labelledby="contact-h">
-      <div class="sec__head"><h2 id="contact-h">Contact</h2><p>Work, a collaboration, or a question about a network, a server or a smart home: write to me.</p></div>
+      </section>
+      <section id="contact" class="side-col" aria-labelledby="contact-h">
+        <div class="sec__head"><h2 id="contact-h">Contact</h2><p>Work, a collaboration, or a question about a network, a server or a smart home: write to me.</p></div>
       <a class="contact__mail js-email" href="mailto:tommaso.bombelli03@gmail.com">tommaso.bombelli03@gmail.com</a>
       <ul class="contact__list" id="contact-list">
         <li><span>GitHub</span><a class="link" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">Tommaso-Bombelli</a></li>
         <li><span>LinkedIn</span><a class="link" href="https://www.linkedin.com/in/tommaso-bombelli-204723286" target="_blank" rel="noopener">tommaso-bombelli</a></li>
       </ul>
       <p class="note">Based in <span class="js-location">Angera (VA), Italy</span>.</p>
-    </section>
+      </section>
+    </div>
   </div>
   <div class="ground" aria-hidden="true"><i></i></div>
 </main>
