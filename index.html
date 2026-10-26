@@ -21,22 +21,22 @@
 <body data-page="home">
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav">
-  <a class="nav__home" href="index.html">Tommaso Bombelli</a>
+  <a class="nav__home" href="#top">Tommaso Bombelli</a>
   <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <ul class="nav__links" id="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#lab">Homelab</a></li>
-    <li><a href="easydomotica.html">Easydomotica</a></li>
-    <li><a href="pcsumisura.html">PC su Misura</a></li>
-    <li><a href="photography.html">Photography</a></li>
-    <li><a href="game.html">Game</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#easydomotica">Easydomotica</a></li>
+    <li><a href="#pcsumisura">PC su Misura</a></li>
+    <li><a href="#photography">Photos</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </header>
 
 <main id="main">
-  <section class="hero" aria-labelledby="name">
+  <section class="hero" id="top" aria-labelledby="name">
     <div class="hero__name">
       <h1 class="display" id="name"><span>Tommaso</span><span>Bombelli</span></h1>
     </div>
@@ -49,19 +49,20 @@
       <div class="terminal" aria-hidden="true"><i></i><i></i><i></i></div>
       <p class="wire__tag" style="grid-row:1" data-role>Co-Founder @ PC su Misura<small>custom PCs and IT support</small></p>
       <p class="wire__tag" style="grid-row:2" data-role>Co-Founder @ Easydomotica<small>since March 2024</small></p>
-      <p class="wire__tag" style="grid-row:3" data-role>Network &amp; Cybersecurity<small>firewalls, VPN, homelab</small></p>
+      <p class="wire__tag" style="grid-row:3" data-role>Network &amp; Cybersecurity<small>servers, monitoring, homelab</small></p>
     </div>
 
     <div class="hero__foot">
       <p class="lead" id="tagline">From cables to code — IT infrastructure, software development and home automation, all at once.</p>
       <div class="actions">
-        <a class="btn btn--solid" href="#projects">See my projects</a>
+        <a class="btn btn--solid" href="#skills">What I can do</a>
         <a class="btn js-email" href="mailto:tommaso.bombelli03@gmail.com">Email me</a>
       </div>
     </div>
   </section>
 
   <div class="board">
+    <!-- ================= ABOUT ================= -->
     <section class="sec" id="about" aria-labelledby="about-h">
       <div class="sec__head"><h2 id="about-h">About</h2></div>
       <div class="about">
@@ -72,18 +73,36 @@
       </div>
     </section>
 
+    <!-- ================= EXPERIENCE ================= -->
     <section class="sec" id="experience" aria-labelledby="exp-h">
       <div class="sec__head"><h2 id="exp-h">Experience</h2></div>
       <ol class="timeline" id="timeline"></ol>
     </section>
 
-    <section class="sec" id="projects" aria-labelledby="proj-h">
-      <div class="sec__head"><h2 id="proj-h">Projects</h2><p>Software I've written and infrastructure I run. Most of it is used every day.</p></div>
-      <div class="projects" id="projects-list"></div>
+    <!-- ================= SKILLS / CAPABILITIES ================= -->
+    <section class="sec" id="skills" aria-labelledby="skills-h">
+      <div class="sec__head"><h2 id="skills-h">What I can set up</h2><p>Infrastructure I build, run and keep an eye on every day. Each piece runs in my homelab first.</p></div>
+      <div class="caps">
+        <article><h3>Servers and virtualisation</h3><p>Almost 50 containers and virtual machines on Proxmox: Linux and Windows servers, Docker hosts, and test machines I can throw away and rebuild in minutes.</p><p class="caps__tools">Proxmox VE, LXC, Docker, Ubuntu Server, Windows Server</p></article>
+        <article><h3>Networking and DNS</h3><p>Reverse proxy with certificates for every service, my own recursive DNS, ad and tracker blocking for the whole network, and secure remote access.</p><p class="caps__tools">Nginx Proxy Manager, Pi-hole, Unbound, VPN, firewall</p></article>
+        <article><h3>Monitoring and alerts</h3><p>Metrics from every host and service, dashboards, uptime and speed checks, and alerts that reach me before anyone notices a problem.</p><p class="caps__tools">Prometheus and exporters, Grafana, Alertmanager, Uptime Kuma, MySpeed</p></article>
+        <article><h3>Security</h3><p>Firewall rules, access control, updates and isolated test environments, plus a dedicated machine for checking my own setups the way an attacker would.</p><p class="caps__tools">Firewall management, access control, Kali Linux</p></article>
+        <article><h3>Databases, backend and automation</h3><p>PostgreSQL instances for the ERP and client projects, Node.js backends, and automated workflows that connect services together.</p><p class="caps__tools">PostgreSQL, Node.js, PM2, n8n</p></article>
+        <article><h3>Smart homes and phone systems</h3><p>Home Assistant instances for testing, demos, backups and remote support, and 3CX phone systems for both companies.</p><p class="caps__tools">Home Assistant, HACS, 3CX</p></article>
+      </div>
+
+      <aside class="callout" aria-labelledby="callout-h">
+        <h3 id="callout-h">Tested at home, then used at work</h3>
+        <p>Everything on this list runs in my homelab before it goes anywhere else. Then I bring the same setups to the business clients of <a class="link" href="#pcsumisura">PC su Misura</a>: monitoring and alerts, backups, DNS filtering, reverse proxies, access control, phone systems and remote support, configured for small offices that have no IT department of their own.</p>
+      </aside>
+
+      <h3 class="subhead">Languages and tools</h3>
+      <dl class="skills" id="skills-list"></dl>
     </section>
 
+    <!-- ================= HOMELAB ================= -->
     <section class="sec" id="lab" aria-labelledby="lab-h">
-      <div class="sec__head"><h2 id="lab-h">Homelab</h2><p>A Proxmox server at home running 20+ containers: monitoring, a SIEM, two DNS filters, a reverse proxy and media. This is how it's wired.</p></div>
+      <div class="sec__head"><h2 id="lab-h">Homelab</h2><p>One Proxmox server at home with almost 50 containers and VMs. This is a simplified view of how the main pieces are wired.</p></div>
       <div class="lab">
         <div class="lab__map" id="lab-map"></div>
         <figure class="lab__feed">
@@ -91,18 +110,122 @@
           <figcaption>Simulated feed, modelled on what the real one logs all day. Orange is traffic the firewall drops.</figcaption>
         </figure>
       </div>
+      <div class="lab__groups">
+        <div><b>Monitoring</b><span>Prometheus, PVE and blackbox exporters, Alertmanager, Grafana, Uptime Kuma, MySpeed</span></div>
+        <div><b>Network</b><span>Nginx Proxy Manager, Pi-hole, Unbound</span></div>
+        <div><b>Data</b><span>PostgreSQL for the ERP, Home Assistant and client projects</span></div>
+        <div><b>Work</b><span>Backend server, n8n, Home Assistant test and demo machines, 3CX for both companies</span></div>
+        <div><b>Systems</b><span>Ubuntu and Windows Server VMs, Docker, Kali Linux</span></div>
+        <div><b>Media</b><span>Plex, Jellyfin, Kavita and an automated library stack</span></div>
+      </div>
     </section>
 
-    <section class="sec" id="github" aria-labelledby="gh-h">
-      <div class="sec__head"><h2 id="gh-h">Latest on GitHub</h2><p>Loaded live from the GitHub API every time you open the page.</p></div>
-      <ol class="repos" id="repos"><li><a class="repo__name" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">github.com/Tommaso-Bombelli</a><p>Public repositories and the Home Assistant integration.</p></li></ol>
+    <!-- ================= PROJECTS ================= -->
+    <section class="sec" id="projects" aria-labelledby="proj-h">
+      <div class="sec__head"><h2 id="proj-h">Projects</h2><p>Software I've written and infrastructure I run. Most of it is used every day.</p></div>
+      <div class="projects" id="projects-list"></div>
     </section>
 
-    <section class="sec" id="skills" aria-labelledby="skills-h">
-      <div class="sec__head"><h2 id="skills-h">Skills</h2></div>
-      <dl class="skills" id="skills-list"></dl>
+    <!-- ================= EASYDOMOTICA ================= -->
+    <section class="sec" id="easydomotica" aria-labelledby="ed-h">
+      <div class="sec__head"><h2 id="ed-h">Easydomotica</h2><p>My first company, co-founded in March 2024. I run the technical side together with my business partner.</p></div>
+      <div class="band">
+        <p class="lead">We design and install smart homes from the cable up: lighting, climate, blinds, energy monitoring, CCTV and alarm systems, all working as one system. Behind it runs software I wrote myself.</p>
+        <table class="spec">
+          <tr><th scope="row">We install</th><td>Home automation, CCTV, alarm systems, smart automations</td></tr>
+          <tr><th scope="row">I built</th><td>The company ERP and a Home Assistant integration</td></tr>
+          <tr><th scope="row">Area</th><td>Castelletto Sopra Ticino and around</td></tr>
+        </table>
+      </div>
+
+      <div class="split split--top">
+        <div>
+          <h3 class="subhead">The ERP that runs the company</h3>
+          <p class="muted" style="margin-bottom:14px">No off-the-shelf tool fit how we work, so I built a full-stack system from scratch. We use it every day.</p>
+          <ul class="mini">
+            <li><b>Customers</b> registry with questionnaire, regional filters and linked jobs</li>
+            <li><b>Warehouse</b> catalogue with pricing logic: cost, markup, VAT</li>
+            <li><b>Quotes</b> with package pricing, live totals and separate PDFs for client and technician</li>
+            <li><b>Tickets</b> and interventions with status and client ratings</li>
+            <li><b>Portals</b> for clients and installers, each with its own login</li>
+            <li><b>Chat</b> between colleagues with notifications</li>
+          </ul>
+          <p class="caps__tools" style="margin-top:14px">React, Vite, Node.js, Express, PostgreSQL, JWT, PM2</p>
+        </div>
+        <div>
+          <h3 class="subhead">Home Assistant integration</h3>
+          <p class="muted" style="margin-bottom:14px">Installed through HACS on clients' systems, so we can look after them remotely from the ERP.</p>
+<pre class="code" aria-label="Excerpt from __init__.py"><span class="c"># only this HA user gets in</span>
+<span class="k">ALLOWED_USERNAME</span> = <span class="s">"easydomotica"</span>
+<span class="c"># auto-reload every 10 min</span>
+<span class="k">RELOAD_INTERVAL</span> = timedelta(minutes=<span class="k">10</span>)
+<span class="k">if not</span> _is_authorized(request):
+    <span class="k">return</span> json_response(
+        {<span class="s">"error"</span>: <span class="s">"Accesso negato"</span>},
+        status=<span class="k">403</span>)</pre>
+          <ul class="mini" style="margin-top:14px">
+            <li><b>Sidebar panel</b> visible only to the Easydomotica user</li>
+            <li><b>Scheduler</b> for per-client reloads, with logs saved to the NAS</li>
+            <li><b>Update checker</b> for integrations, Core and OS</li>
+          </ul>
+          <div class="actions" style="margin-top:20px;align-items:center">
+            <a class="btn" href="https://github.com/easydomotica/APP-HASS-Easydomotica" target="_blank" rel="noopener">View on GitHub</a>
+            <span class="status">v1.4.0, MIT licence</span>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <!-- ================= PC SU MISURA ================= -->
+    <section class="sec" id="pcsumisura" aria-labelledby="pc-h">
+      <div class="sec__head"><h2 id="pc-h">PC su Misura</h2><p>My second company: custom PCs, new and refurbished, and IT support for homes and small businesses.</p></div>
+      <p class="lead" style="margin-bottom:28px">For small companies and studios with no technician of their own, we are the external IT department: network, servers, backup and security, so they can get on with their work. It's where everything from my homelab gets put to work.</p>
+      <div class="facts-row">
+        <div><b>Free</b><span>IT check-up to start</span></div>
+        <div><b>MSP</b><span>Managed support contracts</span></div>
+        <div><b>Custom</b><span>New or refurbished PCs</span></div>
+        <div><b>Remote</b><span>Most problems fixed without a visit</span></div>
+      </div>
+      <div class="split split--top">
+        <div>
+          <h3 class="subhead">For businesses</h3>
+          <ul class="mini">
+            <li><b>Free check-up</b> of computers, network, backup and security, with the risks explained</li>
+            <li><b>Managed support</b> at a fixed yearly price per device: monitoring, updates, remote help</li>
+            <li><b>Accounts and Microsoft 365</b> for every employee, set up and closed when people come and go</li>
+            <li><b>Servers and domain controller</b>: one login per person for PC, shared folders and programs</li>
+            <li><b>NAS and shared folders</b> with permissions per person</li>
+            <li><b>Network and Wi-Fi</b>: router, firewall, switches and access points</li>
+            <li><b>Advanced endpoint security</b> against ransomware</li>
+            <li><b>Backup and disaster recovery</b>: off-site copies and a plan to restart</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="subhead">For homes and gamers</h3>
+          <ul class="mini">
+            <li><b>Custom PCs</b> built around use and budget: gaming, work, study, graphics</li>
+            <li><b>Upgrades</b> that save a slow PC for far less than a new one</li>
+            <li><b>Cleaning and thermal paste</b> for PCs and consoles that run hot</li>
+            <li><b>Software cleanup and remote help</b> without losing data</li>
+          </ul>
+          <table class="spec" style="margin-top:22px">
+            <caption>What we work with</caption>
+            <tr><th scope="row">Network</th><td>Fortinet, Ubiquiti, Aruba, Cisco</td></tr>
+            <tr><th scope="row">Storage</th><td>Synology, TrueNAS</td></tr>
+            <tr><th scope="row">Servers</th><td>Proxmox, VMware, Hyper-V</td></tr>
+            <tr><th scope="row">Security and backup</th><td>SentinelOne, Cynet, Acronis</td></tr>
+            <tr><th scope="row">Cloud</th><td>Microsoft 365, Azure, AWS, Hetzner</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="actions" style="margin-top:32px">
+        <a class="btn btn--solid" href="https://pcsumisura.net" target="_blank" rel="noopener">Visit pcsumisura.net</a>
+        <a class="btn" href="mailto:pcsumisura.info@gmail.com">pcsumisura.info@gmail.com</a>
+        <a class="btn" href="tel:+3903311090522">+39 0331 109 0522</a>
+      </div>
+    </section>
+
+    <!-- ================= SHELL ================= -->
     <section class="sec" id="shell-sec" aria-labelledby="sh-h">
       <div class="sec__head"><h2 id="sh-h">Try the shell</h2><p>A tiny command line that knows everything on this page. Start with <code>help</code>.</p></div>
       <div class="shell" id="shell">
@@ -118,44 +241,38 @@
       </div>
     </section>
 
-    <section class="sec" id="easydomotica" aria-labelledby="ed-h">
-      <div class="band">
+    <!-- ================= GITHUB + GAME ================= -->
+    <section class="sec" id="github" aria-labelledby="gh-h">
+      <div class="sec__head"><h2 id="gh-h">Latest on GitHub</h2><p>Loaded live from the GitHub API every time you open the page.</p></div>
+      <ol class="repos" id="repos"><li><a class="repo__name" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">github.com/Tommaso-Bombelli</a><p>Public repositories and the Home Assistant integration.</p></li></ol>
+    </section>
+
+    <section class="sec" id="game" aria-labelledby="game-h">
+      <div class="split">
         <div>
-          <div class="sec__head" style="margin-bottom:20px"><h2 id="ed-h">Easydomotica</h2></div>
-          <p class="lead">The home-automation company I co-founded in March 2024. We design and install smart homes, CCTV and alarm systems, and I wrote the ERP and the Home Assistant integration that run it.</p>
-          <div class="actions" style="margin-top:28px"><a class="btn" href="easydomotica.html">Read about Easydomotica</a></div>
+          <div class="sec__head"><h2 id="game-h">An untitled game</h2></div>
+          <p>A single-player game I'm building in Unreal Engine 5 in my spare time, which isn't much. Story first, levels second, gameplay in Blueprints and C++.</p>
+          <p class="proj__meta" style="margin-top:16px"><span class="status status--wip">In development</span><span>Solo project, no release date</span></p>
         </div>
-        <table class="spec">
-          <tr><th scope="row">We install</th><td>Home automation, CCTV, alarm systems, smart automations</td></tr>
-          <tr><th scope="row">I built</th><td>The company ERP and a Home Assistant integration</td></tr>
-          <tr><th scope="row">Area</th><td>Castelletto Sopra Ticino and around</td></tr>
-        </table>
+        <ul class="progress" aria-label="Rough progress">
+          <li>Concept and design <span>80%</span><i class="bar" style="--v:80%"></i></li>
+          <li>Core mechanics <span>30%</span><i class="bar" style="--v:30%"></i></li>
+          <li>World building <span>15%</span><i class="bar" style="--v:15%"></i></li>
+          <li>Art and assets <span>10%</span><i class="bar" style="--v:10%"></i></li>
+          <li><b>Overall</b> <span>20%</span><i class="bar" style="--v:20%"></i></li>
+        </ul>
       </div>
     </section>
 
-    <section class="sec" id="pcsumisura" aria-labelledby="pc-h">
-      <div class="band">
-        <div>
-          <div class="sec__head" style="margin-bottom:20px"><h2 id="pc-h">PC su Misura</h2></div>
-          <p class="lead">My second company. We build custom PCs, new and refurbished, and look after IT for homes and small businesses. For companies we're the external IT department, so they can work without thinking about computers.</p>
-          <div class="actions" style="margin-top:28px"><a class="btn" href="pcsumisura.html">Read about PC su Misura</a><a class="btn" href="https://pcsumisura.net" target="_blank" rel="noopener">Visit pcsumisura.net</a></div>
-        </div>
-        <table class="spec">
-          <tr><th scope="row">Businesses</th><td>Managed IT, network and Wi-Fi, servers, backup, security</td></tr>
-          <tr><th scope="row">Homes and gamers</th><td>Custom builds, upgrades, cleaning, remote support</td></tr>
-          <tr><th scope="row">Starts with</th><td>A free IT check-up</td></tr>
-        </table>
-      </div>
-    </section>
-
+    <!-- ================= PHOTOGRAPHY ================= -->
     <section class="sec" id="photography" aria-labelledby="ph-h">
-      <div class="sec__head"><h2 id="ph-h">Photography</h2><p>Mostly mountains. Shooting is how I switch off from screens.</p></div>
-      <div class="strip" id="photo-strip"></div>
-      <a class="link" href="photography.html">Open the gallery</a>
+      <div class="sec__head"><h2 id="ph-h">Photography</h2><p>Mostly mountains. Shooting is how I switch off from screens. Tap a photo to open it.</p></div>
+      <div class="gallery" id="gallery"><p class="empty">Loading photos…</p></div>
     </section>
 
+    <!-- ================= CONTACT ================= -->
     <section class="sec" id="contact" aria-labelledby="contact-h">
-      <div class="sec__head"><h2 id="contact-h">Contact</h2><p>Work, a collaboration, or a question about a network or a smart home: write to me.</p></div>
+      <div class="sec__head"><h2 id="contact-h">Contact</h2><p>Work, a collaboration, or a question about a network, a server or a smart home: write to me.</p></div>
       <a class="contact__mail js-email" href="mailto:tommaso.bombelli03@gmail.com">tommaso.bombelli03@gmail.com</a>
       <ul class="contact__list" id="contact-list">
         <li><span>GitHub</span><a class="link" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">Tommaso-Bombelli</a></li>
@@ -167,9 +284,14 @@
   <div class="ground" aria-hidden="true"><i></i></div>
 </main>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo">
+  <button class="lightbox__close" type="button">Close</button>
+  <figure><img src="" alt=""><p></p></figure>
+</div>
+
 <footer class="footer">
   <span>© <span class="js-year">2026</span> Tommaso Bombelli</span>
-  <nav aria-label="Footer"><a href="index.html">Home</a><a href="easydomotica.html">Easydomotica</a><a href="pcsumisura.html">PC su Misura</a><a href="photography.html">Photography</a><a href="game.html">Game</a><a href="https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io" target="_blank" rel="noopener">Source</a></nav>
+  <nav aria-label="Footer"><a href="#about">About</a><a href="#skills">Skills</a><a href="#easydomotica">Easydomotica</a><a href="#pcsumisura">PC su Misura</a><a href="#photography">Photos</a><a href="https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io" target="_blank" rel="noopener">Source</a></nav>
   <span>Handwritten HTML, CSS and JS on GitHub Pages</span>
 </footer>
 <script src="site.js"></script>
