@@ -84,6 +84,22 @@
       </li>`;
     }).join('');
 
+    // certifications
+    const cl2 = $('#certs-list');
+    if (cl2) {
+      const certs = data.certifications || [];
+      if (!certs.length) { $('#certifications')?.remove(); $('#cv')?.classList.add('duo--single'); }
+      else cl2.innerHTML = certs.map(c => {
+        const href = c.file || c.url;
+        return `<li class="cert${c.in_progress ? ' cert--wip' : ''}">
+          <h3>${esc(c.title)}</h3>
+          <p class="cert__meta">${[c.issuer, c.date].filter(Boolean).map(esc).join(', ')}${c.in_progress ? ' <span class="status status--wip">In progress</span>' : ''}</p>
+          ${c.credential_id ? `<p class="cert__id">ID ${esc(c.credential_id)}</p>` : ''}
+          ${href ? `<a class="link" href="${esc(href)}" target="_blank" rel="noopener">${c.file ? 'View certificate' : 'Verify'}</a>` : ''}
+        </li>`;
+      }).join('');
+    }
+
     // projects
     const pg = $('#projects-list');
     if (pg) pg.innerHTML = projects.map(p => {

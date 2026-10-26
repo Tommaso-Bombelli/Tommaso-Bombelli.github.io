@@ -208,7 +208,7 @@
     const print = (html, cls = '') => { const div = document.createElement('div'); if (cls) div.className = cls; div.innerHTML = html; out.appendChild(div); out.scrollTop = out.scrollHeight; };
     const line = t => print(esc(t));
     const uptime = () => { const s = Math.floor((Date.now() - start) / 1000); return `${Math.floor(s / 60)}m ${s % 60}s`; };
-    const pages = { easydomotica: '#easydomotica', pcsumisura: '#pcsumisura', game: '#game', photography: '#photography', photos: '#photography', homelab: '#lab', lab: '#lab', skills: '#skills', github: 'https://github.com/Tommaso-Bombelli', linkedin: 'https://www.linkedin.com/in/tommaso-bombelli-204723286' };
+    const pages = { easydomotica: '#easydomotica', pcsumisura: '#pcsumisura', game: '#projects', certifications: '#certifications', certs: '#certifications', photography: '#photography', photos: '#photography', homelab: '#lab', lab: '#lab', skills: '#skills', github: 'https://github.com/Tommaso-Bombelli', linkedin: 'https://www.linkedin.com/in/tommaso-bombelli-204723286' };
     const files = { 'about.txt': 'about', 'skills.txt': 'skills', 'contact.txt': 'contact', 'projects/': 'projects', 'experience.log': 'experience', '.secrets': null };
     const setTheme = t => {
       if (t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.dataset.theme = t;
@@ -219,7 +219,8 @@
       help: () => print(`Available commands:
 <span class="k">whoami</span>       who I am            <span class="k">about</span>        the short version
 <span class="k">experience</span>   where I've worked   <span class="k">projects</span>     what I've built
-<span class="k">skills</span>       stack and tools     <span class="k">contact</span>      how to reach me
+<span class="k">skills</span>       stack and tools     <span class="k">certs</span>        certifications
+<span class="k">contact</span>      how to reach me
 <span class="k">ls</span>, <span class="k">cat</span>      browse files        <span class="k">open</span> &lt;place&gt; homelab, easydomotica, pcsumisura, photos, github
 <span class="k">ping</span>         measure this site   <span class="k">nmap</span>         scan this site
 <span class="k">neofetch</span>     system info         <span class="k">theme</span>        dark, light or auto
@@ -228,6 +229,7 @@
       about: () => (data.about?.paragraphs || []).forEach(p => line(strip(p))),
       experience: () => (data.experience || []).forEach(x => print(`<span class="k">${esc(x.period)}</span>  ${esc(x.role)}, ${esc(strip(x.org))}`)),
       projects: () => (data.projects || []).forEach(p => print(`<span class="k">${esc(p.title)}</span>  ${esc(p.desc)}`)),
+      certs: () => { const c = data.certifications || []; if (!c.length) return line('No certifications listed yet.'); c.forEach(x => print(`<span class="k">${esc(x.title)}</span>  ${esc([x.issuer, x.date].filter(Boolean).join(', '))}${x.in_progress ? ' (in progress)' : ''}`)); },
       skills: () => (data.skills || []).forEach(g => print(`<span class="k">${esc(g.group.padEnd(22))}</span>${esc((g.tags || []).join(', '))}`)),
       contact: () => { const s = data.site || {}; print(`email     <a href="mailto:${esc(s.email)}">${esc(s.email)}</a>\ngithub    <a href="${esc(s.github_url)}" target="_blank" rel="noopener">${esc(s.github_url)}</a>\nlinkedin  <a href="${esc(s.linkedin_url)}" target="_blank" rel="noopener">${esc(s.linkedin_url)}</a>`); },
       ls: a => { if (a[0] === '-a' || a[0] === '-la') line(Object.keys(files).join('   ')); else line(Object.keys(files).filter(f => !f.startsWith('.')).join('   ')); },
@@ -286,7 +288,7 @@ It's a static site: no server, no database, no admin panel online. Nothing to br
       clear: () => (out.innerHTML = ''),
       hello: () => line('Hi! Type help to see what I can do.')
     };
-    cmds.hi = cmds.hello; cmds.man = cmds.help; cmds.dir = cmds.ls; cmds.cls = cmds.clear;
+    cmds.certifications = cmds.certs; cmds.hi = cmds.hello; cmds.man = cmds.help; cmds.dir = cmds.ls; cmds.cls = cmds.clear;
 
     const run = async raw => {
       const v = raw.trim();
