@@ -1,6 +1,5 @@
 /* =========================================================
    lab.js — the living parts of the home page
-   - scroll pulse on the rail
    - homelab topology with simulated traffic + log
    - tbsh: a small interactive shell
    - latest repositories from the GitHub API
@@ -11,27 +10,8 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const rnd = (a, b) => Math.floor(a + Math.random() * (b - a + 1));
   const pick = a => a[Math.floor(Math.random() * a.length)];
-  const now = () => new Date().toTimeString().slice(0, 8);
+  const now = (back = 0) => new Date(Date.now() - back * 1000).toTimeString().slice(0, 8);
   const contentReady = fetch('content.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({}));
-
-  /* ---------------- rail pulse: the signal follows your scroll ---------------- */
-  const board = $('.board');
-  if (board && !reduce) {
-    const pulse = document.createElement('span');
-    pulse.className = 'pulse'; pulse.setAttribute('aria-hidden', 'true');
-    board.appendChild(pulse);
-    let ticking = false;
-    const place = () => {
-      ticking = false;
-      const r = board.getBoundingClientRect();
-      const y = Math.min(Math.max(window.innerHeight * 0.5 - r.top, 0), r.height);
-      pulse.style.transform = `translateY(${y}px)`;
-      pulse.style.opacity = y <= 0 || y >= r.height ? 0 : 1;
-    };
-    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(place); } }, { passive: true });
-    window.addEventListener('resize', place);
-    place();
-  }
 
   /* ---------------- homelab topology ---------------- */
   const lab = $('#lab-map');
@@ -95,7 +75,7 @@
         const g = document.createElementNS(SVGNS, 'g');
         g.setAttribute('class', 'lab__node' + (o.kind ? ' lab__node--' + o.kind : ''));
         const r = document.createElementNS(SVGNS, 'rect');
-        Object.entries({ x: o.x - o.w / 2, y: o.y - o.h / 2, width: o.w, height: o.h, rx: 3 }).forEach(([k, v]) => r.setAttribute(k, v));
+        Object.entries({ x: o.x - o.w / 2, y: o.y - o.h / 2, width: o.w, height: o.h }).forEach(([k, v]) => r.setAttribute(k, v));
         const t = document.createElementNS(SVGNS, 'text');
         Object.entries({ x: o.x, y: o.y + 5, 'text-anchor': 'middle' }).forEach(([k, v]) => t.setAttribute(k, v));
         t.textContent = o.label;
@@ -144,10 +124,10 @@
     ];
     const weighted = FLOWS.flatMap(f => Array(f.w).fill(f));
 
-    const log = (cls, text) => {
+    const log = (cls, text, back = 0) => {
       const li = document.createElement('li');
       li.className = 'log--' + cls;
-      li.innerHTML = `<time>${now()}</time> ${esc(text)}`;
+      li.innerHTML = `<samp><time>${now(back)}</time> ${esc(text)}</samp>`;
       logEl.appendChild(li);
       while (logEl.children.length > 9) logEl.firstElementChild.remove();
     };
@@ -169,7 +149,7 @@
 
     draw();
     // seed the log so it never looks empty
-    for (let i = 0; i < 6; i++) { const f = pick(weighted); log(f.cls, f.log()); }
+    for (let i = 0; i < 9; i++) { const f = pick(weighted); log(f.cls, f.log(), (9 - i) * rnd(2, 5)); }
 
     if (!reduce) {
       let visible = false, last = 0, nextSpawn = 0;
@@ -205,7 +185,7 @@
     let data = {};
     contentReady.then(d => (data = d || {}));
     const strip = h => String(h || '').replace(/<[^>]+>/g, '');
-    const print = (html, cls = '') => { const div = document.createElement('div'); if (cls) div.className = cls; div.innerHTML = html; out.appendChild(div); out.scrollTop = out.scrollHeight; };
+    const print = (html, cls = '') => { const div = document.createElement('div'); if (cls) div.className = cls; div.innerHTML = `<samp>${html}</samp>`; out.appendChild(div); out.scrollTop = out.scrollHeight; };
     const line = t => print(esc(t));
     const uptime = () => { const s = Math.floor((Date.now() - start) / 1000); return `${Math.floor(s / 60)}m ${s % 60}s`; };
     const pages = { easydomotica: '#easydomotica', pcsumisura: '#pcsumisura', game: '#projects', certifications: '#certifications', certs: '#certifications', photography: '#photography', photos: '#photography', homelab: '#lab', lab: '#lab', skills: '#skills', github: 'https://github.com/Tommaso-Bombelli', linkedin: 'https://www.linkedin.com/in/tommaso-bombelli-204723286' };
@@ -245,7 +225,7 @@
         const k = (a[0] || '').toLowerCase().replace(/\.html$/, '');
         if (!pages[k]) return line('open: try skills, homelab, easydomotica, pcsumisura, game, photos, github or linkedin');
         line(`opening ${pages[k]}…`);
-        setTimeout(() => (/^https?:/.test(pages[k]) ? window.open(pages[k], '_blank', 'noopener') : document.querySelector(pages[k])?.scrollIntoView({ behavior: 'smooth' })), 300);
+        setTimeout(() => { if (/^https?:/.test(pages[k])) window.open(pages[k], '_blank', 'noopener'); else location.hash = pages[k]; }, 300);
       },
       ping: async a => {
         const host = a[0] || location.hostname || 'tommasobombelli.com';
@@ -274,7 +254,7 @@ It's a static site: no server, no database, no admin panel online. Nothing to br
 <span class="nf-N">████████</span>  OS        GitHub Pages
           Shell     tbsh 1.0
           Uptime    ${uptime()} (since you arrived)
-          Packages  0 frameworks, 3 files
+          Packages  0 frameworks, three.js for the world
           Homelab   Proxmox VE, ~50 CT/VM
           Theme     ${document.documentElement.dataset.theme || 'auto'}</span>`),
       theme: a => { const t = a[0]; if (!['dark', 'light', 'auto'].includes(t)) return line('theme: use dark, light or auto'); setTheme(t); line(`theme set to ${t}`); },
@@ -313,6 +293,7 @@ It's a static site: no server, no database, no admin panel online. Nothing to br
     shell.querySelectorAll('[data-cmd]').forEach(b => b.addEventListener('click', () => { run(b.dataset.cmd); input.focus({ preventScroll: true }); }));
     $('.shell__out', shell).addEventListener('click', () => input.focus({ preventScroll: true }));
     line("tbsh 1.0. Type help, or tap a command below.");
+    contentReady.then(() => { if (out.children.length === 1) run('whoami').then(() => run('neofetch')).then(() => { out.scrollTop = 0; }); });
   }
 
   /* ---------------- latest on GitHub ---------------- */
@@ -330,7 +311,7 @@ It's a static site: no server, no database, no admin panel online. Nothing to br
       repos.innerHTML = list.map(r => `<li>
         <a class="repo__name" href="${esc(r.html_url)}" target="_blank" rel="noopener">${esc(r.full_name)}</a>
         <p>${esc(r.description || 'No description yet.')}</p>
-        <p class="repo__meta">${r.language ? `<span class="lang">${esc(r.language)}</span>` : ''}<span>Updated ${ago(r.pushed_at)}</span>${r.stargazers_count ? `<span>${r.stargazers_count} ★</span>` : ''}</p>
+        <p class="repo__meta">${r.language ? `<span class="lang">${esc(r.language)}</span>` : ''}<span>Updated ${ago(r.pushed_at)}</span>${r.stargazers_count ? `<span>${r.stargazers_count} stars</span>` : ''}</p>
       </li>`).join('');
     };
     let cached = null;

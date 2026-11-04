@@ -6,7 +6,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23F1F2F0'/%3E%3Crect x='0' y='7' width='22' height='4' fill='%2374472A'/%3E%3Crect x='0' y='14' width='22' height='4' fill='%232C8A47'/%3E%3Crect x='0' y='21' width='22' height='4' fill='%231F4FCC'/%3E%3Crect x='21' y='4' width='8' height='24' rx='1.5' fill='none' stroke='%2316181B' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><!-- taste-skill-ignore -->
+<meta name="theme-color" content="#0b1320">
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Tommaso Bombelli — IT technician, developer, co-founder</title>
@@ -20,140 +21,220 @@
 </head>
 <body data-page="home">
 <a class="skip" href="#main">Skip to content</a>
+<div class="loader" aria-hidden="true">
+  <div class="loader__wires"><i></i><i></i><i></i></div>
+  <p class="loader__count">000</p>
+</div>
+<canvas id="world" aria-hidden="true"></canvas>
+<div class="cursor" aria-hidden="true"></div>
+<div class="hot-tip" aria-hidden="true"></div>
+
 <header class="nav">
   <a class="nav__home" href="#top">Tommaso Bombelli</a>
   <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <ul class="nav__links" id="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#cv">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#lab">Homelab</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#easydomotica">Easydomotica</a></li>
     <li><a href="#pcsumisura">PC su Misura</a></li>
     <li><a href="#photography">Photos</a></li>
+    <li><a href="#shell-sec">Shell</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </header>
 
+<nav class="line" aria-label="Stops on the line">
+  <div class="line__cable"><span class="line__cabin"></span></div>
+  <a href="#stop-0"><span>Lake</span></a>
+  <a href="#stop-1"><span>Forest</span></a>
+  <a href="#stop-2"><span>Meadow</span></a>
+  <a href="#stop-3"><span>Walls</span></a>
+  <a href="#stop-4"><span>Summit</span></a>
+</nav>
+
 <main id="main">
-  <section class="hero" id="top" aria-labelledby="name">
-    <div class="hero__name">
-      <h1 class="display" id="name"><span>Tommaso</span><span>Bombelli</span></h1>
-    </div>
-
-    <div class="wires" aria-label="What I do">
-      <div class="wire wire--L" style="grid-row:1"></div>
-      <div class="wire wire--E" style="grid-row:2"></div>
-      <div class="wire wire--N" style="grid-row:3"></div>
-      <div class="tap"><span class="drop"></span><span class="junction"></span></div>
-      <div class="terminal" aria-hidden="true"><i></i><i></i><i></i></div>
-      <p class="wire__tag" style="grid-row:1" data-role>Co-Founder @ PC su Misura<small>custom PCs and IT support</small></p>
-      <p class="wire__tag" style="grid-row:2" data-role>Co-Founder @ Easydomotica<small>since March 2024</small></p>
-      <p class="wire__tag" style="grid-row:3" data-role>Network &amp; Cybersecurity<small>servers, monitoring, homelab</small></p>
-    </div>
-
-    <div class="hero__foot">
-      <p class="lead" id="tagline">From cables to code — IT infrastructure, software development and home automation, all at once.</p>
-      <div class="actions">
-        <a class="btn btn--solid" href="#skills">What I can do</a>
-        <a class="btn js-email" href="mailto:tommaso.bombelli03@gmail.com">Email me</a>
+  <div class="home" id="top">
+    <section class="stop stop--hero is-on" id="stop-0" data-ink="dark" aria-labelledby="name">
+      <div class="stop__copy">
+        <h1 class="name" id="name"><span>Tommaso</span> <span>Bombelli</span></h1>
+        <p class="stop__line" id="tagline">From cables to code — IT infrastructure, software development and home automation, all at once.</p>
+        <div class="actions">
+          <a class="btn btn--go" href="#skills">What I can do</a>
+          <a class="btn js-email" href="mailto:tommaso.bombelli03@gmail.com">Email me</a>
+        </div>
       </div>
+      <ul class="roles" aria-label="What I do">
+        <li class="role role--L"><p data-role="0">Co-Founder @ PC su Misura<small>custom PCs and IT support</small></p></li>
+        <li class="role role--E"><p data-role="1">Co-Founder @ Easydomotica<small>since March 2024</small></p></li>
+        <li class="role role--N"><p data-role="2">Network &amp; Cybersecurity<small>servers, monitoring, homelab</small></p></li>
+      </ul>
+    </section>
+    <section class="stop" id="stop-1" data-ink="dark" aria-labelledby="s1-h">
+      <div class="stop__copy">
+        <h2 class="stop__title" id="s1-h">About</h2>
+        <p class="stop__line">I'm Tommaso, IT technician and developer near Milan. I started as an electrician, and a year of wiring real systems taught me to think in reliability, safety and structure.</p>
+        <div class="actions">
+          <a class="btn btn--go" href="#about">About</a>
+          <a class="btn" href="#cv">Experience</a>
+        </div>
+      </div>
+    </section>
+    <section class="stop stop--right" id="stop-2" data-ink="dark" aria-labelledby="s2-h">
+      <div class="stop__copy">
+        <h2 class="stop__title" id="s2-h">What I can set up</h2>
+        <p class="stop__line">Infrastructure I build, run and keep an eye on every day. Each piece runs in my homelab first.</p>
+        <div class="actions">
+          <a class="btn btn--go" href="#skills">Skills</a>
+          <a class="btn" href="#lab">Homelab</a>
+        </div>
+      </div>
+    </section>
+    <section class="stop" id="stop-3" data-ink="light" aria-labelledby="s3-h">
+      <div class="stop__copy">
+        <h2 class="stop__title" id="s3-h">Projects</h2>
+        <p class="stop__line">Software I've written and infrastructure I run. Most of it is used every day.</p>
+        <div class="actions">
+          <a class="btn btn--go" href="#projects">Projects</a>
+          <a class="btn" href="#easydomotica">Easydomotica</a>
+          <a class="btn" href="#pcsumisura">PC su Misura</a>
+        </div>
+        <div class="peeks">
+          <a class="peek" href="#projects"><img src="assets/preview-erp.svg" width="320" height="200" alt="" loading="lazy"><span>Easydomotica ERP</span></a>
+          <a class="peek" href="#lab"><img src="assets/preview-lab.svg" width="320" height="200" alt="" loading="lazy"><span>Home Datacenter</span></a>
+          <a class="peek" href="#pcsumisura"><img src="assets/preview-pcsumisura.jpg" width="1280" height="800" alt="" loading="lazy"><span>pcsumisura.net</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="stop stop--right" id="stop-4" data-ink="light" aria-labelledby="s4-h">
+      <div class="stop__copy">
+        <h2 class="stop__title" id="s4-h">Contact</h2>
+        <p class="stop__line">Work, a collaboration, or a question about a network, a server or a smart home: write to me.</p>
+        <div class="actions">
+          <a class="btn btn--go js-email" href="mailto:tommaso.bombelli03@gmail.com">Email me</a>
+          <a class="btn" href="#shell-sec">Try the shell</a>
+          <a class="btn" href="#photography">Photography</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+        <div class="peeks">
+          <a class="peek" href="#photography"><img src="img/thumbs/photo_001.webp" width="1200" height="1800" alt="" loading="lazy"><span>Alpe di Siusi</span></a>
+          <a class="peek" href="#photography"><img src="img/thumbs/_mg_4333_1785074387902.webp" width="1800" height="1200" alt="" loading="lazy"><span>Col Alt</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="pages">
+  <!-- ================= ABOUT ================= -->
+  <section class="page about" id="about" data-wire="L" aria-labelledby="about-h">
+    <h2 class="sign" id="about-h">About</h2>
+    <figure class="about__place">
+      <img src="assets/rocca-di-angera.jpg" width="1920" height="1280" alt="The Rocca di Angera castle above Lake Maggiore" loading="lazy" decoding="async">
+      <figcaption>Based in <span class="js-location">Angera (VA), Italy</span>.</figcaption>
+    </figure>
+    <div class="plate about__plate">
+      <div class="about__text" id="about-text">
+        <p>I'm Tommaso, IT technician and developer near Milan. I started as an electrician, and a year of wiring real systems taught me to think in reliability, safety and structure. Today I co-run Easydomotica and PC su Misura.</p>
+      </div>
+      <ul class="facts" id="about-facts"></ul>
+      <section id="certifications" aria-labelledby="cert-h">
+          <h2 id="cert-h">Certifications</h2>
+          <ul class="certs" id="certs-list"></ul>
+        </section>
     </div>
   </section>
 
-  <div class="board">
-    <!-- ================= ABOUT ================= -->
-    <section class="sec" id="about" aria-labelledby="about-h">
-      <div class="sec__head"><h2 id="about-h">About</h2></div>
-      <div class="about">
-        <div class="about__text" id="about-text">
-          <p>I'm Tommaso, IT technician and developer near Milan. I started as an electrician, and a year of wiring real systems taught me to think in reliability, safety and structure. Today I co-run Easydomotica and PC su Misura.</p>
-        </div>
-        <ul class="facts" id="about-facts"></ul>
-      </div>
-    </section>
-
-    <!-- ================= EXPERIENCE + CERTIFICATIONS ================= -->
-    <div class="sec duo duo--exp" id="cv">
+  <!-- ================= EXPERIENCE + CERTIFICATIONS ================= -->
+  <div class="page" id="cv" data-wire="E">
+    <div class="plate">
       <section id="experience" aria-labelledby="exp-h">
-        <div class="sec__head"><h2 id="exp-h">Experience</h2></div>
+        <h2 class="sign" id="exp-h">Experience</h2>
         <ol class="timeline" id="timeline"></ol>
       </section>
-      <section id="certifications" class="side-col" aria-labelledby="cert-h">
-        <div class="sec__head"><h2 id="cert-h">Certifications</h2></div>
-        <ul class="certs" id="certs-list"></ul>
-      </section>
+      
     </div>
+  </div>
 
-    <!-- ================= SKILLS / CAPABILITIES ================= -->
-    <section class="sec" id="skills" aria-labelledby="skills-h">
-      <div class="sec__head"><h2 id="skills-h">What I can set up</h2><p>Infrastructure I build, run and keep an eye on every day. Each piece runs in my homelab first.</p></div>
-      <div class="caps">
-        <article><h3>Servers and virtualisation</h3><p>Almost 50 containers and virtual machines on Proxmox: Linux and Windows servers, Docker hosts, and test machines I can throw away and rebuild in minutes.</p><p class="caps__tools">Proxmox VE, LXC, Docker, Ubuntu Server, Windows Server</p></article>
-        <article><h3>Networking and DNS</h3><p>Reverse proxy with certificates for every service, my own recursive DNS, ad and tracker blocking for the whole network, and secure remote access.</p><p class="caps__tools">Nginx Proxy Manager, Pi-hole, Unbound, VPN, firewall</p></article>
-        <article><h3>Monitoring and alerts</h3><p>Metrics from every host and service, dashboards, uptime and speed checks, and alerts that reach me before anyone notices a problem.</p><p class="caps__tools">Prometheus and exporters, Grafana, Alertmanager, Uptime Kuma, MySpeed</p></article>
-        <article><h3>Security</h3><p>Firewall rules, access control, updates and isolated test environments, plus a dedicated machine for checking my own setups the way an attacker would.</p><p class="caps__tools">Firewall management, access control, Kali Linux</p></article>
-        <article><h3>Databases, backend and automation</h3><p>PostgreSQL instances for the ERP and client projects, Node.js backends, and automated workflows that connect services together.</p><p class="caps__tools">PostgreSQL, Node.js, PM2, n8n</p></article>
-        <article><h3>Smart homes and phone systems</h3><p>Home Assistant instances for testing, demos, backups and remote support, and 3CX phone systems for both companies.</p><p class="caps__tools">Home Assistant, HACS, 3CX</p></article>
-      </div>
-
-      <div class="duo duo--skills">
+  <!-- ================= SKILLS / CAPABILITIES ================= -->
+  <section class="page setup" id="skills" data-wire="N" aria-labelledby="skills-h">
+    <div class="plate">
+      <h2 class="sign" id="skills-h">What I can set up</h2>
+      <p>Infrastructure I build, run and keep an eye on every day. Each piece runs in my homelab first.</p>
+    <div class="caps">
+      <article><h3>Servers and virtualisation</h3><p>Almost 50 containers and virtual machines on Proxmox: Linux and Windows servers, Docker hosts, and test machines I can throw away and rebuild in minutes.</p><p class="caps__tools">Proxmox VE, LXC, Docker, Ubuntu Server, Windows Server</p></article>
+      <article><h3>Networking and DNS</h3><p>Reverse proxy with certificates for every service, my own recursive DNS, ad and tracker blocking for the whole network, and secure remote access.</p><p class="caps__tools">Nginx Proxy Manager, Pi-hole, Unbound, VPN, firewall</p></article>
+      <article><h3>Monitoring and alerts</h3><p>Metrics from every host and service, dashboards, uptime and speed checks, and alerts that reach me before anyone notices a problem.</p><p class="caps__tools">Prometheus and exporters, Grafana, Alertmanager, Uptime Kuma, MySpeed</p></article>
+      <article><h3>Security</h3><p>Firewall rules, access control, updates and isolated test environments, plus a dedicated machine for checking my own setups the way an attacker would.</p><p class="caps__tools">Firewall management, access control, Kali Linux</p></article>
+      <article><h3>Databases, backend and automation</h3><p>PostgreSQL instances for the ERP and client projects, Node.js backends, and automated workflows that connect services together.</p><p class="caps__tools">PostgreSQL, Node.js, PM2, n8n</p></article>
+      <article><h3>Smart homes and phone systems</h3><p>Home Assistant instances for testing, demos, backups and remote support, and 3CX phone systems for both companies.</p><p class="caps__tools">Home Assistant, HACS, 3CX</p></article>
+    </div>
+    <div class="setup__foot">
       <aside class="callout" aria-labelledby="callout-h">
         <h3 id="callout-h">Tested at home, then used at work</h3>
         <p>Everything on this list runs in my homelab before it goes anywhere else. Then I bring the same setups to the business clients of <a class="link" href="#pcsumisura">PC su Misura</a>: monitoring and alerts, backups, DNS filtering, reverse proxies, access control, phone systems and remote support, configured for small offices that have no IT department of their own.</p>
       </aside>
-
       <div>
-        <h3 class="subhead">Languages and tools</h3>
+        <h3>Languages and tools</h3>
         <dl class="skills" id="skills-list"></dl>
       </div>
-      </div>
-    </section>
+    </div>
+    </div>
+  </section>
 
-    <!-- ================= HOMELAB ================= -->
-    <section class="sec" id="lab" aria-labelledby="lab-h">
-      <div class="sec__head"><h2 id="lab-h">Homelab</h2><p>One Proxmox server at home with almost 50 containers and VMs. This is a simplified view of how the main pieces are wired.</p></div>
-      <div class="lab">
-        <div class="lab__map" id="lab-map"></div>
-      </div>
-      <div class="duo duo--lab">
-        <figure class="lab__feed">
-          <ol class="lab__log" id="lab-log"></ol>
-          <figcaption>Simulated feed, modelled on what the real one logs all day. Orange is traffic the firewall drops.</figcaption>
-        </figure>
-      <div class="lab__groups">
-        <div><b>Monitoring</b><span>Prometheus, PVE and blackbox exporters, Alertmanager, Grafana, Uptime Kuma, MySpeed</span></div>
-        <div><b>Network</b><span>Nginx Proxy Manager, Pi-hole, Unbound</span></div>
-        <div><b>Data</b><span>PostgreSQL for the ERP, Home Assistant and client projects</span></div>
-        <div><b>Work</b><span>Backend server, n8n, Home Assistant test and demo machines, 3CX for both companies</span></div>
-        <div><b>Systems</b><span>Ubuntu and Windows Server VMs, Docker, Kali Linux</span></div>
-        <div><b>Media</b><span>Plex, Jellyfin, Kavita and an automated library stack</span></div>
-      </div>
-      </div>
-    </section>
+  <!-- ================= HOMELAB ================= -->
+  <section class="page lab-sec" id="lab" data-wire="L" aria-labelledby="lab-h">
+    <div class="plate lab-sec__head">
+      <h2 class="sign" id="lab-h">Homelab</h2>
+      <p>One Proxmox server at home with almost 50 containers and VMs. This is a simplified view of how the main pieces are wired.</p>
+    </div>
+    <div class="desk">
+      <div class="lab__map" id="lab-map"></div>
+      <figure class="lab__feed">
+        <ol class="lab__log" id="lab-log"></ol>
+        <figcaption>Simulated feed, modelled on what the real one logs all day. Orange is traffic the firewall drops.</figcaption>
+      </figure>
+    </div>
+    <div class="plate lab__groups">
+      <div><b>Monitoring</b><span>Prometheus, PVE and blackbox exporters, Alertmanager, Grafana, Uptime Kuma, MySpeed</span></div>
+      <div><b>Network</b><span>Nginx Proxy Manager, Pi-hole, Unbound</span></div>
+      <div><b>Data</b><span>PostgreSQL for the ERP, Home Assistant and client projects</span></div>
+      <div><b>Work</b><span>Backend server, n8n, Home Assistant test and demo machines, 3CX for both companies</span></div>
+      <div><b>Systems</b><span>Ubuntu and Windows Server VMs, Docker, Kali Linux</span></div>
+      <div><b>Media</b><span>Plex, Jellyfin, Kavita and an automated library stack</span></div>
+    </div>
+  </section>
 
-    <!-- ================= PROJECTS ================= -->
-    <section class="sec" id="projects" aria-labelledby="proj-h">
-      <div class="sec__head"><h2 id="proj-h">Projects</h2><p>Software I've written and infrastructure I run. Most of it is used every day.</p></div>
-      <div class="projects" id="projects-list"></div>
-    </section>
+  <!-- ================= PROJECTS ================= -->
+  <section class="page" id="projects" data-wire="E" aria-labelledby="proj-h">
+    <div class="plate plate--small">
+      <h2 class="sign" id="proj-h">Projects</h2>
+      <p>Software I've written and infrastructure I run. Most of it is used every day.</p>
+    </div>
+    <div class="projects" id="projects-list"></div>
+  </section>
 
-    <!-- ================= EASYDOMOTICA ================= -->
-    <section class="sec" id="easydomotica" aria-labelledby="ed-h">
-      <div class="sec__head"><h2 id="ed-h">Easydomotica</h2><p>My first company, co-founded in March 2024. I run the technical side together with my business partner.</p></div>
-      <div class="band">
-        <p class="lead">We design and install smart homes from the cable up: lighting, climate, blinds, energy monitoring, CCTV and alarm systems, all working as one system. Behind it runs software I wrote myself.</p>
+  <!-- ================= EASYDOMOTICA ================= -->
+  <section class="page" id="easydomotica" data-wire="N" aria-labelledby="ed-h">
+    <div class="plate ed">
+      <div class="ed__top">
+        <div>
+          <h2 class="sign" id="ed-h">Easydomotica</h2>
+          <p>My first company, co-founded in March 2024. I run the technical side together with my business partner.</p>
+          <a class="shot" href="https://easydomotica.net" target="_blank" rel="noopener"><img src="assets/preview-easydomotica.jpg" width="1280" height="800" alt="The easydomotica.net home page" loading="lazy"></a>
+          <p class="lead">We design and install smart homes from the cable up: lighting, climate, blinds, energy monitoring, CCTV and alarm systems, all working as one system. Behind it runs software I wrote myself.</p>
+        </div>
         <table class="spec">
           <tr><th scope="row">We install</th><td>Home automation, CCTV, alarm systems, smart automations</td></tr>
           <tr><th scope="row">I built</th><td>The company ERP and a Home Assistant integration</td></tr>
           <tr><th scope="row">Area</th><td>Castelletto Sopra Ticino and around</td></tr>
         </table>
       </div>
-
-      <div class="split split--top">
+      <div class="ed__two">
         <div>
-          <h3 class="subhead">The ERP that runs the company</h3>
-          <p class="muted" style="margin-bottom:14px">No off-the-shelf tool fit how we work, so I built a full-stack system from scratch. We use it every day.</p>
+          <h3>The ERP that runs the company</h3>
+          <p>No off-the-shelf tool fit how we work, so I built a full-stack system from scratch. We use it every day.</p>
           <ul class="mini">
             <li><b>Customers</b> registry with questionnaire, regional filters and linked jobs</li>
             <li><b>Warehouse</b> catalogue with pricing logic: cost, markup, VAT</li>
@@ -162,11 +243,11 @@
             <li><b>Portals</b> for clients and installers, each with its own login</li>
             <li><b>Chat</b> between colleagues with notifications</li>
           </ul>
-          <p class="caps__tools" style="margin-top:14px">React, Vite, Node.js, Express, PostgreSQL, JWT, PM2</p>
+          <p class="caps__tools">React, Vite, Node.js, Express, PostgreSQL, JWT, PM2</p>
         </div>
         <div>
-          <h3 class="subhead">Home Assistant integration</h3>
-          <p class="muted" style="margin-bottom:14px">Installed through HACS on clients' systems, so we can look after them remotely from the ERP.</p>
+          <h3>Home Assistant integration</h3>
+          <p>Installed through HACS on clients' systems, so we can look after them remotely from the ERP.</p>
 <pre class="code" aria-label="Excerpt from __init__.py"><span class="c"># only this HA user gets in</span>
 <span class="k">ALLOWED_USERNAME</span> = <span class="s">"easydomotica"</span>
 <span class="c"># auto-reload every 10 min</span>
@@ -175,32 +256,40 @@
     <span class="k">return</span> json_response(
         {<span class="s">"error"</span>: <span class="s">"Accesso negato"</span>},
         status=<span class="k">403</span>)</pre>
-          <ul class="mini" style="margin-top:14px">
+          <ul class="mini">
             <li><b>Sidebar panel</b> visible only to the Easydomotica user</li>
             <li><b>Scheduler</b> for per-client reloads, with logs saved to the NAS</li>
             <li><b>Update checker</b> for integrations, Core and OS</li>
           </ul>
-          <div class="actions" style="margin-top:20px;align-items:center">
+          <div class="actions">
             <a class="btn" href="https://github.com/easydomotica/APP-HASS-Easydomotica" target="_blank" rel="noopener">View on GitHub</a>
             <span class="status">v1.4.0, MIT licence</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ================= PC SU MISURA ================= -->
-    <section class="sec" id="pcsumisura" aria-labelledby="pc-h">
-      <div class="sec__head"><h2 id="pc-h">PC su Misura</h2><p>My second company: custom PCs, new and refurbished, and IT support for homes and small businesses.</p></div>
-      <p class="lead" style="margin-bottom:28px">For small companies and studios with no technician of their own, we are the external IT department: network, servers, backup and security, so they can get on with their work. It's where everything from my homelab gets put to work.</p>
-      <div class="facts-row">
-        <div><b>Free</b><span>IT check-up to start</span></div>
-        <div><b>MSP</b><span>Managed support contracts</span></div>
-        <div><b>Custom</b><span>New or refurbished PCs</span></div>
-        <div><b>Remote</b><span>Most problems fixed without a visit</span></div>
-      </div>
-      <div class="split split--top">
+  <!-- ================= PC SU MISURA ================= -->
+  <section class="page" id="pcsumisura" data-wire="L" aria-labelledby="pc-h">
+    <div class="plate pc">
+      <div class="pc__top">
         <div>
-          <h3 class="subhead">For businesses</h3>
+          <h2 class="sign" id="pc-h">PC su Misura</h2>
+          <p>My second company: custom PCs, new and refurbished, and IT support for homes and small businesses.</p>
+          <a class="shot" href="https://pcsumisura.net" target="_blank" rel="noopener"><img src="assets/preview-pcsumisura.jpg" width="1280" height="800" alt="The pcsumisura.net home page" loading="lazy"></a>
+          <p class="lead">For small companies and studios with no technician of their own, we are the external IT department: network, servers, backup and security, so they can get on with their work. It's where everything from my homelab gets put to work.</p>
+        </div>
+        <div class="facts-row">
+          <div><b>Free</b><span>IT check-up to start</span></div>
+          <div><b>MSP</b><span>Managed support contracts</span></div>
+          <div><b>Custom</b><span>New or refurbished PCs</span></div>
+          <div><b>Remote</b><span>Most problems fixed without a visit</span></div>
+        </div>
+      </div>
+      <div class="pc__two">
+        <div>
+          <h3>For businesses</h3>
           <ul class="mini">
             <li><b>Free check-up</b> of computers, network, backup and security, with the risks explained</li>
             <li><b>Managed support</b> at a fixed yearly price per device: monitoring, updates, remote help</li>
@@ -213,14 +302,14 @@
           </ul>
         </div>
         <div>
-          <h3 class="subhead">For homes and gamers</h3>
+          <h3>For homes and gamers</h3>
           <ul class="mini">
             <li><b>Custom PCs</b> built around use and budget: gaming, work, study, graphics</li>
             <li><b>Upgrades</b> that save a slow PC for far less than a new one</li>
             <li><b>Cleaning and thermal paste</b> for PCs and consoles that run hot</li>
             <li><b>Software cleanup and remote help</b> without losing data</li>
           </ul>
-          <table class="spec" style="margin-top:22px">
+          <table class="spec">
             <caption>What we work with</caption>
             <tr><th scope="row">Network</th><td>Fortinet, Ubiquiti, Aruba, Cisco</td></tr>
             <tr><th scope="row">Storage</th><td>Synology, TrueNAS</td></tr>
@@ -230,53 +319,67 @@
           </table>
         </div>
       </div>
-      <div class="actions" style="margin-top:32px">
-        <a class="btn btn--solid" href="https://pcsumisura.net" target="_blank" rel="noopener">Visit pcsumisura.net</a>
+      <div class="actions">
+        <a class="btn btn--go" href="https://pcsumisura.net" target="_blank" rel="noopener">Visit pcsumisura.net</a>
         <a class="btn" href="mailto:pcsumisura.info@gmail.com">pcsumisura.info@gmail.com</a>
         <a class="btn" href="tel:+3903311090522">+39 0331 109 0522</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ================= SHELL + GITHUB ================= -->
-    <div class="sec duo duo--shell">
-      <section id="shell-sec" aria-labelledby="sh-h">
-        <div class="sec__head"><h2 id="sh-h">Try the shell</h2><p>A tiny command line that knows everything on this page. Start with <code>help</code>.</p></div>
-        <div class="shell" id="shell">
-        <div class="shell__bar" aria-hidden="true"><i></i><i></i><i></i><span>guest@tommasobombelli.com</span></div>
+  <!-- ================= PHOTOGRAPHY ================= -->
+  <section class="page photos" id="photography" data-wire="E" aria-labelledby="ph-h">
+    <div class="plate plate--small">
+      <h2 class="sign" id="ph-h">Photography</h2>
+      <p>Mostly mountains. Shooting is how I switch off from screens. Tap a photo to open it.</p>
+    </div>
+    <div class="gallery" id="gallery"><p class="empty">Loading photos…</p></div>
+  </section>
+
+  <!-- ================= SHELL + GITHUB ================= -->
+  <div class="page" id="terminal" data-wire="N">
+    <div class="plate summit">
+    <section id="shell-sec" aria-labelledby="sh-h">
+      <h2 class="sign" id="sh-h">Try the shell</h2>
+      <p>A tiny command line that knows everything on this page. Start with <code>help</code>.</p>
+      <div class="shell" id="shell">
+        <div class="shell__bar" aria-hidden="true"><span>guest@tommasobombelli.com</span></div>
         <div class="shell__out" aria-live="polite"></div>
         <form class="shell__in" autocomplete="off">
-          <label for="shell-input" class="pr">guest@tb:~$</label>
+          <label for="shell-input" class="pr"><code>guest@tb:~$</code></label>
           <input id="shell-input" type="text" spellcheck="false" autocapitalize="off" aria-label="Type a command">
         </form>
         <div class="shell__chips" aria-label="Suggested commands">
-          <button type="button" data-cmd="help">help</button><button type="button" data-cmd="whoami">whoami</button><button type="button" data-cmd="neofetch">neofetch</button><button type="button" data-cmd="ping">ping</button><button type="button" data-cmd="nmap">nmap</button><button type="button" data-cmd="cat .secrets">cat .secrets</button>
+          <button type="button" data-cmd="help"><code>help</code></button><button type="button" data-cmd="whoami"><code>whoami</code></button><button type="button" data-cmd="neofetch"><code>neofetch</code></button><button type="button" data-cmd="ping"><code>ping</code></button><button type="button" data-cmd="nmap"><code>nmap</code></button><button type="button" data-cmd="cat .secrets"><code>cat .secrets</code></button>
         </div>
       </div>
-      </section>
-      <section id="github" class="side-col" aria-labelledby="gh-h">
-        <div class="sec__head"><h2 id="gh-h">Latest on GitHub</h2><p>Loaded live from the GitHub API.</p></div>
-        <ol class="repos" id="repos"><li><a class="repo__name" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">github.com/Tommaso-Bombelli</a><p>Public repositories and the Home Assistant integration.</p></li></ol>
-      </section>
-    </div>
-
-    <!-- ================= PHOTOGRAPHY + CONTACT ================= -->
-    <div class="sec duo duo--end">
-      <section id="photography" aria-labelledby="ph-h">
-        <div class="sec__head"><h2 id="ph-h">Photography</h2><p>Mostly mountains. Shooting is how I switch off from screens. Tap a photo to open it.</p></div>
-      <div class="gallery" id="gallery"><p class="empty">Loading photos…</p></div>
-      </section>
-      <section id="contact" class="side-col" aria-labelledby="contact-h">
-        <div class="sec__head"><h2 id="contact-h">Contact</h2><p>Work, a collaboration, or a question about a network, a server or a smart home: write to me.</p></div>
-      <a class="contact__mail js-email" href="mailto:tommaso.bombelli03@gmail.com">tommaso.bombelli03@gmail.com</a>
-      <ul class="contact__list" id="contact-list">
-        <li><span>GitHub</span><a class="link" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">Tommaso-Bombelli</a></li>
-        <li><span>LinkedIn</span><a class="link" href="https://www.linkedin.com/in/tommaso-bombelli-204723286" target="_blank" rel="noopener">tommaso-bombelli</a></li>
-      </ul>
-      <p class="note">Based in <span class="js-location">Angera (VA), Italy</span>.</p>
-      </section>
+    </section>
+    <section id="github" aria-labelledby="gh-h">
+      <h2 id="gh-h">Latest on GitHub</h2>
+      <p>Loaded live from the GitHub API.</p>
+      <ol class="repos" id="repos"><li><a class="repo__name" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">github.com/Tommaso-Bombelli</a><p>Public repositories and the Home Assistant integration.</p></li></ol>
+    </section>
     </div>
   </div>
-  <div class="ground" aria-hidden="true"><i></i></div>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="page contact" id="contact" data-wire="L" aria-labelledby="contact-h">
+    <div class="plate">
+    <h2 class="sign" id="contact-h">Contact</h2>
+    <p>Work, a collaboration, or a question about a network, a server or a smart home: write to me.</p>
+    <a class="contact__mail js-email" href="mailto:tommaso.bombelli03@gmail.com">tommaso.bombelli03<wbr>@gmail.com</a>
+    <ul class="contact__list" id="contact-list">
+      <li><span>GitHub</span><a class="link" href="https://github.com/Tommaso-Bombelli" target="_blank" rel="noopener">Tommaso-Bombelli</a></li>
+      <li><span>LinkedIn</span><a class="link" href="https://www.linkedin.com/in/tommaso-bombelli-204723286" target="_blank" rel="noopener">tommaso-bombelli</a></li>
+    </ul>
+      <footer class="footer">
+      <span>© <span class="js-year">2026</span> Tommaso Bombelli</span>
+      <nav aria-label="Footer"><a href="https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io" target="_blank" rel="noopener">Source</a></nav>
+      <span>Handwritten HTML, CSS and JS on GitHub Pages. Rocca di Angera photo: <a href="https://commons.wikimedia.org/w/index.php?curid=175029400" target="_blank" rel="noopener">Monster4711</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a>.</span>
+    </footer>
+    </div>
+  </section>
+  </div>
 </main>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo">
@@ -284,12 +387,9 @@
   <figure><img src="" alt=""><p></p></figure>
 </div>
 
-<footer class="footer">
-  <span>© <span class="js-year">2026</span> Tommaso Bombelli</span>
-  <nav aria-label="Footer"><a href="#about">About</a><a href="#skills">Skills</a><a href="#easydomotica">Easydomotica</a><a href="#pcsumisura">PC su Misura</a><a href="#photography">Photos</a><a href="https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io" target="_blank" rel="noopener">Source</a></nav>
-  <span>Handwritten HTML, CSS and JS on GitHub Pages</span>
-</footer>
+
 <script src="site.js"></script>
 <script src="lab.js"></script>
+<script type="module" src="world.js"></script>
 </body>
 </html>

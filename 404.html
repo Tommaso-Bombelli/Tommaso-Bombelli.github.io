@@ -7,7 +7,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23F1F2F0'/%3E%3Crect x='0' y='7' width='22' height='4' fill='%2374472A'/%3E%3Crect x='0' y='14' width='22' height='4' fill='%232C8A47'/%3E%3Crect x='0' y='21' width='22' height='4' fill='%231F4FCC'/%3E%3Crect x='21' y='4' width='8' height='24' rx='1.5' fill='none' stroke='%2316181B' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Page not found — Tommaso Bombelli</title>
@@ -15,7 +15,7 @@
 </head>
 <body data-page="404">
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav">
+<header class="nav" data-tone="day">
   <a class="nav__home" href="index.html">Tommaso Bombelli</a>
   <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <ul class="nav__links" id="nav-links">
@@ -26,20 +26,19 @@
     <li><a href="/#easydomotica">Easydomotica</a></li>
     <li><a href="/#pcsumisura">PC su Misura</a></li>
     <li><a href="/#photography">Photos</a></li>
+    <li><a href="/#shell-sec">Shell</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
 </header>
 <main id="main">
-  <div class="feed" aria-hidden="true"></div>
-  <div class="board">
-    <section class="sec page-head">
+    <div class="board" data-tone="day">
+    <section class="page-head">
       <h1 class="display">Open circuit</h1>
       <p class="lead">This page doesn't exist, or it moved. The home page has links to everything else.</p>
-      <div class="actions"><a class="btn btn--solid" href="/">Go to the home page</a></div>
+      <div class="actions"><a class="btn btn--go" href="/">Go to the home page</a></div>
     </section>
   </div>
-  <div class="ground" aria-hidden="true"><i></i></div>
-</main>
+  </main>
 <footer class="footer">
   <span>© <span class="js-year">2026</span> Tommaso Bombelli</span>
 </footer>

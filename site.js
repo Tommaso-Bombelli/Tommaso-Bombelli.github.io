@@ -10,6 +10,49 @@
   // labels from the admin may still carry old arrows/emoji; keep the text, drop the ornaments
   const clean = (v = '') => String(v).replace(/\s*[→↗]\s*$/u, '').replace(/^\p{Extended_Pictographic}️?\s*/u, '').trim();
 
+  /* ---------- pages: each one opens over the world, and has its own address ---------- */
+  const pages = $$('.page');
+  pages.forEach(p => {
+    const inner = document.createElement('div');
+    inner.className = 'page__inner';
+    while (p.firstChild) inner.appendChild(p.firstChild);
+    const close = document.createElement('a');
+    close.className = 'page__close'; close.href = '#top'; close.textContent = 'Back to the line';
+    close.addEventListener('click', e => { e.preventDefault(); leave(); });
+    const scroll = document.createElement('div');
+    scroll.className = 'page__scroll'; scroll.setAttribute('tabindex', '-1');
+    scroll.appendChild(inner);
+    p.append(scroll, close);
+  });
+  let openPage = null, backTo = null;
+  /* closing keeps you at the stop you were on */
+  const leave = () => { history.pushState(null, '', location.pathname + location.search); route(); };
+  const route = () => {
+    const id = location.hash.slice(1);
+    const target = id && document.getElementById(id);
+    const page = target ? target.closest('.page') : null;
+    if (page === openPage) return;
+    if (openPage) openPage.classList.remove('is-open');
+    document.documentElement.classList.toggle('has-page', !!page);
+    if (page) {
+      if (!openPage) backTo = document.activeElement;
+      page.classList.add('is-open');
+      const sc = $('.page__scroll', page);
+      sc.scrollTop = 0;
+      if (target !== page) requestAnimationFrame(() => target.scrollIntoView());
+      sc.focus({ preventScroll: true });
+    } else if (openPage) backTo?.focus?.({ preventScroll: true });
+    openPage = page;
+    window.dispatchEvent(new CustomEvent('page-change', { detail: { open: !!page, id: page ? page.id : null } }));
+  };
+  window.addEventListener('hashchange', route);
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape' || !openPage || $('#lightbox')?.classList.contains('is-open')) return;
+    leave();
+  });
+  route();
+  window.addEventListener('world-ready', () => { if (openPage) window.dispatchEvent(new CustomEvent('page-change', { detail: { open: true, id: openPage.id } })); });
+
   /* ---------- nav ---------- */
   const nav = $('.nav');
   if (nav) {
@@ -23,21 +66,6 @@
       nav.classList.remove('is-open');
       if (toggle) { toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = 'Menu'; }
     }));
-    const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
-    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
-
-    // highlight in-page section links
-    const inPage = $$('.nav__links a[href^="#"]', nav);
-    if (inPage.length && 'IntersectionObserver' in window) {
-      const map = new Map(inPage.map(a => [a.getAttribute('href').slice(1), a]));
-      const io = new IntersectionObserver(entries => entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        if (window.scrollY < 200) { inPage.forEach(a => a.classList.remove('is-active')); return; }
-        inPage.forEach(a => a.classList.remove('is-active'));
-        map.get(e.target.id)?.classList.add('is-active');
-      }), { rootMargin: '-45% 0px -50% 0px' });
-      map.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
-    }
   }
   $$('.js-year').forEach(el => (el.textContent = new Date().getFullYear()));
 
@@ -47,12 +75,22 @@
     return r.json();
   });
 
+  /* a picture for each project. The ERP and the game are private, so theirs are drawings, and they say so */
+  const PREVIEWS = {
+    erp: ['assets/preview-erp.svg', 'Drawing of a quote screen in the ERP, with sample data'],
+    hass: ['assets/preview-hass.svg', 'Excerpt of the Home Assistant integration source code'],
+    datacenter: ['assets/preview-lab.svg', 'Simplified map of the homelab'],
+    game: ['assets/preview-game.svg', 'Drawing of a Blueprints graph in Unreal Engine 5'],
+    portfolio: ['assets/preview-site.jpg', 'This site: the first stop of the ride']
+  };
+
   const renderIndex = data => {
     const { site = {}, hero = {}, about = {}, experience = [], skills = [], projects = [], photography = [] } = data;
 
-    // hero: three conductors, three roles
+    // hero: one tile per phrase, data-role is its place in the list
     const roles = hero.typewriter_phrases || [];
-    $$('[data-role]').forEach((el, i) => {
+    $$('[data-role]').forEach(el => {
+      const i = +el.dataset.role;
       if (!roles[i] || roles[i] === el.firstChild.textContent.trim()) return;
       el.textContent = roles[i]; // phrase changed in admin: drop the hard-coded sub-label
     });
@@ -109,13 +147,16 @@
         p.link2 && `<a class="link" href="${esc(p.link2)}"${linkAttrs(p.link2)}>${esc(clean(p.link2_label) || 'More')}</a>`,
         p.private_label && `<span class="proj__private">${esc(clean(p.private_label))}</span>`
       ].filter(Boolean).join('');
-      return `<article class="proj${p.featured ? ' proj--featured' : ''}">
-        <div>
-          <h3>${esc(p.title)}</h3>
-          <p class="proj__meta"><span class="status${wip ? ' status--wip' : ''}">${esc(p.badge_label || (wip ? 'In development' : 'Live'))}</span><span>${(p.tags || []).map(esc).join(', ')}</span></p>
+      const pic = PREVIEWS[p.id];
+      return `<article class="proj">
+        ${pic ? `<div class="proj__pic"><img src="${pic[0]}" alt="${esc(pic[1])}" loading="lazy"></div>` : ''}
+        <h3>${esc(p.title)}</h3>
+        <div class="proj__body">
+          <p class="proj__desc">${esc(p.desc)}</p>
+          <p class="proj__tags">${(p.tags || []).map(esc).join(', ')}</p>
+          ${links ? `<div class="proj__links">${links}</div>` : ''}
         </div>
-        <p class="proj__desc">${esc(p.desc)}</p>
-        ${links ? `<div class="proj__links">${links}</div>` : ''}
+        <p class="proj__state${wip ? ' is-wip' : ''}"><i></i>${esc(p.badge_label || (wip ? 'In development' : 'Live'))}</p>
       </article>`;
     }).join('');
 
@@ -132,7 +173,7 @@
     }
 
     // contact
-    if (site.email) $$('.js-email').forEach(a => { a.href = 'mailto:' + site.email; if (a.classList.contains('contact__mail')) a.textContent = site.email; });
+    if (site.email) $$('.js-email').forEach(a => { a.href = 'mailto:' + site.email; if (a.classList.contains('contact__mail')) a.innerHTML = esc(site.email).replace('@', '<wbr>@'); });
     const cl = $('#contact-list');
     if (cl) {
       const items = [
@@ -148,7 +189,7 @@
     const g = $('#gallery');
     const photos = data.photography || [];
     if (!photos.length) { g.innerHTML = '<p class="empty">No photos yet. New shots are added from the admin panel.</p>'; return; }
-    g.innerHTML = photos.map((ph, i) => `<figure>
+    g.innerHTML = photos.map((ph, i) => `<figure${ph.width ? ` style="flex-grow:${(+ph.width / +ph.height).toFixed(3)}"` : ''}>
       <button type="button" data-i="${i}" aria-label="Open ${esc(ph.caption || ph.alt || 'photo')} full screen"><img src="${esc(ph.thumb || ph.file)}" alt="${esc(ph.alt)}" loading="lazy"${ph.width ? ` width="${+ph.width}" height="${+ph.height}"` : ''}></button>
       ${ph.caption ? `<figcaption>${esc(ph.caption)}</figcaption>` : ''}
     </figure>`).join('');
@@ -168,6 +209,36 @@
       if (e.key === 'ArrowLeft') show(idx - 1);
     });
   };
+
+  /* ---------- letters settle out of code, on the titles and on the buttons ---------- */
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const GLYPHS = '01<>/{}[]=_#$%';
+  const scramble = (el, ms = 620) => {
+    if (calm || !el) return;
+    const text = el.dataset.text ??= el.textContent;
+    if (el.children.length) return;
+    el.setAttribute('aria-label', text);
+    cancelAnimationFrame(el._raf);
+    const t0 = performance.now();
+    const step = now => {
+      const p = Math.min((now - t0) / ms, 1), done = Math.floor(p * text.length);
+      el.textContent = text.split('').map((c, i) => (i < done || c === ' ' ? c : GLYPHS[Math.floor(Math.random() * GLYPHS.length)])).join('');
+      if (p < 1) el._raf = requestAnimationFrame(step); else el.textContent = text;
+    };
+    el._raf = requestAnimationFrame(step);
+  };
+  window.addEventListener('stop-change', e => scramble($$('.stop')[e.detail.stop]?.querySelector('.stop__title'), 800));
+  if (matchMedia('(hover: hover)').matches) {
+    $$('.btn, .line a span').forEach(b => b.addEventListener('pointerenter', () => scramble(b, 340)));
+    /* the cursor is a small ring that lags behind, and opens over anything you can press */
+    const cur = $('.cursor');
+    if (cur && !calm) {
+      let x = innerWidth / 2, y = innerHeight / 2, cx = x, cy = y, on = false;
+      window.addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; cur.classList.add('is-on'); cur.classList.toggle('is-over', !!e.target.closest?.('a, button, input, summary')); if (!on) { on = true; cx = x; cy = y; } }, { passive: true });
+      const follow = () => { cx += (x - cx) * .22; cy += (y - cy) * .22; cur.style.transform = `translate(${cx.toFixed(1)}px, ${cy.toFixed(1)}px)`; requestAnimationFrame(follow); };
+      follow();
+    }
+  }
 
   const page = document.body.dataset.page;
   if (page === 'home' || page === 'photography') {
