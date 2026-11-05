@@ -48,18 +48,6 @@ Handwritten HTML, CSS and JavaScript, with no framework and no build step. GitHu
 | `content.json` | Experience, projects, skills, photos |
 | `vendor/` | three.js, trimmed to what the site uses |
 
-## Run it locally
-
-It needs a local server, because the browser won't load `content.json` from a file opened directly:
-
-```
-git clone https://github.com/Tommaso-Bombelli/Tommaso-Bombelli.github.io
-cd Tommaso-Bombelli.github.io
-python3 -m http.server 8765
-```
-
-Then open <http://localhost:8765>.
-
 ## Credits
 
 - [three.js](https://threejs.org), MIT licence (`vendor/three.LICENSE`)
