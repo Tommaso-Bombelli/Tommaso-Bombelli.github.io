@@ -114,11 +114,11 @@
     const FLOWS = [
       { w: 4, path: ['inet', 'fw', 'sw', 'px', 'nginx'], cls: 'ok', log: () => `nginx    GET ${pick(['/erp/api/quotes', '/grafana/d/home', '/status', '/hass/api/states'])} 200 ${rnd(4, 38)}ms` },
       { w: 4, path: ['inet', 'fw'], cls: 'bad', log: () => `fw       drop tcp ${ip()}:${rnd(30000, 65000)} -> wan:${pick([22, 23, 3389, 445, 8080])} (${pick(['ssh scan', 'telnet probe', 'rdp scan', 'smb probe', 'port sweep'])})`, flash: 'fw' },
-      { w: 3, path: ['lan', 'sw', 'px', 'dns'], cls: 'dns', log: () => pick([`pihole   blocked ${pick(['telemetry', 'ads', 'track', 'pixel'])}.${pick(['example-ads.net', 'tracker.example', 'adserver.example.com'])}`, `unbound  resolved ${pick(['github.com', 'pcsumisura.net', 'home-assistant.io', 'proxmox.com'])} in ${rnd(8, 60)}ms`]) },
+      { w: 3, path: ['lan', 'sw', 'px', 'dns'], cls: 'dns', log: () => pick([`pihole   blocked ${pick(['telemetry', 'ads', 'track', 'pixel'])}.${pick(['example-ads.net', 'tracker.example', 'adserver.example.com'])}`, `unbound  resolved ${pick(['github.com', 'easydomotica.net', 'home-assistant.io', 'proxmox.com'])} in ${rnd(8, 60)}ms`]) },
       { w: 2, path: ['prom', 'px', 'grafana'], cls: 'ok', log: () => `prom     scrape ok ${rnd(46, 49)}/49 targets in ${rnd(80, 240)}ms` },
       { w: 2, path: ['kuma', 'px', 'nginx'], cls: 'ok', log: () => `kuma     ${pick(['erp', 'grafana', 'hass-demo', 'pbx', 'portal'])} up, ${rnd(20, 140)}ms` },
       { w: 1, path: ['prom', 'px', 'kuma'], cls: 'warn', log: () => `alert    ${pick(['DiskUsageHigh resolved on pve', 'ContainerRestarted ct-113 (pihole)', 'BackupJob completed 49/49', 'HighLatency resolved on blackbox'])}` },
-      { w: 2, path: ['nginx', 'px', 'pg'], cls: 'ok', log: () => `postgres ${pick(['erp', 'hass', 'pcsumisura'])}: ${pick(['query ok', 'nightly dump done', 'vacuum done'])} ${rnd(2, 90)}ms` },
+      { w: 2, path: ['nginx', 'px', 'pg'], cls: 'ok', log: () => `postgres ${pick(['erp', 'hass', 'portal'])}: ${pick(['query ok', 'nightly dump done', 'vacuum done'])} ${rnd(2, 90)}ms` },
       { w: 2, path: ['lan', 'sw', 'px', 'hass'], cls: 'dns', log: () => `hass     ${pick(['automation "evening lights" ran', 'demo restored from backup', 'remote session opened', 'update check: 0 pending'])}` },
       { w: 2, path: ['inet', 'fw', 'sw', 'px', 'pbx'], cls: 'ok', log: () => `3cx      ${pick(['inbound call routed to ext 101', 'trunk registered', 'voicemail delivered to ext 102'])}` }
     ];
@@ -188,7 +188,7 @@
     const print = (html, cls = '') => { const div = document.createElement('div'); if (cls) div.className = cls; div.innerHTML = `<samp>${html}</samp>`; out.appendChild(div); out.scrollTop = out.scrollHeight; };
     const line = t => print(esc(t));
     const uptime = () => { const s = Math.floor((Date.now() - start) / 1000); return `${Math.floor(s / 60)}m ${s % 60}s`; };
-    const pages = { easydomotica: '#easydomotica', pcsumisura: '#pcsumisura', game: '#projects', certifications: '#certifications', certs: '#certifications', photography: '#photography', photos: '#photography', homelab: '#lab', lab: '#lab', skills: '#skills', github: 'https://github.com/Tommaso-Bombelli', linkedin: 'https://www.linkedin.com/in/tommaso-bombelli-204723286' };
+    const pages = { easydomotica: '#easydomotica', game: '#projects', certifications: '#certifications', certs: '#certifications', photography: '#photography', photos: '#photography', homelab: '#lab', lab: '#lab', skills: '#skills', github: 'https://github.com/Tommaso-Bombelli', linkedin: 'https://www.linkedin.com/in/tommaso-bombelli-204723286' };
     const files = { 'about.txt': 'about', 'skills.txt': 'skills', 'contact.txt': 'contact', 'projects/': 'projects', 'experience.log': 'experience', '.secrets': null };
     const setTheme = t => {
       if (t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.dataset.theme = t;
@@ -201,7 +201,7 @@
 <span class="k">experience</span>   where I've worked   <span class="k">projects</span>     what I've built
 <span class="k">skills</span>       stack and tools     <span class="k">certs</span>        certifications
 <span class="k">contact</span>      how to reach me
-<span class="k">ls</span>, <span class="k">cat</span>      browse files        <span class="k">open</span> &lt;place&gt; homelab, easydomotica, pcsumisura, photos, github
+<span class="k">ls</span>, <span class="k">cat</span>      browse files        <span class="k">open</span> &lt;place&gt; homelab, easydomotica, photos, github
 <span class="k">ping</span>         measure this site   <span class="k">nmap</span>         scan this site
 <span class="k">neofetch</span>     system info         <span class="k">theme</span>        dark, light or auto
 <span class="k">history</span>      past commands       <span class="k">clear</span>        clean the screen`),
@@ -223,7 +223,7 @@
       cd: a => (a[0] && a[0].replace('/', '') === 'projects' ? cmds.projects() : line('tbsh: there are no directories worth visiting. Try: open <page>')),
       open: a => {
         const k = (a[0] || '').toLowerCase().replace(/\.html$/, '');
-        if (!pages[k]) return line('open: try skills, homelab, easydomotica, pcsumisura, game, photos, github or linkedin');
+        if (!pages[k]) return line('open: try skills, homelab, easydomotica, game, photos, github or linkedin');
         line(`opening ${pages[k]}…`);
         setTimeout(() => { if (/^https?:/.test(pages[k])) window.open(pages[k], '_blank', 'noopener'); else location.hash = pages[k]; }, 300);
       },

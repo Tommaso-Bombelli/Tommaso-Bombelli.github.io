@@ -14,7 +14,7 @@ Five stops, one scroll each. The light changes from morning to night, and each s
 |---|---|---|---|
 | <img src="docs/forest.jpg" width="240" alt="A giant distribution board in a forest clearing"> | **Forest** | The distribution board, where it all started | About, Experience |
 | <img src="docs/meadow.jpg" width="240" alt="A server rack and 49 containers on a meadow"> | **Meadow** | A server rack and 49 containers, for my homelab | Skills, Homelab |
-| <img src="docs/walls.jpg" width="240" alt="A smart home and a giant custom PC under pink Dolomite walls at sunset"> | **Walls** | A smart home and a giant custom PC, for my two companies | Projects, Easydomotica, PC su Misura |
+| <img src="docs/walls.jpg" width="240" alt="A smart home under pink Dolomite walls at sunset"> | **Walls** | A smart home with rooms switching on, for Easydomotica | Projects, Easydomotica |
 | <img src="docs/summit.jpg" width="240" alt="A hut, a radio mast and a screen running a shell at night"> | **Summit** | A radio mast, a screen running the shell, my photos on a line | Contact, Shell, Photography |
 
 The first stop, **Lake**, has a model of the Rocca di Angera, which opens About, and a cable drum, which opens Skills.

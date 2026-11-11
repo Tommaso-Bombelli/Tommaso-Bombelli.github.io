@@ -52,10 +52,10 @@ const routeY = z => { if (z <= HEADS[0][2]) return HEADS[0][1]; for (let i = 1; 
 const ROCCA = { x: 118, z: 196 };
 /* what stands at each stop (x, z), on ground levelled for it */
 const STAND = {
-  board: [-62, 540], rack: [92, 930], house: [-90, 1311], pc: [-61, 1353],
+  board: [-62, 540], rack: [92, 930], house: [-90, 1311],
   mast: [45, 1545], screen: [51, 1482], line: [109, 1539, 79, 1520]
 };
-const PADS = [[...STAND.board, 34], [...STAND.rack, 60], [...STAND.house, 30], [...STAND.pc, 28], [...STAND.mast, 26], [...STAND.screen, 22], [94, 1530, 30]];
+const PADS = [[...STAND.board, 34], [...STAND.rack, 60], [...STAND.house, 30], [...STAND.mast, 26], [...STAND.screen, 22], [94, 1530, 30]];
 /* the ground: a lake, then a valley along the line, then walls on both sides and a great range ahead */
 const rawHeight = (x, z) => {
   const d = Math.abs(x - routeX(z));
@@ -502,7 +502,7 @@ void main(){vec3 v=normalize(uCam-w);
     addHot(g, '#lab', 'Homelab', 72, 44, 40);
   }
 
-  /* the walls: what he builds. The smart home, with rooms switching on, and a custom PC the size of a house */
+  /* the walls: what he builds. The smart home, with rooms switching on */
   {
     const h = new THREE.Group();
     part(h, new THREE.BoxGeometry(26, 13, 18), flat('#efe7d8'), 0, 6.5, 0);
@@ -522,26 +522,6 @@ void main(){vec3 v=normalize(uCam-w);
     place(h, ...STAND.house, .32, 1);
     addHot(h, '#easydomotica', 'Easydomotica', 34, 28, 26);
 
-    const pc = new THREE.Group();
-    part(pc, new THREE.BoxGeometry(20, 42, 34), std('#101317', { metalness: .7, roughness: .3 }), 0, 21, 0);
-    const glassP = part(pc, new THREE.PlaneGeometry(32, 40), new THREE.MeshBasicMaterial({ color: '#0a0f18', fog: false }), -10.05, 21, 0); glassP.rotation.y = -Math.PI / 2;
-    const rings = [];
-    [[-10.2, 33, -10], [-10.2, 21, -10], [-10.2, 9, -10]].forEach(p => {
-      const col = new THREE.Color('#5c8cff');
-      const m = new THREE.MeshBasicMaterial({ color: col, fog: false });
-      const r = part(pc, new THREE.TorusGeometry(4.4, .42, 8, 30).rotateY(Math.PI / 2), m, ...p); rings.push(m);
-      const blades = part(pc, new THREE.BoxGeometry(.2, 7.2, 1.2), new THREE.MeshBasicMaterial({ color: '#2a3442' }), ...p); fans.push(blades);
-      const b2 = part(pc, new THREE.BoxGeometry(.2, 1.2, 7.2), new THREE.MeshBasicMaterial({ color: '#2a3442' }), ...p); fans.push(b2);
-    });
-    /* motherboard, cooler and the graphics card behind the glass */
-    part(pc, new THREE.BoxGeometry(.3, 34, 22), new THREE.MeshBasicMaterial({ color: '#16232a' }), -9.6, 21, 7);
-    part(pc, new THREE.BoxGeometry(2.6, 3.6, 18), std('#39424c', { metalness: .8 }), -10.4, 14, 8);
-    const gpuLine = new THREE.MeshBasicMaterial({ color: '#ff5f7f', fog: false });
-    part(pc, new THREE.BoxGeometry(.25, .7, 18), gpuLine, -11.8, 12.2, 8); rings.push(gpuLine);
-    part(pc, new THREE.BoxGeometry(3.6, 7, 7), std('#596470', { metalness: .85 }), -10.6, 30, 8);
-    rgb.push(...rings);
-    place(pc, ...STAND.pc, -.72, 1);
-    addHot(pc, '#pcsumisura', 'PC su Misura', 24, 44, 38);
   }
 
   /* the summit: the mast from the Col Alt photograph, a screen outside the hut, his photographs drying on the line */
@@ -691,9 +671,8 @@ void main(){vec3 v=normalize(uCam-w);
     cv: { stop: 1, at: at('board', 20), from: [-6, 6, -84] },
     skills: { stop: 2, at: at('rack', 18), from: [18, 10, -104] },
     lab: { stop: 2, at: at('rack', 20), from: [-8, 6, -72] },
-    projects: { stop: 3, at: at('house', 14).lerp(at('pc', 14), .5), from: [10, 18, -130] },
+    projects: { stop: 3, at: at('house', 12), from: [6, 16, -112] },
     easydomotica: { stop: 3, at: at('house', 11), from: [-4, 8, -58] },
-    pcsumisura: { stop: 3, at: at('pc', 22), from: [-22, 2, -84] },
     photography: { stop: 4, at: new THREE.Vector3(94, heightAt(94, 1530) + 9, 1530), from: [6, 3, -34] },
     terminal: { stop: 4, at: at('screen', 12), from: [-8, 3, -44] },
     contact: { stop: 4, at: at('mast', 24), from: [-8, -4, -96] }
