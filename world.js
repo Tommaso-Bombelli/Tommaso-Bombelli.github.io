@@ -55,7 +55,7 @@ const STAND = {
   board: [-62, 540], rack: [92, 930], house: [-90, 1311],
   mast: [45, 1545], screen: [51, 1482], line: [109, 1539, 79, 1520]
 };
-const PADS = [[...STAND.board, 34], [...STAND.rack, 60], [...STAND.house, 30], [...STAND.mast, 26], [...STAND.screen, 22], [94, 1530, 30]];
+const PADS = [[ROCCA.x, ROCCA.z, 64], [...STAND.board, 34], [...STAND.rack, 60], [...STAND.house, 30], [...STAND.mast, 26], [...STAND.screen, 22], [94, 1530, 30]];
 /* the ground: a lake, then a valley along the line, then walls on both sides and a great range ahead */
 const rawHeight = (x, z) => {
   const d = Math.abs(x - routeX(z));
@@ -403,6 +403,7 @@ void main(){vec3 v=normalize(uCam-w);
     const arch = new THREE.CylinderGeometry(1.9, 1.9, 1.2, 12, 1, false, 0, Math.PI).rotateZ(Math.PI / 2).rotateY(Math.PI / 2);
     for (let i = 0; i < 4; i++) { const x = -11 + i * 5.4; part(R, new THREE.BoxGeometry(3.8, 4.4, 1.2), mDark, x, 2.2, -7.4); part(R, arch, mDark, x, 4.4, -7.4); }
     /* the battlemented outer wall and its towers */
+    wall(70, 16, 62, -2, -16, 3, mD); // the rock the castle is built into
     wall(62, 13, 3.4, -2, 0, 26, mD); wall(3.4, 13, 42, 28, 0, 6, mD); wall(3.4, 13, 22, -32, 0, 16, mD);
     crenel(-31, 26, 27, 26, 13); crenel(28, 26, 28, -14, 13); crenel(-32, 26, -32, 6, 13);
     wall(9, 24, 9, -33, 0, 26); crenel(-37, 30, -29, 30, 24); crenel(-37, 22, -29, 22, 24); crenel(-37, 22, -37, 30, 24); crenel(-29, 22, -29, 30, 24);
@@ -416,6 +417,7 @@ void main(){vec3 v=normalize(uCam-w);
     merlons.forEach((p, i) => { M.compose(V.set(p[0], p[1] + 1, p[2]), Q.identity(), S.set(1, 1, 1)); merM.setMatrixAt(i, M); });
     R.add(merM);
     place(R, ROCCA.x, ROCCA.z, -.42, 1.25);
+    { let low = Infinity; for (let dx = -44; dx <= 44; dx += 11) for (let dz = -40; dz <= 40; dz += 10) low = Math.min(low, heightAt(ROCCA.x + dx, ROCCA.z + dz)); R.position.y = low - .6; }
     addHot(R, '#about', 'About', 70, 50, 62);
   }
 
